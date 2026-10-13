@@ -9,6 +9,7 @@ import XCTest
 
 final class WarrantyVaultUITests: XCTestCase {
 
+    /// Stops the test at the first failure.
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -18,19 +19,25 @@ final class WarrantyVaultUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
+    /// Reserved for cleanup after each UI test.
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    /// Confirms the four primary tabs are available after launch.
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testMainTabsExist() throws {
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars.firstMatch
+        XCTAssertTrue(tabBar.buttons["Vault"].waitForExistence(timeout: 5))
+        XCTAssertTrue(tabBar.buttons["Add"].exists)
+        XCTAssertTrue(tabBar.buttons["Insights"].exists)
+        XCTAssertTrue(tabBar.buttons["Settings"].exists)
     }
 
+    /// Records how long the app takes to launch.
     @MainActor
     func testLaunchPerformance() throws {
         // This measures how long it takes to launch your application.

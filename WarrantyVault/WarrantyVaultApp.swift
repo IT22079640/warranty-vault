@@ -10,23 +10,23 @@ import SwiftData
 
 @main
 struct WarrantyVaultApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    @State private var router = AppRouter()
+    private let modelContainerResult: Result<ModelContainer, Error>
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    init() {
+        modelContainerResult = Result { try ModelContainerFactory.makeContainer() }
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            switch modelContainerResult {
+            case .success(let container):
+                RootTabView()
+                    .environment(router)
+                    .modelContainer(container)
+            case .failure:
+                StorageUnavailableView()
+            }
         }
-        .modelContainer(sharedModelContainer)
     }
 }
