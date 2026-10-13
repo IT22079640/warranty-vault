@@ -25,8 +25,8 @@ final class WarrantyItem {
     /// Day the product was purchased.
     var purchaseDate: Date
 
-    /// Price paid, in the currency the user typed.
-    var amount: Decimal
+    /// Price paid. SwiftData stores this as a floating-point number.
+    var amount: Double
 
     /// Length of cover counted in calendar months from `purchaseDate`.
     var warrantyMonths: Int
@@ -52,7 +52,7 @@ final class WarrantyItem {
         name: String,
         store: String,
         purchaseDate: Date,
-        amount: Decimal,
+        amount: Double,
         warrantyMonths: Int,
         category: ItemCategory,
         notes: String = "",

@@ -130,7 +130,7 @@ final class WarrantyRepository {
             name: try validatedName(name),
             store: store.trimmingCharacters(in: .whitespacesAndNewlines),
             purchaseDate: purchaseDate,
-            amount: try validatedAmount(amount),
+            amount: try storedAmount(amount),
             warrantyMonths: try validatedMonths(warrantyMonths),
             category: category,
             notes: notes.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -179,7 +179,7 @@ final class WarrantyRepository {
         item.name = try validatedName(name)
         item.store = store.trimmingCharacters(in: .whitespacesAndNewlines)
         item.purchaseDate = purchaseDate
-        item.amount = try validatedAmount(amount)
+        item.amount = try storedAmount(amount)
         item.warrantyMonths = try validatedMonths(warrantyMonths)
         item.category = category
         item.notes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -208,12 +208,12 @@ final class WarrantyRepository {
         return trimmed
     }
 
-    /// Rejects a price below zero.
-    private func validatedAmount(_ amount: Decimal) throws -> Decimal {
+    /// Rejects a price below zero and converts it to the stored number.
+    private func storedAmount(_ amount: Decimal) throws -> Double {
         guard amount >= 0 else {
             throw WarrantyRepositoryError.negativeAmount
         }
-        return amount
+        return NSDecimalNumber(decimal: amount).doubleValue
     }
 
     /// Rejects a warranty length below zero.
@@ -299,7 +299,7 @@ final class WarrantyRepository {
     }
 
     /// Compares two prices.
-    private func comparison(_ lhs: Decimal, _ rhs: Decimal) -> ComparisonResult {
+    private func comparison(_ lhs: Double, _ rhs: Double) -> ComparisonResult {
         if lhs == rhs {
             return .orderedSame
         }
