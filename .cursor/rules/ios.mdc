@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+---
+You are building "Warranty Vault", an iOS app for a university assignment (SE4041). Rules:
+- Swift 5.9+, SwiftUI, iOS 17+ minimum, SwiftData for persistence.
+- Architecture: MVVM. Folders: Models/, ViewModels/, Views/, Components/, Services/, Utilities/, Resources/.
+- Use NavigationStack with typed navigation (NavigationPath / navigationDestination).
+- Every file gets a header comment and every function a short doc comment (///).
+- Create reusable custom ViewModifiers/components, never duplicate styling.
+- Central theme in Theme.swift (colors, fonts, spacing). Support Dark Mode (asset-catalog colors) and Dynamic Type (system text styles only, no fixed font sizes).
+- Add accessibility labels/hints and accessibility identifiers to every interactive element.
+- No force unwraps, handle errors, use async/await, avoid retain cycles.
+- Write original code only; no copied tutorial code.
+- Testing: use Swift Testing (import Testing, @Test, #expect) for unit tests and XCTest for UI tests.
+- No camera features. Receipts are imported from Photos or Files only.
+- Put new Swift files inside the WarrantyVault/ source folder so Xcode picks them up automatically.
+- Make changes small and compilable. After each task, list files changed and how to test.
