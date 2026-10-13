@@ -1,0 +1,59 @@
+{
+  "phone": [
+    "iphone",
+    "samsung",
+    "galaxy",
+    "pixel",
+    "smartphone",
+    "xiaomi",
+    "oppo",
+    "vivo",
+    "airpods",
+    "nokia"
+  ],
+  "laptop": [
+    "macbook",
+    "laptop",
+    "notebook",
+    "thinkpad",
+    "chromebook",
+    "ideapad",
+    "vivobook"
+  ],
+  "appliance": [
+    "washer",
+    "washing machine",
+    "refrigerator",
+    "fridge",
+    "microwave",
+    "kettle",
+    "oven",
+    "blender",
+    "rice cooker",
+    "dryer",
+    "dishwasher"
+  ],
+  "furniture": [
+    "sofa",
+    "couch",
+    "wardrobe",
+    "mattress",
+    "bookshelf",
+    "cupboard",
+    "armchair"
+  ],
+  "vehicle": [
+    "honda",
+    "toyota",
+    "tyre",
+    "tyres",
+    "tire",
+    "motorbike",
+    "scooter",
+    "engine oil",
+    "oil filter",
+    "suzuki",
+    "nissan",
+    "car battery"
+  ]
+}
