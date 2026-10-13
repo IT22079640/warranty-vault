@@ -7,6 +7,7 @@
 //  Top-level tabs: Vault, Add, Insights, and Settings.
 //
 
+import SwiftData
 import SwiftUI
 
 /// The app shell. Each tab keeps its own navigation stack.
@@ -43,4 +44,30 @@ struct RootTabView: View {
 #Preview {
     RootTabView()
         .environment(AppRouter())
+}
+
+#Preview("Sample warranties") {
+    SampleVaultPreview()
+}
+
+/// Preview host that loads the in-memory sample warranties.
+@MainActor
+private struct SampleVaultPreview: View {
+    private let container: ModelContainer?
+
+    init() {
+        container = try? WarrantySampleData.makePreviewContainer()
+    }
+
+    var body: some View {
+        if let container {
+            RootTabView()
+                .environment(AppRouter())
+                .environment(\.warrantyRepository, WarrantyRepository(container: container))
+                .modelContainer(container)
+        } else {
+            Text("Sample warranties could not be loaded")
+                .font(Theme.Fonts.body)
+        }
+    }
 }

@@ -29,6 +29,18 @@
 		1022EB7C307CC7050072F417 /* WarrantyVaultUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WarrantyVaultUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1022EB91307CC7060072F418 /* Exceptions for "WarrantyVault" folder in "WarrantyVault" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/.gitkeep,
+				Resources/.gitkeep,
+				ViewModels/.gitkeep,
+			);
+			target = 1022EB62307CC7020072F417 /* WarrantyVault */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1022EB65307CC7020072F417 /* WarrantyVault */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -49,18 +61,6 @@
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1022EB91307CC7060072F418 /* Exceptions for "WarrantyVault" folder in "WarrantyVault" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Models/.gitkeep,
-				Resources/.gitkeep,
-				ViewModels/.gitkeep,
-			);
-			target = 1022EB62307CC7020072F417 /* WarrantyVault */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1022EB60307CC7020072F417 /* Frameworks */ = {

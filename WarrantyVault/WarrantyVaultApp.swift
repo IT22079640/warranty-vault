@@ -23,6 +23,10 @@ struct WarrantyVaultApp: App {
             case .success(let container):
                 RootTabView()
                     .environment(router)
+                    .environment(
+                        \.warrantyRepository,
+                        WarrantyRepository(container: container)
+                    )
                     .modelContainer(container)
             case .failure:
                 StorageUnavailableView()
