@@ -25,6 +25,8 @@ struct AppRouteView: View {
             AddItemFormView()
         case .editWarranty(let id):
             EditWarrantyView(itemID: id)
+        case .scheduledReminders:
+            ScheduledRemindersView()
         }
     }
 }

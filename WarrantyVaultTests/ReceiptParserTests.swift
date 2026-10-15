@@ -13,7 +13,10 @@ import UIKit
 @testable import WarrantyVault
 
 struct ReceiptParserTests {
-    private let parser = ReceiptParser(timeZone: TimeZone(secondsFromGMT: 0) ?? .gmt)
+    private let parser = ReceiptParser(
+        timeZone: TimeZone(secondsFromGMT: 0) ?? .gmt,
+        referenceDate: receiptReferenceDate
+    )
 
     /// Day-first and month-name dates all land on the same calendar day.
     @Test(arguments: dateSamples)
@@ -50,7 +53,7 @@ struct ReceiptParserTests {
     @Test func competingUnlabeledDatesAreLowConfidence() {
         let parsed = parser.parse([
             line("13/10/2026", y: 0.8),
-            line("01/01/2027", y: 0.4)
+            line("01/03/2026", y: 0.4)
         ])
         let parts = dayParts(parsed.purchaseDate.value)
 
@@ -76,11 +79,11 @@ struct ReceiptParserTests {
     @Test func expiryOnlyDateIsLowConfidence() {
         let parsed = parser.parse([
             line("Abans", y: 0.9),
-            line("Valid until 01/06/2027", y: 0.4)
+            line("Valid until 01/06/2026", y: 0.4)
         ])
         let parts = dayParts(parsed.purchaseDate.value)
 
-        #expect(parts.year == 2027)
+        #expect(parts.year == 2026)
         #expect(parts.month == 6)
         #expect(parts.day == 1)
         #expect(parsed.purchaseDate.confidence == .low)
@@ -90,6 +93,17 @@ struct ReceiptParserTests {
     @Test(arguments: amountSamples)
     func parsesLikelyTotals(sample: AmountSample) {
         let parsed = parser.parse(sample.lines.map { line($0.text, y: $0.y) })
+
+        #expect(parsed.totalAmount.value == sample.expected)
+        #expect(parsed.totalAmount.confidence == sample.confidence)
+    }
+
+    /// Totals stay on the amount paid when cash, change, tax, or a discount is also printed.
+    @Test(arguments: totalAmountReceipts)
+    func parsesPaidTotalNotChange(sample: TotalAmountReceipt) {
+        let parsed = parser.parse(sample.lines.enumerated().map { index, text in
+            line(text, y: CGFloat(sample.lines.count - index))
+        })
 
         #expect(parsed.totalAmount.value == sample.expected)
         #expect(parsed.totalAmount.confidence == sample.confidence)
@@ -126,6 +140,20 @@ struct ReceiptParserTests {
         #expect(parsed.storeName.confidence == .missing)
         #expect(parsed.purchaseDate.confidence == .missing)
         #expect(parsed.totalAmount.confidence == .missing)
+    }
+
+    /// Noisy receipt lines, including several dates and dates glued to a time.
+    @Test(arguments: noisyDateReceipts)
+    func parsesNoisyReceiptDates(sample: NoisyDateReceipt) {
+        let parsed = parser.parse(sample.lines.enumerated().map { index, text in
+            line(text, y: CGFloat(sample.lines.count - index))
+        })
+        let parts = dayParts(parsed.purchaseDate.value)
+
+        #expect(parts.year == sample.year)
+        #expect(parts.month == sample.month)
+        #expect(parts.day == sample.day)
+        #expect(parsed.purchaseDate.confidence == sample.confidence)
     }
 
     /// A mock recognizer can feed the parser without Vision or a camera.
@@ -186,6 +214,24 @@ struct SampleLine: Sendable {
     var y: CGFloat
 }
 
+/// 15 October 2026, the day the noisy receipt samples are judged against.
+private let receiptReferenceDate: Date = {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
+    return calendar.date(from: DateComponents(year: 2026, month: 10, day: 15))
+        ?? Date(timeIntervalSince1970: 0)
+}()
+
+/// One noisy receipt and the purchase date it should produce.
+struct NoisyDateReceipt: Sendable {
+    var name: String
+    var lines: [String]
+    var year: Int?
+    var month: Int?
+    var day: Int?
+    var confidence: ParseConfidence
+}
+
 /// Date strings covering the supported numeric and month-name formats.
 private let dateSamples: [DateSample] = [
     DateSample(text: "13/10/2026", year: 2026, month: 10, day: 13, confidence: .high),
@@ -197,6 +243,45 @@ private let dateSamples: [DateSample] = [
     DateSample(text: "13 oct 2026", year: 2026, month: 10, day: 13, confidence: .high),
     DateSample(text: "13 October 2026", year: 2026, month: 10, day: 13, confidence: .high),
     DateSample(text: "2026-10-13", year: 2026, month: 10, day: 13, confidence: .high)
+]
+
+/// Receipt snippets with OCR noise, several dates, and times glued to the date.
+private let noisyDateReceipts: [NoisyDateReceipt] = [
+    NoisyDateReceipt(name: "slash with 24-hour time", lines: ["Abans", "Date: 12/10/2026 14:33", "Grand Total Rs 4500.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "two-digit year with PM", lines: ["Softlogic", "Dt 12/10/26 02:33 PM", "TOTAL LKR 1299.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "dashed bill date", lines: ["Singer", "Bill date 12-10-2026", "Net Amount 2400.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "dotted date", lines: ["Cargills", "Date 12.10.2026", "Total Rs 890.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "iso date", lines: ["Keells", "Invoice date 2026-10-12", "Grand Total 1500.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "iso slashes", lines: ["Dialog", "Txn date 2026/10/12", "Amount Due Rs 3200.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "day month abbreviation", lines: ["Abans", "Purchased 12 Oct 2026", "Total Rs 999.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "day full month", lines: ["Softlogic", "Date 12 October 2026", "Grand Total Rs 2100.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "month first", lines: ["Singer", "Date: Oct 12, 2026", "TOTAL 640.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "spaces inside the date", lines: ["Abans", "Date: 12 / 10 / 2026", "Grand Total Rs 100.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "date glued to its label", lines: ["Abans", "Date:12/10/2026", "Total Rs 100.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "O read as zero", lines: ["Abans", "Date: 12/1O/2O26", "Total Rs 100.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "l and I read as one", lines: ["Abans", "Date: l2/I0/2026", "Total Rs 100.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "S read as five", lines: ["Abans", "Date: 1S/10/2026", "Total Rs 100.00"], year: 2026, month: 10, day: 15, confidence: .high),
+    NoisyDateReceipt(name: "time glued to a four-digit year", lines: ["Abans", "Date:12/10/202614:33", "Total Rs 100.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "time glued to a two-digit year", lines: ["Abans", "Dt:12/10/2614:33", "Total Rs 100.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "invoice beats a future warranty", lines: ["Abans", "12/09/2026", "Warranty until 12/10/2028", "Invoice date 12/10/2026"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "printed date kept when cover dates are future", lines: ["Abans", "Printed date 01/09/2026", "Expiry date 01/09/2027", "Warranty until 01/01/2028"], year: 2026, month: 9, day: 1, confidence: .high),
+    NoisyDateReceipt(name: "two unlabeled dates stay uncertain", lines: ["Abans", "05/08/2026", "01/03/2026", "Total Rs 10.00"], year: 2026, month: 8, day: 5, confidence: .low),
+    NoisyDateReceipt(name: "bill date beats an earlier warranty", lines: ["Abans", "Warranty until 01/03/2026", "Bill date 12/10/2026"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "date older than 15 years", lines: ["Abans", "Date: 12/10/2005", "Total Rs 10.00"], year: nil, month: nil, day: nil, confidence: .missing),
+    NoisyDateReceipt(name: "future date", lines: ["Abans", "Date: 12/10/2027", "Total Rs 10.00"], year: nil, month: nil, day: nil, confidence: .missing),
+    NoisyDateReceipt(name: "impossible day", lines: ["Abans", "Date: 32/10/2026", "Total Rs 10.00"], year: nil, month: nil, day: nil, confidence: .missing),
+    NoisyDateReceipt(name: "dotted two-digit year", lines: ["Abans", "Date 12.10.26", "Total Rs 10.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "dashed two-digit year", lines: ["Abans", "Txn date 12-10-26", "Total Rs 10.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "keyword on the previous line", lines: ["Abans", "Invoice date", "12/10/2026", "Total Rs 10.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "spaces and confused letters", lines: ["Abans", "Date : l2 / lO / 2O26", "Total Rs 10.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "month name with confused digits", lines: ["Abans", "Date: l2 0ctober 2O26", "Total Rs 10.00"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "two date labels stay uncertain", lines: ["Abans", "Date 01/02/2026", "Date 12/10/2026"], year: 2026, month: 2, day: 1, confidence: .low),
+    NoisyDateReceipt(name: "purchased month name beats a future warranty", lines: ["Abans", "Purchased on 7 November 2025", "Warranty until 07/11/2027", "Cashier 14:33"], year: 2025, month: 11, day: 7, confidence: .high),
+    NoisyDateReceipt(name: "exactly 15 years old", lines: ["Abans", "Date: 15/10/2011"], year: 2011, month: 10, day: 15, confidence: .high),
+    NoisyDateReceipt(name: "one day older than 15 years", lines: ["Abans", "Date: 14/10/2011"], year: nil, month: nil, day: nil, confidence: .missing),
+    NoisyDateReceipt(name: "invoice and warranty on one line", lines: ["Abans", "Invoice date 12/10/2026 Warranty until 01/06/2028"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "month-first OCR zero", lines: ["Abans", "Date: 0ct 12, 2026"], year: 2026, month: 10, day: 12, confidence: .high),
+    NoisyDateReceipt(name: "morning time", lines: ["Abans", "Date 5/1/2026 09:15 AM"], year: 2026, month: 1, day: 5, confidence: .high)
 ]
 
 /// Amount strings covering Sri Lankan currency labels and total keywords.
@@ -259,6 +344,162 @@ private let amountSamples: [AmountSample] = [
         ],
         expected: Decimal(string: "640.00"),
         confidence: .low
+    )
+]
+
+/// One receipt and the amount that should be saved as the price paid.
+struct TotalAmountReceipt: Sendable {
+    var name: String
+    var lines: [String]
+    var expected: Decimal?
+    var confidence: ParseConfidence
+}
+
+/// Receipts where cash, change, tax, or OCR noise used to hide the real total.
+private let totalAmountReceipts: [TotalAmountReceipt] = [
+    TotalAmountReceipt(
+        name: "change on the following lines",
+        lines: ["TOTAL:", "Rs. 129,900.00", "CASH:", "Rs. 130,000.00", "CHANGE:", "Rs. 100.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "change on the next line",
+        lines: ["TOTAL Rs. 129,900.00", "CHANGE", "Rs. 100.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "cash larger than the total",
+        lines: ["TOTAL: Rs. 129,900.00", "CASH: Rs. 130,000.00", "CHANGE: Rs. 100.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "subtotal loses to grand total",
+        lines: ["Sub total 100,000.00", "Grand Total Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "vat is not the total",
+        lines: ["VAT Rs. 15,588.00", "TOTAL Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "tax is not the total",
+        lines: ["Tax 8,000.00", "Total payable Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "discount is not the total",
+        lines: ["Discount Rs. 5,000.00", "Net total Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "total discount is not the total",
+        lines: ["Total discount 5,000.00", "TOTAL 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "total savings is not the total",
+        lines: ["Total savings Rs. 2,000.00", "Amount payable LKR 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "total items is not the total",
+        lines: ["Total items 3", "TOTAL Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "currency glued to the amount",
+        lines: ["TOTAL: Rs.129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "rupees without decimals",
+        lines: ["TOTAL Rs 129900"],
+        expected: Decimal(string: "129900"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "lkr with grouping",
+        lines: ["TOTAL LKR 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "trailing slash for no cents",
+        lines: ["TOTAL 129,900/-"],
+        expected: Decimal(string: "129900"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "ocr digits in the amount",
+        lines: ["TOTAL Rs. l29,9OO.OO"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "european separators",
+        lines: ["TOTAL 129.900,00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "two totals stay uncertain",
+        lines: ["Total Rs. 100,000.00", "Grand Total Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .low
+    ),
+    TotalAmountReceipt(
+        name: "tendered minus change confirms the total",
+        lines: ["Amount due Rs. 129,900.00", "Tendered Rs. 130,000.00", "Change Rs. 100.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "card and payment lines are ignored",
+        lines: ["Card Rs. 50,000.00", "Payment Rs. 79,900.00", "TOTAL Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "round off and balance are ignored",
+        lines: ["Round off Rs. 0.50", "Balance Rs. 0.00", "TOTAL Rs. 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "label without a colon",
+        lines: ["TOTAL", "129,900.00", "CASH", "130,000.00", "CHANGE", "100.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "change alone is not a total",
+        lines: ["CHANGE:", "Rs. 100.00"],
+        expected: nil,
+        confidence: .missing
+    ),
+    TotalAmountReceipt(
+        name: "dotted thousands from ocr",
+        lines: ["TOTAL 129.900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
+    ),
+    TotalAmountReceipt(
+        name: "received and paid are ignored",
+        lines: ["Received Rs. 130,000.00", "Paid Rs. 130,000.00", "Amount due 129,900.00"],
+        expected: Decimal(string: "129900.00"),
+        confidence: .high
     )
 ]
 

@@ -276,6 +276,75 @@ struct WarrantyReminderFlowTests {
         #expect(scheduler.cancelAllCount == 1)
         #expect(model.statusMessage == SettingsViewModel.deniedMessage)
     }
+
+    /// The test button schedules one reminder five seconds ahead on the shared scheduler.
+    @Test func testReminderFiresInFiveSeconds() async {
+        let scheduler = MockReminderScheduler()
+        scheduler.authorization = .authorized
+        let model = SettingsViewModel()
+        let now = Date(timeIntervalSince1970: 1_700_000_000)
+
+        await model.sendTestReminder(scheduler: scheduler, now: now)
+
+        let batch = scheduler.scheduledBatches.last
+        #expect(batch?.count == 1)
+        #expect(batch?.first?.identifier == WarrantyReminderPlan.testIdentifier)
+        #expect(batch?.first?.fireDate == now.addingTimeInterval(5))
+        #expect(model.statusMessage == "A test reminder will appear in 5 seconds.")
+        let pending = await scheduler.pendingRequests()
+        #expect(pending.count == 1)
+        #expect(pending.first?.identifier == WarrantyReminderPlan.testIdentifier)
+    }
+
+    /// A denied permission does not add a test reminder.
+    @Test func testReminderStaysOffWhenDenied() async {
+        let scheduler = MockReminderScheduler()
+        scheduler.authorization = .denied
+        scheduler.requestResult = .denied
+        let model = SettingsViewModel()
+
+        await model.sendTestReminder(scheduler: scheduler)
+
+        #expect(scheduler.scheduledBatches.isEmpty)
+        #expect(model.statusMessage == SettingsViewModel.deniedMessage)
+    }
+
+    /// The scheduled list reads pending requests and names the 30, 7, and 1 day reminders.
+    @Test func scheduledListUsesPendingRequests() async throws {
+        let repository = try WarrantyRepository(container: ModelContainerFactory.makePreviewContainer())
+        let item = try repository.create(
+            name: "Kettle",
+            store: "Abans",
+            purchaseDate: .now,
+            amount: 40,
+            warrantyMonths: 12,
+            category: .appliance
+        )
+        let fire = Date(timeIntervalSince1970: 1_700_000_000)
+        let scheduler = MockReminderScheduler()
+        scheduler.pending = [
+            PendingReminderRequest(
+                identifier: WarrantyReminderPlan.identifier(itemID: item.id, daysBefore: 30),
+                title: "Warranty Vault",
+                body: "Kettle expires in 30 days.",
+                fireDate: fire
+            ),
+            PendingReminderRequest(
+                identifier: WarrantyReminderPlan.identifier(itemID: item.id, daysBefore: 1),
+                title: "Warranty Vault",
+                body: "Kettle expires tomorrow.",
+                fireDate: fire.addingTimeInterval(60)
+            )
+        ]
+        let model = SettingsViewModel()
+        let rows = await model.scheduledReminders(using: repository, scheduler: scheduler)
+
+        #expect(rows.count == 2)
+        #expect(rows.first?.itemName == "Kettle")
+        #expect(rows.first?.leadDays == 30)
+        #expect(rows.last?.leadDays == 1)
+        #expect(WarrantyReminderPlan.leadDays(in: WarrantyReminderPlan.testIdentifier) == nil)
+    }
 }
 
 /// Scheduler stand-in that records schedule and cancel calls.
@@ -285,6 +354,7 @@ final class MockReminderScheduler: WarrantyReminderScheduling, @unchecked Sendab
     private(set) var scheduledBatches: [[PlannedReminder]] = []
     private(set) var cancelCalls: [[String]] = []
     private(set) var cancelAllCount = 0
+    var pending: [PendingReminderRequest] = []
 
     /// Returns the canned status.
     func authorizationStatus() async -> ReminderAuthorization {
@@ -297,19 +367,37 @@ final class MockReminderScheduler: WarrantyReminderScheduling, @unchecked Sendab
         return requestResult
     }
 
-    /// Records one schedule call.
+    /// Records one schedule call and keeps those reminders pending.
     func schedule(_ reminders: [PlannedReminder]) async {
         scheduledBatches.append(reminders)
+        for reminder in reminders {
+            pending.removeAll { $0.identifier == reminder.identifier }
+            pending.append(
+                PendingReminderRequest(
+                    identifier: reminder.identifier,
+                    title: reminder.title,
+                    body: reminder.body,
+                    fireDate: reminder.fireDate
+                )
+            )
+        }
     }
 
-    /// Records one cancel call.
+    /// Records one cancel call and drops those pending reminders.
     func cancel(identifiers: [String]) async {
         cancelCalls.append(identifiers)
+        pending.removeAll { identifiers.contains($0.identifier) }
     }
 
     /// Records a request to remove every reminder.
     func cancelAll() async {
         cancelAllCount += 1
+        pending.removeAll()
+    }
+
+    /// Returns the reminders recorded by `schedule` and not yet cancelled.
+    func pendingRequests() async -> [PendingReminderRequest] {
+        pending
     }
 }
 

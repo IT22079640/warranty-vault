@@ -67,6 +67,21 @@ protocol WarrantyReminderScheduling: Sendable {
 
     /// Removes every reminder this app has scheduled or delivered.
     func cancelAll() async
+
+    /// Pending notifications, including ones added outside the 30, 7, and 1 day plan.
+    func pendingRequests() async -> [PendingReminderRequest]
+}
+
+/// One notification still waiting in the system notification center.
+struct PendingReminderRequest: Equatable, Sendable {
+    /// Identifier passed to `UNNotificationRequest`.
+    var identifier: String
+    /// Notification title.
+    var title: String
+    /// Notification body.
+    var body: String
+    /// Next time the system will deliver it. Nil when the trigger has no date.
+    var fireDate: Date?
 }
 
 /// Builds the 30-day, 7-day, and 1-day reminders for a warranty.
@@ -76,6 +91,9 @@ enum WarrantyReminderPlan {
 
     /// Hour of the day, in the warranty calendar, when a reminder fires.
     static let fireHour = 9
+
+    /// Identifier for the Settings button that fires a few seconds later.
+    static let testIdentifier = "warranty.test"
 
     /// Identifiers for every lead day, including reminders that are no longer in the future.
     static func identifiers(for itemID: UUID) -> [String] {
@@ -122,6 +140,22 @@ enum WarrantyReminderPlan {
         "warranty.\(itemID.uuidString).d\(daysBefore)"
     }
 
+    /// Lead day stored in `identifier`, or nil for a test notification.
+    static func leadDays(in identifier: String) -> Int? {
+        guard let match = identifier.wholeMatch(of: /warranty\.[0-9A-Fa-f-]+\.d(\d+)/) else {
+            return nil
+        }
+        return Int(match.1)
+    }
+
+    /// Warranty id stored in `identifier`, or nil when it is not a planned reminder.
+    static func itemID(in identifier: String) -> UUID? {
+        guard let match = identifier.wholeMatch(of: /warranty\.([0-9A-Fa-f-]{36})\.d\d+/) else {
+            return nil
+        }
+        return UUID(uuidString: String(match.1))
+    }
+
     /// Notification sentence for a product and a lead day.
     private static func message(name: String, daysBefore: Int) -> String {
         let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -153,6 +187,11 @@ struct DisabledReminderScheduler: WarrantyReminderScheduling {
 
     /// Ignores the request.
     func cancelAll() async {}
+
+    /// Reports that nothing is waiting.
+    func pendingRequests() async -> [PendingReminderRequest] {
+        []
+    }
 }
 
 /// Environment entry for the reminder scheduler.

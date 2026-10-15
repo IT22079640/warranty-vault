@@ -32,6 +32,9 @@ struct AddItemFormView: View {
             productSection(model)
             purchaseSection(model)
             coverSection(model)
+            if !model.recognizedLines.isEmpty {
+                recognizedTextSection
+            }
             if let saveError = model.saveError {
                 Section {
                     Text(saveError)
@@ -118,12 +121,18 @@ struct AddItemFormView: View {
                 errorMessage: model.validation.amount,
                 accessibilityIdentifier: "add.amount"
             ) {
-                TextField("Amount", text: amountBinding)
-                    .font(Theme.Fonts.body)
-                    .keyboardType(.decimalPad)
-                    .focused($focusedField, equals: .amount)
-                    .accessibilityLabel("Amount")
-                    .accessibilityIdentifier("add.amount")
+                HStack(alignment: .firstTextBaseline, spacing: Theme.Spacing.small) {
+                    Text(CurrencyFormatter.symbol)
+                        .font(Theme.Fonts.body)
+                        .foregroundStyle(Theme.Colors.deepBlue)
+                        .accessibilityHidden(true)
+                    TextField("Amount", text: amountBinding)
+                        .font(Theme.Fonts.body)
+                        .keyboardType(.decimalPad)
+                        .focused($focusedField, equals: .amount)
+                        .accessibilityLabel(String(localized: "Amount in rupees"))
+                        .accessibilityIdentifier("add.amount")
+                }
             }
         }
     }
@@ -163,6 +172,26 @@ struct AddItemFormView: View {
                 .focused($focusedField, equals: .notes)
                 .accessibilityLabel("Notes")
                 .accessibilityIdentifier("add.notes")
+        }
+    }
+
+    /// Collapsible raw OCR lines, so a missed date can be checked against the receipt.
+    private var recognizedTextSection: some View {
+        Section {
+            DisclosureGroup {
+                ForEach(Array(model.recognizedLines.enumerated()), id: \.offset) { _, line in
+                    Text(line)
+                        .font(Theme.Fonts.footnote)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .textSelection(.enabled)
+                }
+            } label: {
+                Text("Recognized text")
+                    .font(Theme.Fonts.body)
+            }
+            .accessibilityLabel(String(localized: "Recognized text"))
+            .accessibilityHint(String(localized: "Shows the text read from the receipt"))
+            .accessibilityIdentifier("add.recognizedText")
         }
     }
 

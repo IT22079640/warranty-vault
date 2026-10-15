@@ -66,7 +66,7 @@ enum WarrantySummary {
     ) -> String {
         let purchased = item.purchaseDate.formatted(date: .abbreviated, time: .omitted)
         let expires = item.expiryDate(using: calendar).formatted(date: .abbreviated, time: .omitted)
-        let amount = AddItemRules.amountText(from: Decimal(item.amount))
+        let amount = CurrencyFormatter.string(from: Decimal(item.amount))
         let status = item.status(on: date, calendar: calendar)
         let days = daysRemaining(for: item, on: date, calendar: calendar)
         return [

@@ -90,6 +90,10 @@ struct VaultWarrantyCard: View {
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             statusLine
+            Text(amountText)
+                .font(Theme.Fonts.caption)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -130,11 +134,15 @@ struct VaultWarrantyCard: View {
 
     /// Shop and price on one line for the stacked card.
     private var metaLine: String {
-        let amount = AddItemRules.amountText(from: Decimal(item.amount))
         if item.store.isEmpty {
-            return amount
+            return amountText
         }
-        return "\(item.store) · \(amount)"
+        return "\(item.store) · \(amountText)"
+    }
+
+    /// Price in rupees, with grouping and two decimal places.
+    private var amountText: String {
+        CurrencyFormatter.string(from: Decimal(item.amount))
     }
 
     /// Cover state used for color and the spoken label.
@@ -150,6 +158,7 @@ struct VaultWarrantyCard: View {
     /// Combined label for VoiceOver.
     private var spokenSummary: String {
         let place = item.store.isEmpty ? item.category.title : item.store
-        return "\(item.name), \(place), \(status.title), \(WarrantySummary.daysLabel(days))"
+        let price = CurrencyFormatter.spoken(from: Decimal(item.amount))
+        return "\(item.name), \(place), \(price), \(status.title), \(WarrantySummary.daysLabel(days))"
     }
 }

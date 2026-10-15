@@ -30,7 +30,7 @@ enum WarrantyCSV {
             "Name",
             "Store",
             "Purchase Date",
-            "Amount",
+            "Amount (LKR)",
             "Warranty Months",
             "Expiry Date",
             "Category",
@@ -44,7 +44,7 @@ enum WarrantyCSV {
     private static func row(for item: WarrantyItem, on date: Date, calendar: Calendar) -> String {
         let purchase = isoDate(item.purchaseDate, calendar: calendar)
         let expiry = isoDate(item.expiryDate(using: calendar), calendar: calendar)
-        let amount = AddItemRules.amountText(from: Decimal(item.amount))
+        let amount = CurrencyFormatter.string(from: Decimal(item.amount))
         let fields = [
             item.name,
             item.store,

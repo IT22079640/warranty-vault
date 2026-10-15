@@ -46,6 +46,8 @@ final class AddItemViewModel {
     var saveError: String?
     /// Message when OCR fails and the user should type the details.
     var readNotice: String?
+    /// Lines read from the receipt, in the order the recognizer returned them.
+    var recognizedLines: [String] = []
     /// Shown on the Add tab after a successful save.
     var savedMessage: String?
     /// Next screen the Add tab should open. The view clears this after navigating.
@@ -154,6 +156,7 @@ final class AddItemViewModel {
             guard token == scanID, !Task.isCancelled else {
                 return
             }
+            recognizedLines = lines.map(\.text)
             let parsed = parser.parse(lines)
             let suggestion = suggester.suggest(from: lines)
             apply(parsed, suggestion: suggestion)
@@ -426,6 +429,7 @@ final class AddItemViewModel {
         amountConfidence = nil
         categoryConfidence = nil
         validation = AddItemValidation()
+        recognizedLines = []
         readNotice = nil
         importError = nil
         saveError = nil

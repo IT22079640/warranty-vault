@@ -45,7 +45,7 @@ final class UserNotificationReminderScheduler: WarrantyReminderScheduling, @unch
             content.body = reminder.body
             content.sound = .default
             let parts = calendar.dateComponents(
-                [.year, .month, .day, .hour, .minute],
+                [.year, .month, .day, .hour, .minute, .second],
                 from: reminder.fireDate
             )
             let trigger = UNCalendarNotificationTrigger(dateMatching: parts, repeats: false)
@@ -72,6 +72,20 @@ final class UserNotificationReminderScheduler: WarrantyReminderScheduling, @unch
     func cancelAll() async {
         center.removeAllPendingNotificationRequests()
         center.removeAllDeliveredNotifications()
+    }
+
+    /// Reads every request still waiting, including the test reminder.
+    func pendingRequests() async -> [PendingReminderRequest] {
+        let requests = await center.pendingNotificationRequests()
+        return requests.map { request in
+            let trigger = request.trigger as? UNCalendarNotificationTrigger
+            return PendingReminderRequest(
+                identifier: request.identifier,
+                title: request.content.title,
+                body: request.content.body,
+                fireDate: trigger?.nextTriggerDate()
+            )
+        }
     }
 
     /// Maps a system status onto the app's three permission cases.

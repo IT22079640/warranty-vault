@@ -111,6 +111,73 @@ final class SettingsViewModel {
         return WarrantyCSV.make(items: items, on: date, calendar: calendar)
     }
 
+    /// Schedules one notification a few seconds from now, through the same scheduler as real reminders.
+    func sendTestReminder(
+        scheduler: any WarrantyReminderScheduling,
+        now: Date = .now
+    ) async {
+        var permission = await scheduler.authorizationStatus()
+        if permission != .authorized {
+            permission = await scheduler.requestAuthorization()
+        }
+        authorization = permission
+        guard permission == .authorized else {
+            statusMessage = Self.deniedMessage
+            return
+        }
+        let reminder = PlannedReminder(
+            identifier: WarrantyReminderPlan.testIdentifier,
+            title: String(localized: "Warranty Vault"),
+            body: String(localized: "This is a test reminder."),
+            fireDate: now.addingTimeInterval(5)
+        )
+        await scheduler.schedule([reminder])
+        statusMessage = String(localized: "A test reminder will appear in 5 seconds.")
+    }
+
+    /// Pending reminders, with the product name taken from the vault when the identifier matches a warranty.
+    func scheduledReminders(
+        using repository: WarrantyRepository?,
+        scheduler: any WarrantyReminderScheduling
+    ) async -> [ScheduledReminderRow] {
+        let pending = await scheduler.pendingRequests()
+        return pending.map { request in
+            let leadDays = WarrantyReminderPlan.leadDays(in: request.identifier)
+            let itemName = name(for: request, repository: repository)
+            return ScheduledReminderRow(
+                id: request.identifier,
+                itemName: itemName,
+                fireDate: request.fireDate,
+                leadDays: leadDays
+            )
+        }
+        .sorted { lhs, rhs in
+            switch (lhs.fireDate, rhs.fireDate) {
+            case let (left?, right?):
+                return left < right
+            case (nil, _?):
+                return false
+            case (_?, nil):
+                return true
+            case (nil, nil):
+                return lhs.itemName.localizedStandardCompare(rhs.itemName) == .orderedAscending
+            }
+        }
+    }
+
+    /// Product name for a pending request. A test notification keeps its own label.
+    private func name(for request: PendingReminderRequest, repository: WarrantyRepository?) -> String {
+        if request.identifier == WarrantyReminderPlan.testIdentifier {
+            return String(localized: "Test reminder")
+        }
+        if let repository,
+           let itemID = WarrantyReminderPlan.itemID(in: request.identifier),
+           let item = try? repository.item(id: itemID) {
+            return item.name
+        }
+        return request.body
+    }
+
     /// Deletes every warranty and cancels reminders. Returns false when the store could not be cleared.
     func clearAll(
         using repository: WarrantyRepository?,

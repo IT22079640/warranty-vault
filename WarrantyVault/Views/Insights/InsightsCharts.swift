@@ -36,7 +36,7 @@ struct InsightsCharts: View {
             VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
                 metric(
                     title: String(localized: "Total value protected"),
-                    value: AddItemRules.amountText(from: Decimal(summary.protectedValue)),
+                    value: CurrencyFormatter.string(from: Decimal(summary.protectedValue)),
                     identifier: "insights.protectedValue"
                 )
                 metric(
@@ -57,7 +57,7 @@ struct InsightsCharts: View {
         HStack(alignment: .top, spacing: Theme.Spacing.medium) {
             metric(
                 title: String(localized: "Total value protected"),
-                value: AddItemRules.amountText(from: Decimal(summary.protectedValue)),
+                value: CurrencyFormatter.string(from: Decimal(summary.protectedValue)),
                 identifier: "insights.protectedValue"
             )
             metric(
@@ -94,7 +94,7 @@ struct InsightsCharts: View {
     private var spendingChart: some View {
         chartSection(title: String(localized: "Spending by month"), identifier: "insights.spending") {
             if prefersText {
-                textRows(summary.monthlySpend.map { spendLabel(for: $0) })
+                textRows(summary.monthlySpend.map { spendText(for: $0) })
             } else {
                 Chart(summary.monthlySpend) { entry in
                     BarMark(
@@ -105,7 +105,7 @@ struct InsightsCharts: View {
                     .accessibilityLabel(spendLabel(for: entry))
                 }
                 .frame(height: chartHeight)
-                .chartYAxis { axisMarks }
+                .chartYAxis { currencyAxis }
                 .chartXAxis {
                     AxisMarks(values: .stride(by: .month)) { _ in
                         AxisGridLine()
@@ -159,6 +159,19 @@ struct InsightsCharts: View {
         dynamicTypeSize.isAccessibilitySize
     }
 
+    /// Rupee labels on the spending axis, using a scaling text style.
+    private var currencyAxis: some AxisContent {
+        AxisMarks { value in
+            AxisGridLine()
+            AxisValueLabel {
+                if let amount = value.as(Double.self) {
+                    Text(CurrencyFormatter.string(from: Decimal(amount)))
+                        .font(Theme.Fonts.caption)
+                }
+            }
+        }
+    }
+
     /// Shared axis styling that uses a scaling text style.
     private var axisMarks: some AxisContent {
         AxisMarks { _ in
@@ -192,7 +205,7 @@ struct InsightsCharts: View {
 
     /// Spoken summary of the two headline numbers.
     private var summaryLabel: String {
-        let amount = AddItemRules.amountText(from: Decimal(summary.protectedValue))
+        let amount = CurrencyFormatter.spoken(from: Decimal(summary.protectedValue))
         return LocalizedFormat.string(
             "Total value protected %@. Expiring soon %lld.",
             amount,
@@ -256,7 +269,14 @@ struct InsightsCharts: View {
     /// Month and amount for one spending bar.
     private func spendLabel(for entry: InsightsSummary.MonthlySpend) -> String {
         let month = entry.monthStart.formatted(.dateTime.month(.wide).year())
-        let amount = AddItemRules.amountText(from: Decimal(entry.total))
+        let amount = CurrencyFormatter.spoken(from: Decimal(entry.total))
+        return "\(month), \(amount)"
+    }
+
+    /// Month and rupee amount shown when charts are replaced by text.
+    private func spendText(for entry: InsightsSummary.MonthlySpend) -> String {
+        let month = entry.monthStart.formatted(.dateTime.month(.wide).year())
+        let amount = CurrencyFormatter.string(from: Decimal(entry.total))
         return "\(month), \(amount)"
     }
 }

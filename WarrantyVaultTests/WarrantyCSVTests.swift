@@ -29,7 +29,8 @@ struct WarrantyCSVTests {
             on: WarrantyReminderFixtures.date(year: 2026, month: 6, day: 1),
             calendar: WarrantyReminderFixtures.calendar
         )
-        #expect(csv.hasPrefix("Name,Store,Purchase Date,Amount,Warranty Months,Expiry Date,Category,Status,Notes,Archived"))
+        #expect(csv.hasPrefix("Name,Store,Purchase Date,Amount (LKR),Warranty Months,Expiry Date,Category,Status,Notes,Archived"))
+        #expect(csv.contains("Rs. 35.00"))
         #expect(csv.contains("\"Desk, lamp\""))
         #expect(csv.contains("\"He said \"\"gift\"\"\""))
         #expect(csv.contains("2026-01-02"))
@@ -69,6 +70,14 @@ struct WarrantyCSVTests {
         #expect(csv.contains("\"Line one\nLine two\""))
         #expect(csv.contains(",yes"))
         #expect(csv.contains(",no"))
+    }
+
+    /// Rupee amounts use grouping, two decimals, and a spoken rupees label.
+    @Test func currencyFormatsRupees() {
+        let amount = Decimal(string: "129900") ?? 0
+        #expect(CurrencyFormatter.string(from: amount) == "Rs. 129,900.00")
+        #expect(CurrencyFormatter.spoken(from: amount) == "129,900.00 rupees")
+        #expect(CurrencyFormatter.symbol == "Rs.")
     }
 }
 

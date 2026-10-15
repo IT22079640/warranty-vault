@@ -95,6 +95,25 @@ struct SettingsView: View {
                 .accessibilityHint(String(localized: "Opens iOS Settings for Warranty Vault"))
                 .accessibilityIdentifier("settings.openSystemSettings")
             }
+
+            Button(String(localized: "Send test reminder")) {
+                Task {
+                    await model.sendTestReminder(scheduler: scheduler)
+                }
+            }
+            .font(Theme.Fonts.body)
+            .disabled(model.isUpdating)
+            .accessibilityLabel(String(localized: "Send test reminder"))
+            .accessibilityHint(String(localized: "Schedules a notification in 5 seconds"))
+            .accessibilityIdentifier("settings.sendTestReminder")
+
+            Button(String(localized: "Scheduled reminders")) {
+                router.push(.scheduledReminders, on: .settings)
+            }
+            .font(Theme.Fonts.body)
+            .accessibilityLabel(String(localized: "Scheduled reminders"))
+            .accessibilityHint(String(localized: "Shows reminders that are waiting to be delivered"))
+            .accessibilityIdentifier("settings.scheduledReminders")
         } footer: {
             Text("Reminders are sent at 9:00 in the morning, 30 days, 7 days, and 1 day before a warranty ends. Editing a warranty updates its reminders. Archiving or deleting it cancels them.")
                 .font(Theme.Fonts.footnote)

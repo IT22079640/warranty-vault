@@ -21,6 +21,8 @@ enum Route: Hashable {
     case addForm
     /// Form for changing a warranty that is already saved.
     case editWarranty(id: UUID)
+    /// Pending local notifications, opened from Settings.
+    case scheduledReminders
 
     /// Short title shown in the navigation bar.
     var title: String {
@@ -35,6 +37,8 @@ enum Route: Hashable {
             String(localized: "Warranty details")
         case .editWarranty:
             String(localized: "Edit warranty")
+        case .scheduledReminders:
+            String(localized: "Scheduled reminders")
         }
     }
 
@@ -51,6 +55,8 @@ enum Route: Hashable {
             "square.and.pencil"
         case .editWarranty:
             "square.and.pencil"
+        case .scheduledReminders:
+            "bell"
         }
     }
 
@@ -67,6 +73,8 @@ enum Route: Hashable {
             "screen.addForm"
         case .editWarranty:
             "screen.editWarranty"
+        case .scheduledReminders:
+            "screen.scheduledReminders"
         }
     }
 }

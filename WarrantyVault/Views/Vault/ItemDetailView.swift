@@ -163,7 +163,11 @@ struct ItemDetailView: View {
             fact(String(localized: "Store"), value: item.store.isEmpty ? String(localized: "Not recorded") : item.store)
             fact(String(localized: "Category"), value: item.category.title)
             fact(String(localized: "Purchased"), value: item.purchaseDate.formatted(date: .abbreviated, time: .omitted))
-            fact(String(localized: "Amount"), value: AddItemRules.amountText(from: Decimal(item.amount)))
+            fact(
+                String(localized: "Amount"),
+                value: CurrencyFormatter.string(from: Decimal(item.amount)),
+                spokenValue: CurrencyFormatter.spoken(from: Decimal(item.amount))
+            )
             fact(String(localized: "Warranty"), value: LocalizedFormat.string("%lld months", Int64(item.warrantyMonths)))
             fact(String(localized: "Expires"), value: item.expiryDate.formatted(date: .abbreviated, time: .omitted))
             if !item.notes.isEmpty {
@@ -174,8 +178,8 @@ struct ItemDetailView: View {
         .accessibilityIdentifier("detail.facts")
     }
 
-    /// One labeled line inside the facts card.
-    private func fact(_ title: String, value: String) -> some View {
+    /// One labeled line inside the facts card. `spokenValue` is what VoiceOver reads.
+    private func fact(_ title: String, value: String, spokenValue: String? = nil) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.extraSmall) {
             Text(title)
                 .font(Theme.Fonts.caption)
@@ -186,6 +190,7 @@ struct ItemDetailView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(title), \(spokenValue ?? value)")
     }
 
     /// Reads the warranty again so an edit shows up after the form closes.
