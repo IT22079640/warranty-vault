@@ -1,0 +1,157 @@
+//
+//  VaultViewModel.swift
+//  WarrantyVault
+//
+//  Created by Ama Hitiarachchi on 2026-10-14.
+//
+//  Search, filter, and layout state for the vault list.
+//
+
+import Foundation
+import Observation
+
+/// Which vault layout the user last chose.
+enum VaultLayout: String, CaseIterable, Identifiable {
+    case list
+    case grid
+
+    /// Stable identifier for the layout control.
+    var id: String { rawValue }
+
+    /// Symbol for the button that switches away from this layout.
+    var toggleSymbol: String {
+        switch self {
+        case .list:
+            "square.grid.2x2"
+        case .grid:
+            "list.bullet"
+        }
+    }
+
+    /// Spoken name of the layout the button will switch to.
+    var toggleLabel: String {
+        switch self {
+        case .list:
+            "Show as grid"
+        case .grid:
+            "Show as list"
+        }
+    }
+}
+
+/// Filter chips above the vault.
+enum VaultFilter: String, CaseIterable, Identifiable {
+    case all
+    case active
+    case expiringSoon
+    case expired
+
+    /// Stable identifier for the chip.
+    var id: String { rawValue }
+
+    /// Title drawn on the chip.
+    var title: String {
+        switch self {
+        case .all:
+            "All"
+        case .active:
+            WarrantyStatus.active.title
+        case .expiringSoon:
+            WarrantyStatus.expiringSoon.title
+        case .expired:
+            WarrantyStatus.expired.title
+        }
+    }
+
+    /// Status passed to the repository. Nil keeps every unarchived state.
+    var status: WarrantyStatus? {
+        switch self {
+        case .all:
+            nil
+        case .active:
+            .active
+        case .expiringSoon:
+            .expiringSoon
+        case .expired:
+            .expired
+        }
+    }
+}
+
+/// Loads unarchived warranties and applies the vault's search, filter, and layout.
+@MainActor
+@Observable
+final class VaultViewModel {
+    var searchText = ""
+    var filter: VaultFilter = .all
+    var layout: VaultLayout = .list
+    private(set) var items: [WarrantyItem] = []
+    var actionError: String?
+
+    /// Query for the current search box and chip. Archived rows stay hidden.
+    func query(on date: Date = .now) -> WarrantyQuery {
+        WarrantyQuery(
+            searchText: searchText,
+            status: filter.status,
+            archiveScope: .unarchived,
+            sort: .expiryDate,
+            ascending: true,
+            referenceDate: date
+        )
+    }
+
+    /// True when the vault itself is empty, rather than a search or filter hiding rows.
+    var showsFirstUseEmptyState: Bool {
+        items.isEmpty
+            && filter == .all
+            && searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    /// Replaces `items` with the current query.
+    func reload(using repository: WarrantyRepository?) {
+        guard let repository else {
+            items = []
+            actionError = "Warranty Vault could not open saved receipts."
+            return
+        }
+        do {
+            items = try repository.items(matching: query())
+        } catch {
+            items = []
+            actionError = "Saved warranties could not be loaded."
+        }
+    }
+
+    /// Hides `item` from the vault and refreshes the list.
+    func archive(_ item: WarrantyItem, using repository: WarrantyRepository?) {
+        guard let repository else {
+            actionError = "Warranty Vault could not open saved receipts."
+            return
+        }
+        do {
+            try repository.setArchived(item, isArchived: true)
+            reload(using: repository)
+        } catch {
+            actionError = "That warranty could not be archived."
+        }
+    }
+
+    /// Removes `item` from the store and refreshes the list.
+    func delete(_ item: WarrantyItem, using repository: WarrantyRepository?) {
+        guard let repository else {
+            actionError = "Warranty Vault could not open saved receipts."
+            return
+        }
+        do {
+            try repository.delete(item)
+            reload(using: repository)
+        } catch {
+            actionError = "That warranty could not be deleted."
+        }
+    }
+
+    /// Switches between the list and the adaptive grid.
+    func toggleLayout() {
+        layout = layout == .list ? .grid : .list
+    }
+}

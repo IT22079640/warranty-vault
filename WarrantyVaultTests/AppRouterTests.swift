@@ -41,4 +41,20 @@ struct AppRouterTests {
         #expect(router.vaultPath.count == 1)
         #expect(router.selectedTab == .vault)
     }
+
+    /// Pop removes one screen and does nothing when that tab is already at its root.
+    @Test func popRemovesOnlyTheTopScreen() {
+        let router = AppRouter()
+        let identifier = UUID()
+
+        router.push(.warranty(id: identifier), on: .vault)
+        router.push(.editWarranty(id: identifier), on: .vault)
+        router.pop(for: .vault)
+
+        #expect(router.vaultPath.count == 1)
+        router.pop(for: .vault)
+        #expect(router.vaultPath.isEmpty)
+        router.pop(for: .vault)
+        #expect(router.vaultPath.isEmpty)
+    }
 }

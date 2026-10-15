@@ -28,7 +28,7 @@ struct TabNavigationStack<Content: View>: View {
                 .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.large)
                 .navigationDestination(for: Route.self) { route in
-                    RoutePlaceholderView(route: route)
+                    AppRouteView(route: route)
                 }
         }
     }

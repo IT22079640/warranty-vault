@@ -15,6 +15,12 @@ enum Route: Hashable {
     case receipt(id: UUID)
     /// A saved warranty card, identified by its persistent id.
     case warranty(id: UUID)
+    /// Scanning screen shown while a chosen receipt is read.
+    case addReview
+    /// Editable warranty form, with or without a scanned receipt.
+    case addForm
+    /// Form for changing a warranty that is already saved.
+    case editWarranty(id: UUID)
 
     /// Short title shown in the navigation bar.
     var title: String {
@@ -23,6 +29,12 @@ enum Route: Hashable {
             "Receipt"
         case .warranty:
             "Warranty"
+        case .addReview:
+            "Reading receipt"
+        case .addForm:
+            "Warranty details"
+        case .editWarranty:
+            "Edit warranty"
         }
     }
 
@@ -33,6 +45,12 @@ enum Route: Hashable {
             "doc.text"
         case .warranty:
             "checkmark.seal"
+        case .addReview:
+            "doc.viewfinder"
+        case .addForm:
+            "square.and.pencil"
+        case .editWarranty:
+            "square.and.pencil"
         }
     }
 
@@ -43,6 +61,12 @@ enum Route: Hashable {
             "screen.receipt"
         case .warranty:
             "screen.warranty"
+        case .addReview:
+            "screen.addReview"
+        case .addForm:
+            "screen.addForm"
+        case .editWarranty:
+            "screen.editWarranty"
         }
     }
 }
@@ -132,6 +156,43 @@ final class AppRouter {
             insightsPath.append(route)
         case .settings:
             settingsPath.append(route)
+        }
+    }
+
+    /// Replaces the stack for `tab` with `routes`, in order.
+    func replacePath(with routes: [Route], on tab: AppTab) {
+        var path = NavigationPath()
+        for route in routes {
+            path.append(route)
+        }
+        selectedTab = tab
+        switch tab {
+        case .vault:
+            vaultPath = path
+        case .add:
+            addPath = path
+        case .insights:
+            insightsPath = path
+        case .settings:
+            settingsPath = path
+        }
+    }
+
+    /// Removes the top screen on `tab` when the stack is not empty.
+    func pop(for tab: AppTab) {
+        switch tab {
+        case .vault:
+            guard !vaultPath.isEmpty else { return }
+            vaultPath.removeLast()
+        case .add:
+            guard !addPath.isEmpty else { return }
+            addPath.removeLast()
+        case .insights:
+            guard !insightsPath.isEmpty else { return }
+            insightsPath.removeLast()
+        case .settings:
+            guard !settingsPath.isEmpty else { return }
+            settingsPath.removeLast()
         }
     }
 
