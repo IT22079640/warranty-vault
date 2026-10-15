@@ -146,16 +146,18 @@ final class WarrantyRepository {
     /// Returns the warranty with `id`, or nil when it is not in the store.
     func item(id: UUID) throws -> WarrantyItem? {
         let identifier = id
-        let descriptor = FetchDescriptor<WarrantyItem>(
+        var descriptor = FetchDescriptor<WarrantyItem>(
             predicate: #Predicate { $0.id == identifier }
         )
+        descriptor.fetchLimit = 1
         return try context.fetch(descriptor).first
     }
 
     /// Returns warranties that match the search text, filters, and sort order.
     ///
-    /// Archive state is applied in the store. Status and expiry are calculated,
-    /// so those filters and that sort happen after the fetch.
+    /// Archive state is applied in the store. Receipt bytes use external storage,
+    /// so they load when a card reads them rather than with every row.
+    /// Status and expiry are calculated, so those filters and that sort happen after the fetch.
     func items(matching query: WarrantyQuery = WarrantyQuery()) throws -> [WarrantyItem] {
         let descriptor = FetchDescriptor<WarrantyItem>(
             predicate: archivePredicate(for: query.archiveScope)

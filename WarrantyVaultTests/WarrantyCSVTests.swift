@@ -35,6 +35,41 @@ struct WarrantyCSVTests {
         #expect(csv.contains("2026-01-02"))
         #expect(csv.contains(",no"))
     }
+
+    /// A line break is quoted, archived rows are marked, and names are sorted.
+    @Test func csvSortsNamesAndQuotesNewlines() {
+        let calendar = WarrantyReminderFixtures.calendar
+        let on = WarrantyReminderFixtures.date(year: 2026, month: 6, day: 1)
+        let lamp = WarrantyItem(
+            name: "Lamp",
+            store: "Abans",
+            purchaseDate: WarrantyReminderFixtures.date(year: 2026, month: 1, day: 2),
+            amount: 10,
+            warrantyMonths: 12,
+            category: .furniture,
+            notes: "Line one\nLine two"
+        )
+        let archived = WarrantyItem(
+            name: "Cable",
+            store: "Softlogic",
+            purchaseDate: WarrantyReminderFixtures.date(year: 2024, month: 1, day: 2),
+            amount: 5,
+            warrantyMonths: 1,
+            category: .other,
+            isArchived: true
+        )
+        let csv = WarrantyCSV.make(items: [lamp, archived], on: on, calendar: calendar)
+        let cable = csv.range(of: "Cable,")
+        let lampRange = csv.range(of: "Lamp,")
+        #expect(cable != nil)
+        #expect(lampRange != nil)
+        if let cable, let lampRange {
+            #expect(cable.lowerBound < lampRange.lowerBound)
+        }
+        #expect(csv.contains("\"Line one\nLine two\""))
+        #expect(csv.contains(",yes"))
+        #expect(csv.contains(",no"))
+    }
 }
 
 @MainActor
@@ -69,5 +104,35 @@ struct WarrantyDataTests {
         #expect(AppearanceChoice.system.colorScheme == nil)
         #expect(AppearanceChoice.light.colorScheme == .light)
         #expect(AppearanceChoice.dark.colorScheme == .dark)
+    }
+
+    /// Export includes archived warranties and stays empty when the store has none.
+    @Test func exportCSVIncludesArchivedRows() throws {
+        let repository = try WarrantyRepository(container: ModelContainerFactory.makePreviewContainer())
+        let model = SettingsViewModel()
+        let on = WarrantyReminderFixtures.date(year: 2026, month: 6, day: 1)
+        #expect(model.exportCSV(using: repository, on: on, calendar: WarrantyReminderFixtures.calendar) == nil)
+
+        _ = try repository.create(
+            name: "Lamp",
+            store: "Abans",
+            purchaseDate: WarrantyReminderFixtures.date(year: 2026, month: 1, day: 2),
+            amount: 10,
+            warrantyMonths: 12,
+            category: .furniture
+        )
+        _ = try repository.create(
+            name: "Cable",
+            store: "Softlogic",
+            purchaseDate: WarrantyReminderFixtures.date(year: 2024, month: 1, day: 2),
+            amount: 5,
+            warrantyMonths: 1,
+            category: .other,
+            isArchived: true
+        )
+        let csv = model.exportCSV(using: repository, on: on, calendar: WarrantyReminderFixtures.calendar)
+        #expect(csv?.contains("Lamp") == true)
+        #expect(csv?.contains("Cable") == true)
+        #expect(csv?.contains(",yes") == true)
     }
 }

@@ -111,11 +111,11 @@ final class AddItemViewModel {
         importError = nil
         defer { isImporting = false }
         do {
-            guard let data = try await item.loadData(), let image = UIImage(data: data) else {
+            guard let data = try await item.loadData() else {
                 importError = String(localized: "That photo could not be opened.")
                 return
             }
-            beginScan(with: image)
+            await beginScan(withFileData: data, emptyMessage: String(localized: "That photo could not be opened."))
         } catch {
             importError = String(localized: "That photo could not be opened.")
         }
@@ -350,18 +350,29 @@ final class AddItemViewModel {
         )
     }
 
-    /// Downscales `image` and moves to the scanning screen.
-    private func beginScan(with image: UIImage) {
-        guard let prepared = ReceiptImagePrep.downscaledJPEG(from: image) else {
-            importError = String(localized: "That image could not be prepared.")
+    /// Downscales the file off the main thread, then opens the scanning screen.
+    private func beginScan(withFileData data: Data, emptyMessage: String) async {
+        let jpeg = await Task.detached(priority: .userInitiated) {
+            Self.preparedJPEG(from: data)
+        }.value
+        guard let jpeg, let image = UIImage(data: jpeg) else {
+            importError = emptyMessage
             return
         }
         clearForm()
-        receiptImage = prepared.image
-        receiptJPEG = prepared.data
+        receiptImage = image
+        receiptJPEG = jpeg
         savedMessage = nil
         scanID = UUID()
         requestedStep = .review
+    }
+
+    /// Shrinks a photo or the first PDF page. Safe to call off the main thread.
+    nonisolated private static func preparedJPEG(from data: Data) -> Data? {
+        guard let image = ReceiptDocumentImage.image(from: data) else {
+            return nil
+        }
+        return ReceiptImagePrep.downscaledJPEG(from: image)?.data
     }
 
     /// Reads a security-scoped file URL into an image.
@@ -376,11 +387,7 @@ final class AddItemViewModel {
             let data = try await Task.detached {
                 try Data(contentsOf: url)
             }.value
-            guard let image = ReceiptDocumentImage.image(from: data) else {
-                importError = String(localized: "Choose a photo or a PDF.")
-                return
-            }
-            beginScan(with: image)
+            await beginScan(withFileData: data, emptyMessage: String(localized: "Choose a photo or a PDF."))
         } catch {
             importError = String(localized: "That file could not be read.")
         }

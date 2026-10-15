@@ -1,3253 +1,3285 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "Vault": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vault"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@ expires in %lld days." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ expires in %lld days."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරක්ෂිතාගාරය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ දින %lldකින් කල් ඉකුත් වේ."
           }
         }
       }
     },
-    "Add": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add"
+    "%@ expires tomorrow." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ expires tomorrow."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එක් කරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ හෙට කල් ඉකුත් වේ."
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
           }
         }
       }
     },
-    "Insights": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Insights"
+    "%@, %lld items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, %lld items"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "විශ්ලේෂණ"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, අයිතම %lld"
+          }
+        }
+      }
+    },
+    "%@. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@. %2$@"
           }
         }
       }
     },
-    "Settings": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+    "%lld days left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days left"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සැකසුම්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දින %lldක් ඉතිරියි"
           }
         }
       }
     },
-    "Active": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Active"
+    "%lld days overdue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days overdue"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සක්‍රිය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දින %lldක් ඉක්මවා ඇත"
           }
         }
       }
     },
-    "Expiring soon": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expiring soon"
+    "%lld months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඉක්මනින් කල් ඉකුත් වේ"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස %lld"
           }
         }
       }
     },
-    "Expired": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expired"
+    "1 day left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 day left"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "කල් ඉකුත් විය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දින 1ක් ඉතිරියි"
           }
         }
       }
     },
-    "All": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All"
+    "1 day overdue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 day overdue"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සියල්ල"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දින 1ක් ඉක්මවා ඇත"
           }
         }
       }
     },
-    "Phone": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Phone"
+    "6 months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6 months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දුරකථනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස 6"
           }
         }
       }
     },
-    "Laptop": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laptop"
+    "12 months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ලැප්ටොප් පරිගණකය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස 12"
           }
         }
       }
     },
-    "Appliance": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Appliance"
+    "24 months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24 months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "උපකරණය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස 24"
           }
         }
       }
     },
-    "Furniture": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Furniture"
+    "36 months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "36 months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ගෘහ භාණ්ඩ"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස 36"
           }
         }
       }
     },
-    "Vehicle": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vehicle"
+    "A reminder before it ends" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A reminder before it ends"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වාහනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවසන් වීමට පෙර මතක් කිරීමක්"
           }
         }
       }
     },
-    "Other": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other"
+    "A saved warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A saved warranty"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වෙනත්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරැකි වගකීමක්"
           }
         }
       }
     },
-    "System": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "System"
+    "About" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පද්ධතිය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිළිබඳව"
           }
         }
       }
     },
-    "Light": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Light"
+    "Active" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එළි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සක්‍රිය"
           }
         }
       }
     },
-    "Dark": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dark"
+    "Add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අඳුරු"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එක් කරන්න"
           }
         }
       }
     },
-    "6 months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 months"
+    "Add a warranty from a receipt, or type the details yourself." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a warranty from a receipt, or type the details yourself."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාස 6"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පතකින් වගකීමක් එක් කරන්න, නැතහොත් විස්තර ඔබම ටයිප් කරන්න."
           }
         }
       }
     },
-    "12 months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "12 months"
+    "All" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාස 12"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සියල්ල"
           }
         }
       }
     },
-    "24 months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "24 months"
+    "All warranties were removed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All warranties were removed."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාස 24"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සියලු වගකීම් ඉවත් කළා."
           }
         }
       }
     },
-    "36 months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "36 months"
+    "Amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාස 36"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මුදල"
           }
         }
       }
     },
-    "Custom": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Custom"
+    "Amount cannot be negative." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount cannot be negative."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අභිරුචි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මුදල සෘණ විය නොහැක."
           }
         }
       }
     },
-    "Receipt": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Receipt"
+    "Amount: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount: %@"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මුදල: %@"
           }
         }
       }
     },
-    "Warranty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty"
+    "Appearance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෙනුම"
           }
         }
       }
     },
-    "Reading receipt": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reading receipt"
+    "Appliance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appliance"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පත කියවමින්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "උපකරණය"
           }
         }
       }
     },
-    "Warranty details": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty details"
+    "Archive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archive"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් විස්තර"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සංරක්ෂණය"
           }
         }
       }
     },
-    "Edit warranty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit warranty"
+    "Asks before deleting every warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks before deleting every warranty"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම සංස්කරණය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සෑම වගකීමක්ම මකා දැමීමට පෙර අසයි"
           }
         }
       }
     },
-    "Shows saved receipts and warranty cards": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shows saved receipts and warranty cards"
+    "Cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරැකි රිසිට්පත් සහ වගකීම් කාඩ්පත් පෙන්වයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවලංගු කරන්න"
           }
         }
       }
     },
-    "Imports a receipt from Photos or Files": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Imports a receipt from Photos or Files"
+    "Category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඡායාරූප හෝ ගොනු වලින් රිසිට්පතක් ආයාත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වර්ගය"
           }
         }
       }
     },
-    "Shows warranty expiry summaries": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shows warranty expiry summaries"
+    "Category: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category: %@"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් කල් ඉකුත් වීමේ සාරාංශ පෙන්වයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වර්ගය: %@"
           }
         }
       }
     },
-    "Opens reminder and app preferences": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens reminder and app preferences"
+    "Changes how warranties are arranged" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changes how warranties are arranged"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මතක් කිරීම් සහ යෙදුම් අභිරුචි විවෘත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් සකසා ඇති ආකාරය වෙනස් කරයි"
           }
         }
       }
     },
-    "Show as grid": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show as grid"
+    "Check this value. It was read from the receipt and may be wrong." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check this value. It was read from the receipt and may be wrong."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ජාලකයක් ලෙස පෙන්වන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම අගය පරීක්ෂා කරන්න. එය රිසිට්පතෙන් කියවූ අතර වැරදි විය හැක."
           }
         }
       }
     },
-    "Show as list": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show as list"
+    "Check this. It was read from the receipt." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check this. It was read from the receipt."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ලැයිස්තුවක් ලෙස පෙන්වන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙය පරීක්ෂා කරන්න. එය රිසිට්පතෙන් කියවන ලදී."
           }
         }
       }
     },
-    "Enter a product name.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a product name."
+    "Choose a photo or a PDF from Photos or Files. Warranty Vault reads it on this device. There is no camera." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a photo or a PDF from Photos or Files. Warranty Vault reads it on this device. There is no camera."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "භාණ්ඩයේ නම ඇතුළත් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඡායාරූප හෝ ගොනු වලින් ඡායාරූපයක් හෝ PDF එකක් තෝරන්න. Warranty Vault එය මෙම උපාංගයේ කියවයි. කැමරාවක් නැත."
           }
         }
       }
     },
-    "Enter the amount paid.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter the amount paid."
+    "Choose a photo or a PDF." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a photo or a PDF."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ගෙවූ මුදල ඇතුළත් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඡායාරූපයක් හෝ PDF එකක් තෝරන්න."
           }
         }
       }
     },
-    "Amount cannot be negative.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amount cannot be negative."
+    "Choose File" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose File"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මුදල සෘණ විය නොහැක."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගොනුවක් තෝරන්න"
           }
         }
       }
     },
-    "Enter an amount such as 1500.00.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter an amount such as 1500.00."
+    "Chooses light, dark, or the device setting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chooses light, dark, or the device setting"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1500.00 වැනි මුදලක් ඇතුළත් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එළිය, අඳුර හෝ උපාංග සැකසුම තෝරයි"
           }
         }
       }
     },
-    "Enter how many months the warranty lasts.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter how many months the warranty lasts."
+    "Clear all data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear all data"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම මාස කීයක් පවතීද යන්න ඇතුළත් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සියලු දත්ත මකන්න"
           }
         }
       }
     },
-    "Enter the warranty length in whole months.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter the warranty length in whole months."
+    "Clear all warranties?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear all warranties?"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් කාලය පූර්ණ මාස ගණනින් ඇතුළත් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සියලු වගකීම් මකන්නද?"
           }
         }
       }
     },
-    "Warranty length cannot be negative.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty length cannot be negative."
+    "Clearing data also cancels warranty reminders." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clearing data also cancels warranty reminders."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් කාලය සෘණ විය නොහැක."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දත්ත මකා දැමීම වගකීම් මතක් කිරීම් ද අවලංගු කරයි."
           }
         }
       }
     },
-    "Enter a warranty length up to 600 months.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a warranty length up to 600 months."
+    "Closes the introduction and opens the vault" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Closes the introduction and opens the vault"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාස 600 දක්වා වගකීම් කාලයක් ඇතුළත් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "හැඳින්වීම වසා සුරක්ෂිතාගාරය විවෘත කරයි"
           }
         }
       }
     },
-    "Warranty Vault could not open saved receipts.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault could not open saved receipts."
+    "Could not import" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not import"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault හට සුරැකි රිසිට්පත් විවෘත කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ආයාත කළ නොහැකි විය"
           }
         }
       }
     },
-    "Saved warranties could not be loaded.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved warranties could not be loaded."
+    "Custom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරැකි වගකීම් පූරණය කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අභිරුචි"
           }
         }
       }
     },
-    "That warranty could not be archived.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "That warranty could not be archived."
+    "Custom warranty months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom warranty months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එම වගකීම සංරක්ෂණය කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අභිරුචි වගකීම් මාස"
           }
         }
       }
     },
-    "That warranty could not be deleted.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "That warranty could not be deleted."
+    "Dark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එම වගකීම මකා දැමිය නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අඳුරු"
           }
         }
       }
     },
-    "Insights could not be loaded.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Insights could not be loaded."
+    "Data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "විශ්ලේෂණ පූරණය කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දත්ත"
           }
         }
       }
     },
-    "Notifications are turned off for Warranty Vault. Enable them in Settings to get reminders.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifications are turned off for Warranty Vault. Enable them in Settings to get reminders."
+    "day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault සඳහා දැනුම්දීම් අක්‍රියයි. මතක් කිරීම් ලබා ගැනීමට සැකසුම් තුළ ඒවා සක්‍රිය කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දිනය"
           }
         }
       }
     },
-    "Reminders could not be scheduled.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reminders could not be scheduled."
+    "days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "days"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මතක් කිරීම් සැලසුම් කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දින"
           }
         }
       }
     },
-    "Saved warranties could not be cleared.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved warranties could not be cleared."
+    "Delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරැකි වගකීම් ඉවත් කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මකන්න"
           }
         }
       }
     },
-    "All warranties were removed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All warranties were removed."
+    "Details for this screen will appear here." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details for this screen will appear here."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සියලු වගකීම් ඉවත් කළා."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම තිරයේ විස්තර මෙහි දිස් වේ."
           }
         }
       }
     },
-    "That photo could not be opened.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "That photo could not be opened."
+    "Done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එම ඡායාරූපය විවෘත කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවසන්"
           }
         }
       }
     },
-    "That file could not be opened.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "That file could not be opened."
+    "Double tap to zoom. Pinch to zoom in or out." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double tap to zoom. Pinch to zoom in or out."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එම ගොනුව විවෘත කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "විශාලනයට දෙවරක් තට්ටු කරන්න. විශාලනයට හෝ කුඩා කිරීමට පින්ච් කරන්න."
           }
         }
       }
     },
-    "Choose a photo or a PDF.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose a photo or a PDF."
+    "Edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඡායාරූපයක් හෝ PDF එකක් තෝරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සංස්කරණය"
           }
         }
       }
     },
-    "The receipt could not be read. Enter the details yourself.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The receipt could not be read. Enter the details yourself."
+    "Edit warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit warranty"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පත කියවිය නොහැකි විය. විස්තර ඔබම ඇතුළත් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම සංස්කරණය"
           }
         }
       }
     },
-    "This warranty is no longer in the vault.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This warranty is no longer in the vault."
+    "Ends today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ends today"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම වගකීම තවදුරටත් සුරක්ෂිතාගාරයේ නැත."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අද අවසන් වේ"
           }
         }
       }
     },
-    "Warranty updated.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty updated."
+    "Enter a product name." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a product name."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම යාවත්කාලීන කළා."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "භාණ්ඩයේ නම ඇතුළත් කරන්න."
           }
         }
       }
     },
-    "Warranty saved.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty saved."
+    "Enter a warranty length up to 600 months." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a warranty length up to 600 months."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම සුරැකුවා."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස 600 දක්වා වගකීම් කාලයක් ඇතුළත් කරන්න."
           }
         }
       }
     },
-    "The warranty could not be saved.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The warranty could not be saved."
+    "Enter an amount such as 1500.00." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter an amount such as 1500.00."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම සුරැකිය නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1500.00 වැනි මුදලක් ඇතුළත් කරන්න."
           }
         }
       }
     },
-    "That image could not be prepared.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "That image could not be prepared."
+    "Enter how many months the warranty lasts." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter how many months the warranty lasts."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එම රූපය සූදානම් කළ නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම මාස කීයක් පවතීද යන්න ඇතුළත් කරන්න."
           }
         }
       }
     },
-    "That file could not be read.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "That file could not be read."
+    "Enter manually" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter manually"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එම ගොනුව කියවිය නොහැකි විය."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අතින් ඇතුළත් කරන්න"
           }
         }
       }
     },
-    "1 day overdue": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 day overdue"
+    "Enter the amount paid." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the amount paid."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දින 1ක් ඉක්මවා ඇත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගෙවූ මුදල ඇතුළත් කරන්න."
           }
         }
       }
     },
-    "Ends today": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ends today"
+    "Enter the warranty length in whole months." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the warranty length in whole months."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අද අවසන් වේ"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් කාලය පූර්ණ මාස ගණනින් ඇතුළත් කරන්න."
           }
         }
       }
     },
-    "1 day left": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 day left"
+    "Every warranty in one place" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every warranty in one place"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දින 1ක් ඉතිරියි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සියලු වගකීම් එක තැනක"
           }
         }
       }
     },
-    "%lld days overdue": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld days overdue"
+    "Expired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expired"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දින %lldක් ඉක්මවා ඇත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කල් ඉකුත් විය"
           }
         }
       }
     },
-    "%lld days left": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld days left"
+    "Expires" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expires"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දින %lldක් ඉතිරියි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කල් ඉකුත් වන දිනය"
           }
         }
       }
     },
-    "Store: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Store: %@"
+    "Expires: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expires: %@"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වෙළඳසැල: %@"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කල් ඉකුත් වන දිනය: %@"
           }
         }
       }
     },
-    "Purchased: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Purchased: %@"
+    "Expiring soon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expiring soon"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මිලදී ගත් දිනය: %@"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඉක්මනින් කල් ඉකුත් වේ"
           }
         }
       }
     },
-    "Amount: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amount: %@"
+    "Export" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මුදල: %@"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අපනයනය"
           }
         }
       }
     },
-    "Category: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category: %@"
+    "Export CSV" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export CSV"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වර්ගය: %@"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSV අපනයනය"
           }
         }
       }
     },
-    "Warranty: %lld months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty: %lld months"
+    "Furniture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Furniture"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම: මාස %lld"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගෘහ භාණ්ඩ"
           }
         }
       }
     },
-    "Expires: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expires: %@"
+    "Get started" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "කල් ඉකුත් වන දිනය: %@"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පටන් ගන්න"
           }
         }
       }
     },
-    "Status: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Status: %@"
+    "Hides the keyboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hides the keyboard"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "තත්ත්වය: %@"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "යතුරු පුවරුව සඟවයි"
           }
         }
       }
     },
-    "Warranty Vault": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault"
+    "Import a receipt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import a receipt"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පතක් ආයාත කරන්න"
           }
         }
       }
     },
-    "A saved warranty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A saved warranty"
+    "Import receipt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import receipt"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරැකි වගකීමක්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පත ආයාත කරන්න"
           }
         }
       }
     },
-    "%@ expires tomorrow.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ expires tomorrow."
+    "Imports a receipt from Photos or Files" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imports a receipt from Photos or Files"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ හෙට කල් ඉකුත් වේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඡායාරූප හෝ ගොනු වලින් රිසිට්පතක් ආයාත කරයි"
           }
         }
       }
     },
-    "%@ expires in %lld days.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ expires in %lld days."
+    "Insights" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insights"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ දින %lldකින් කල් ඉකුත් වේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "විශ්ලේෂණ"
           }
         }
       }
     },
-    "Skip": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skip"
+    "Insights could not be loaded." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insights could not be loaded."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මඟ හරින්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "විශ්ලේෂණ පූරණය කළ නොහැකි විය."
           }
         }
       }
     },
-    "Closes the introduction and opens the vault": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Closes the introduction and opens the vault"
+    "Insights unavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insights unavailable"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "හැඳින්වීම වසා සුරක්ෂිතාගාරය විවෘත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "විශ්ලේෂණ ලබා ගත නොහැක"
           }
         }
       }
     },
-    "Get started": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Get started"
+    "Items" : {
+
+    },
+    "Items by category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Items by category"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පටන් ගන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වර්ගය අනුව අයිතම"
           }
         }
       }
     },
-    "Next": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Next"
+    "Keep the receipt and the cover dates for the things you buy, so a paper slip is not the only copy." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep the receipt and the cover dates for the things you buy, so a paper slip is not the only copy."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඊළඟ"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ මිලදී ගන්නා දේවල රිසිට්පත සහ ආවරණ දිනයන් තබා ගන්න. කඩදාසි පත්‍රිකාව පමණක් පිටපත නොවේ."
           }
         }
       }
     },
-    "Opens the vault": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens the vault"
+    "Laptop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laptop"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරක්ෂිතාගාරය විවෘත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලැප්ටොප් පරිගණකය"
           }
         }
       }
     },
-    "Shows the next introduction page": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shows the next introduction page"
+    "Light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඊළඟ හැඳින්වීම් පිටුව පෙන්වයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එළි"
           }
         }
       }
     },
-    "Every warranty in one place": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every warranty in one place"
+    "Loading insights…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading insights…"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සියලු වගකීම් එක තැනක"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "විශ්ලේෂණ පූරණය වෙමින්…"
           }
         }
       }
     },
-    "Keep the receipt and the cover dates for the things you buy, so a paper slip is not the only copy.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep the receipt and the cover dates for the things you buy, so a paper slip is not the only copy."
+    "Loading warranties…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading warranties…"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඔබ මිලදී ගන්නා දේවල රිසිට්පත සහ ආවරණ දිනයන් තබා ගන්න. කඩදාසි පත්‍රිකාව පමණක් පිටපත නොවේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් පූරණය වෙමින්…"
           }
         }
       }
     },
-    "Import a receipt": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import a receipt"
+    "Loading warranty…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading warranty…"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පතක් ආයාත කරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම පූරණය වෙමින්…"
           }
         }
       }
     },
-    "Choose a photo or a PDF from Photos or Files. Warranty Vault reads it on this device. There is no camera.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose a photo or a PDF from Photos or Files. Warranty Vault reads it on this device. There is no camera."
+    "Loads this screen again" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loads this screen again"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඡායාරූප හෝ ගොනු වලින් ඡායාරූපයක් හෝ PDF එකක් තෝරන්න. Warranty Vault එය මෙම උපාංගයේ කියවයි. කැමරාවක් නැත."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම තිරය නැවත පූරණය කරයි"
           }
         }
       }
     },
-    "A reminder before it ends": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A reminder before it ends"
+    "Month" : {
+
+    },
+    "Months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අවසන් වීමට පෙර මතක් කිරීමක්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස"
           }
         }
       }
     },
-    "Turn on reminders and Warranty Vault will notify you 30 days, 7 days, and 1 day before cover ends.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Turn on reminders and Warranty Vault will notify you 30 days, 7 days, and 1 day before cover ends."
+    "Next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මතක් කිරීම් සක්‍රිය කළ විට, ආවරණය අවසන් වීමට දින 30ක්, 7ක් සහ 1ක් ට පෙර Warranty Vault දන්වයි."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඊළඟ"
           }
         }
       }
     },
-    "Loads this screen again": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loads this screen again"
+    "No insights yet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No insights yet"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම තිරය නැවත පූරණය කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තවම විශ්ලේෂණ නැත"
           }
         }
       }
     },
-    "Loading warranties…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading warranties…"
+    "No receipt photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No receipt photo"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් පූරණය වෙමින්…"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට් ඡායාරූපයක් නැත"
           }
         }
       }
     },
-    "Vault unavailable": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vault unavailable"
+    "No warranties are still in date." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No warranties are still in date."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරක්ෂිතාගාරය ලබා ගත නොහැක"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තවමත් වලංගු වගකීම් නැත."
           }
         }
       }
     },
-    "Try again": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try again"
+    "No warranties match" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No warranties match"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "නැවත උත්සාහ කරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගැලපෙන වගකීම් නැත"
           }
         }
       }
     },
-    "Nothing saved yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nothing saved yet"
+    "No warranties to export" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No warranties to export"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "තවම කිසිවක් සුරැක නැත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අපනයනය කිරීමට වගකීම් නැත"
           }
         }
       }
     },
-    "Receipts and warranty cards you import will be listed here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Receipts and warranty cards you import will be listed here."
+    "Not recorded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not recorded"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඔබ ආයාත කරන රිසිට්පත් සහ වගකීම් කාඩ්පත් මෙහි ලැයිස්තුගත වේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සටහන් කර නැත"
           }
         }
       }
     },
-    "No warranties match": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No warranties match"
+    "Notes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ගැලපෙන වගකීම් නැත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සටහන්"
           }
         }
       }
     },
-    "Try another filter or clear the search.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try another filter or clear the search."
+    "Nothing saved yet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing saved yet"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වෙනත් පෙරහනක් උත්සාහ කරන්න, නැතහොත් සෙවීම හිස් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තවම කිසිවක් සුරැක නැත"
           }
         }
       }
     },
-    "OK": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+    "Notifications are turned off for Warranty Vault. Enable them in Settings to get reminders." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications are turned off for Warranty Vault. Enable them in Settings to get reminders."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "හරි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault සඳහා දැනුම්දීම් අක්‍රියයි. මතක් කිරීම් ලබා ගැනීමට සැකසුම් තුළ ඒවා සක්‍රිය කරන්න."
           }
         }
       }
     },
-    "Loading insights…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading insights…"
+    "OK" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "විශ්ලේෂණ පූරණය වෙමින්…"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "හරි"
           }
         }
       }
     },
-    "Insights unavailable": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Insights unavailable"
+    "Open Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "විශ්ලේෂණ ලබා ගත නොහැක"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකසුම් විවෘත කරන්න"
           }
         }
       }
     },
-    "No insights yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No insights yet"
+    "Opening receipt…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening receipt…"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "තවම විශ්ලේෂණ නැත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පත විවෘත කරමින්…"
           }
         }
       }
     },
-    "Save a warranty and charts for category, spending, and upcoming expiries will appear here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save a warranty and charts for category, spending, and upcoming expiries will appear here."
+    "Opening the form" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the form"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීමක් සුරකින්න. වර්ගය, වියදම සහ ඉදිරි කල් ඉකුත් වීම් සඳහා ප්‍රස්තාර මෙහි දිස් වේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරමය විවෘත කරමින්"
           }
         }
       }
     },
-    "Details for this screen will appear here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Details for this screen will appear here."
+    "Opening the form…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the form…"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම තිරයේ විස්තර මෙහි දිස් වේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරමය විවෘත කරමින්…"
           }
         }
       }
     },
-    "Storage unavailable": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Storage unavailable"
+    "Opens iOS Settings for Warranty Vault" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens iOS Settings for Warranty Vault"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ගබඩාව ලබා ගත නොහැක"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault සඳහා iOS සැකසුම් විවෘත කරයි"
           }
         }
       }
     },
-    "Warranty Vault could not open saved receipts. Quit the app and open it again.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault could not open saved receipts. Quit the app and open it again."
+    "Opens Photos or Files. The camera is not used." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens Photos or Files. The camera is not used."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault හට සුරැකි රිසිට්පත් විවෘත කළ නොහැකි විය. යෙදුම වසා නැවත විවෘත කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඡායාරූප හෝ ගොනු විවෘත කරයි. කැමරාව භාවිත නොවේ."
           }
         }
       }
     },
-    "overdue": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "overdue"
+    "Opens reminder and app preferences" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens reminder and app preferences"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඉක්මවා ඇත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මතක් කිරීම් සහ යෙදුම් අභිරුචි විවෘත කරයි"
           }
         }
       }
     },
-    "day": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "day"
+    "Opens the form to change this warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the form to change this warranty"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දිනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම වගකීම වෙනස් කිරීමට පෝරමය විවෘත කරයි"
           }
         }
       }
     },
-    "days": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "days"
+    "Opens the share sheet with a text summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the share sheet with a text summary"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දින"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෙළ සාරාංශයක් සමඟ බෙදාගැනීමේ පත්‍රය විවෘත කරයි"
           }
         }
       }
     },
-    "Warranty unavailable": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty unavailable"
+    "Opens the vault" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the vault"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම ලබා ගත නොහැක"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරක්ෂිතාගාරය විවෘත කරයි"
           }
         }
       }
     },
-    "Not recorded": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Not recorded"
+    "Opens this warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens this warranty"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සටහන් කර නැත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම වගකීම විවෘත කරයි"
           }
         }
       }
     },
-    "Purchased": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Purchased"
+    "Other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මිලදී ගත් දිනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වෙනත්"
           }
         }
       }
     },
-    "Amount": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amount"
+    "overdue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "overdue"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මුදල"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඉක්මවා ඇත"
           }
         }
       }
     },
-    "Expires": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expires"
+    "Page %lld of %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page %lld of %lld"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "කල් ඉකුත් වන දිනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිටුව %lld / %lld"
           }
         }
       }
     },
-    "Notes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notes"
+    "Phone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සටහන්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දුරකථනය"
           }
         }
       }
     },
-    "%lld months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld months"
+    "Photo Library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo Library"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාස %lld"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඡායාරූප එකතුව"
           }
         }
       }
     },
-    "Store": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Store"
+    "Pick a photo or a PDF. Warranty Vault reads it on this device." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a photo or a PDF. Warranty Vault reads it on this device."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වෙළඳසැල"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඡායාරූපයක් හෝ PDF එකක් තෝරන්න. Warranty Vault එය මෙම උපාංගයේ කියවයි."
           }
         }
       }
     },
-    "Category": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category"
+    "Product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වර්ගය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "භාණ්ඩය"
           }
         }
       }
     },
-    "Cancel": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "Product name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product name"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අවලංගු කරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "භාණ්ඩයේ නම"
           }
         }
       }
     },
-    "Photo Library": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photo Library"
+    "Purchase" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඡායාරූප එකතුව"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මිලදී ගැනීම"
           }
         }
       }
     },
-    "Choose File": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose File"
+    "Purchase date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase date"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ගොනුවක් තෝරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මිලදී ගත් දිනය"
           }
         }
       }
     },
-    "Done": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
+    "Purchased" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchased"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අවසන්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මිලදී ගත් දිනය"
           }
         }
       }
     },
-    "Hides the keyboard": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hides the keyboard"
+    "Purchased: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchased: %@"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "යතුරු පුවරුව සඟවයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මිලදී ගත් දිනය: %@"
           }
         }
       }
     },
-    "Warranty reminders": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty reminders"
+    "Reading receipt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading receipt"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් මතක් කිරීම්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පත කියවමින්"
           }
         }
       }
     },
-    "Schedules a reminder 30 days, 7 days, and 1 day before each warranty ends": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schedules a reminder 30 days, 7 days, and 1 day before each warranty ends"
+    "Reading receipt…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading receipt…"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එක් එක් වගකීම අවසන් වීමට දින 30ක්, 7ක් සහ 1ක් ට පෙර මතක් කිරීමක් සැලසුම් කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පත කියවමින්…"
           }
         }
       }
     },
-    "Open Settings": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Settings"
+    "Receipt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receipt"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සැකසුම් විවෘත කරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පත"
           }
         }
       }
     },
-    "Opens iOS Settings for Warranty Vault": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens iOS Settings for Warranty Vault"
+    "Receipt photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receipt photo"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault සඳහා iOS සැකසුම් විවෘත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට් ඡායාරූපය"
           }
         }
       }
     },
-    "Reminders are sent at 9:00 in the morning, 30 days, 7 days, and 1 day before a warranty ends. Editing a warranty updates its reminders. Archiving or deleting it cancels them.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reminders are sent at 9:00 in the morning, 30 days, 7 days, and 1 day before a warranty ends. Editing a warranty updates its reminders. Archiving or deleting it cancels them."
+    "Receipt preview" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receipt preview"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීමක් අවසන් වීමට දින 30ක්, 7ක් සහ 1ක් ට පෙර උදේ 9:00 ට මතක් කිරීම් යවනු ලැබේ. වගකීමක් සංස්කරණය කිරීම එහි මතක් කිරීම් යාවත්කාලීන කරයි. සංරක්ෂණය හෝ මකා දැමීම ඒවා අවලංගු කරයි."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට් පෙරදසුන"
           }
         }
       }
     },
-    "Appearance": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Appearance"
+    "Receipts and warranty cards you import will be listed here." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receipts and warranty cards you import will be listed here."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පෙනුම"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ ආයාත කරන රිසිට්පත් සහ වගකීම් කාඩ්පත් මෙහි ලැයිස්තුගත වේ."
           }
         }
       }
     },
-    "Chooses light, dark, or the device setting": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chooses light, dark, or the device setting"
+    "Reminders are sent at 9:00 in the morning, 30 days, 7 days, and 1 day before a warranty ends. Editing a warranty updates its reminders. Archiving or deleting it cancels them." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders are sent at 9:00 in the morning, 30 days, 7 days, and 1 day before a warranty ends. Editing a warranty updates its reminders. Archiving or deleting it cancels them."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "එළිය, අඳුර හෝ උපාංග සැකසුම තෝරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීමක් අවසන් වීමට දින 30ක්, 7ක් සහ 1ක් ට පෙර උදේ 9:00 ට මතක් කිරීම් යවනු ලැබේ. වගකීමක් සංස්කරණය කිරීම එහි මතක් කිරීම් යාවත්කාලීන කරයි. සංරක්ෂණය හෝ මකා දැමීම ඒවා අවලංගු කරයි."
           }
         }
       }
     },
-    "System follows the appearance set on this device.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "System follows the appearance set on this device."
+    "Reminders could not be scheduled." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders could not be scheduled."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පද්ධතිය මෙම උපාංගයේ පෙනුම අනුගමනය කරයි."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මතක් කිරීම් සැලසුම් කළ නොහැකි විය."
           }
         }
       }
     },
-    "Warranty Vault.csv": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault.csv"
+    "Sample warranties could not be loaded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sample warranties could not be loaded"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault.csv"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ආදර්ශ වගකීම් පූරණය කළ නොහැකි විය"
           }
         }
       }
     },
-    "Export CSV": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Export CSV"
+    "Save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CSV අපනයනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරකින්න"
           }
         }
       }
     },
-    "Shares a spreadsheet of every saved warranty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shares a spreadsheet of every saved warranty"
+    "Save a warranty and charts for category, spending, and upcoming expiries will appear here." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save a warranty and charts for category, spending, and upcoming expiries will appear here."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරැකි සෑම වගකීමකම පැතුරුම්පතක් බෙදා ගනී"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීමක් සුරකින්න. වර්ගය, වියදම සහ ඉදිරි කල් ඉකුත් වීම් සඳහා ප්‍රස්තාර මෙහි දිස් වේ."
           }
         }
       }
     },
-    "No warranties to export": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No warranties to export"
+    "Saved warranties could not be cleared." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved warranties could not be cleared."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අපනයනය කිරීමට වගකීම් නැත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරැකි වගකීම් ඉවත් කළ නොහැකි විය."
           }
         }
       }
     },
-    "Export": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Export"
+    "Saved warranties could not be loaded." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved warranties could not be loaded."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අපනයනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරැකි වගකීම් පූරණය කළ නොහැකි විය."
           }
         }
       }
     },
-    "Clear all data": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear all data"
+    "Saves this warranty in the vault" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saves this warranty in the vault"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සියලු දත්ත මකන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම වගකීම සුරක්ෂිතාගාරයේ සුරකියි"
           }
         }
       }
     },
-    "Asks before deleting every warranty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks before deleting every warranty"
+    "Schedules a reminder 30 days, 7 days, and 1 day before each warranty ends" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedules a reminder 30 days, 7 days, and 1 day before each warranty ends"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සෑම වගකීමක්ම මකා දැමීමට පෙර අසයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එක් එක් වගකීම අවසන් වීමට දින 30ක්, 7ක් සහ 1ක් ට පෙර මතක් කිරීමක් සැලසුම් කරයි"
           }
         }
       }
     },
-    "Data": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data"
+    "Search warranties" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search warranties"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දත්ත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් සොයන්න"
           }
         }
       }
     },
-    "Clearing data also cancels warranty reminders.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clearing data also cancels warranty reminders."
+    "Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "දත්ත මකා දැමීම වගකීම් මතක් කිරීම් ද අවලංගු කරයි."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකසුම්"
           }
         }
       }
     },
-    "Version": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Version"
+    "Share" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අනුවාදය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බෙදා ගන්න"
           }
         }
       }
     },
-    "Warranty Vault stores receipts and reminds you before a warranty ends. Reading a receipt happens on this device.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault stores receipts and reminds you before a warranty ends. Reading a receipt happens on this device."
+    "Share warranty summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share warranty summary"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty Vault රිසිට්පත් තබා ගනී, වගකීමක් අවසන් වීමට පෙර මතක් කරයි. රිසිට්පත කියවීම මෙම උපාංගයේ සිදු වේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් සාරාංශය බෙදා ගන්න"
           }
         }
       }
     },
-    "About": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About"
+    "Shares a spreadsheet of every saved warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shares a spreadsheet of every saved warranty"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පිළිබඳව"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරැකි සෑම වගකීමකම පැතුරුම්පතක් බෙදා ගනී"
           }
         }
       }
     },
-    "Clear all warranties?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear all warranties?"
+    "Show as grid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show as grid"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සියලු වගකීම් මකන්නද?"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ජාලකයක් ලෙස පෙන්වන්න"
           }
         }
       }
     },
-    "This removes every receipt and warranty from this device. This cannot be undone.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This removes every receipt and warranty from this device. This cannot be undone."
+    "Show as list" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show as list"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙය මෙම උපාංගයෙන් සෑම රිසිට්පතක්ම සහ වගකීමක්ම ඉවත් කරයි. මෙය අහෝසි කළ නොහැක."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලැයිස්තුවක් ලෙස පෙන්වන්න"
           }
         }
       }
     },
-    "Search warranties": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search warranties"
+    "Shows saved receipts and warranty cards" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows saved receipts and warranty cards"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් සොයන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරැකි රිසිට්පත් සහ වගකීම් කාඩ්පත් පෙන්වයි"
           }
         }
       }
     },
-    "Archive": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Archive"
+    "Shows the next introduction page" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows the next introduction page"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සංරක්ෂණය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඊළඟ හැඳින්වීම් පිටුව පෙන්වයි"
           }
         }
       }
     },
-    "Delete": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete"
+    "Shows warranties in this group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows warranties in this group"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මකන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කණ්ඩායමේ වගකීම් පෙන්වයි"
           }
         }
       }
     },
-    "View": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "View"
+    "Shows warranty expiry summaries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows warranty expiry summaries"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "බලන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් කල් ඉකුත් වීමේ සාරාංශ පෙන්වයි"
           }
         }
       }
     },
-    "Edit": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit"
+    "Skip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සංස්කරණය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මඟ හරින්න"
           }
         }
       }
     },
-    "Share": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share"
+    "Skips reading a receipt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skips reading a receipt"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "බෙදා ගන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පත කියවීම මඟ හරියි"
           }
         }
       }
     },
-    "Share warranty summary": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share warranty summary"
+    "Spending by month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spending by month"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් සාරාංශය බෙදා ගන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාසය අනුව වියදම"
           }
         }
       }
+    },
+    "Spent" : {
+
     },
-    "Opens the share sheet with a text summary": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens the share sheet with a text summary"
+    "Status: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: %@"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පෙළ සාරාංශයක් සමඟ බෙදාගැනීමේ පත්‍රය විවෘත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තත්ත්වය: %@"
           }
         }
       }
     },
-    "Opens the form to change this warranty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens the form to change this warranty"
+    "Storage unavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Storage unavailable"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම වගකීම වෙනස් කිරීමට පෝරමය විවෘත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගබඩාව ලබා ගත නොහැක"
           }
         }
       }
     },
-    "No receipt photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No receipt photo"
+    "Store" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට් ඡායාරූපයක් නැත"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වෙළඳසැල"
           }
         }
       }
     },
-    "Loading warranty…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading warranty…"
+    "Store: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store: %@"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම පූරණය වෙමින්…"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වෙළඳසැල: %@"
           }
         }
       }
     },
-    "Product": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Product"
+    "System" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "භාණ්ඩය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පද්ධතිය"
           }
         }
       }
     },
-    "Product name": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Product name"
+    "System follows the appearance set on this device." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System follows the appearance set on this device."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "භාණ්ඩයේ නම"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පද්ධතිය මෙම උපාංගයේ පෙනුම අනුගමනය කරයි."
           }
         }
       }
     },
-    "Purchase": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Purchase"
+    "That file could not be opened." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That file could not be opened."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මිලදී ගැනීම"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එම ගොනුව විවෘත කළ නොහැකි විය."
           }
         }
       }
     },
-    "Purchase date": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Purchase date"
+    "That file could not be read." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That file could not be read."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මිලදී ගත් දිනය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එම ගොනුව කියවිය නොහැකි විය."
           }
         }
       }
     },
-    "Warranty length": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warranty length"
+    "That image could not be prepared." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That image could not be prepared."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් කාලය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එම රූපය සූදානම් කළ නොහැකි විය."
           }
         }
       }
     },
-    "Months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Months"
+    "That photo could not be opened." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That photo could not be opened."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාස"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එම ඡායාරූපය විවෘත කළ නොහැකි විය."
           }
         }
       }
     },
-    "Save": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save"
+    "That warranty could not be archived." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That warranty could not be archived."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "සුරකින්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එම වගකීම සංරක්ෂණය කළ නොහැකි විය."
           }
         }
       }
     },
-    "Saves this warranty in the vault": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saves this warranty in the vault"
+    "That warranty could not be deleted." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That warranty could not be deleted."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම වගකීම සුරක්ෂිතාගාරයේ සුරකියි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එම වගකීම මකා දැමිය නොහැකි විය."
           }
         }
       }
     },
-    "Check this. It was read from the receipt.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check this. It was read from the receipt."
+    "The receipt could not be read. Enter the details yourself." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The receipt could not be read. Enter the details yourself."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙය පරීක්ෂා කරන්න. එය රිසිට්පතෙන් කියවන ලදී."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රිසිට්පත කියවිය නොහැකි විය. විස්තර ඔබම ඇතුළත් කරන්න."
           }
         }
       }
     },
-    "Check this value. It was read from the receipt and may be wrong.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check this value. It was read from the receipt and may be wrong."
+    "The warranty could not be saved." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The warranty could not be saved."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම අගය පරීක්ෂා කරන්න. එය රිසිට්පතෙන් කියවූ අතර වැරදි විය හැක."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම සුරැකිය නොහැකි විය."
           }
         }
       }
     },
-    "Add a warranty from a receipt, or type the details yourself.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add a warranty from a receipt, or type the details yourself."
+    "This removes every receipt and warranty from this device. This cannot be undone." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This removes every receipt and warranty from this device. This cannot be undone."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පතකින් වගකීමක් එක් කරන්න, නැතහොත් විස්තර ඔබම ටයිප් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙය මෙම උපාංගයෙන් සෑම රිසිට්පතක්ම සහ වගකීමක්ම ඉවත් කරයි. මෙය අහෝසි කළ නොහැක."
           }
         }
       }
     },
-    "Opening receipt…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opening receipt…"
+    "This warranty is no longer in the vault." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This warranty is no longer in the vault."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පත විවෘත කරමින්…"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම වගකීම තවදුරටත් සුරක්ෂිතාගාරයේ නැත."
           }
         }
       }
     },
-    "Import receipt": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import receipt"
+    "Total value protected" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total value protected"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පත ආයාත කරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ආරක්ෂිත මුළු වටිනාකම"
           }
         }
       }
     },
-    "Opens Photos or Files. The camera is not used.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens Photos or Files. The camera is not used."
+    "Total value protected %@. Expiring soon %lld." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total value protected %@. Expiring soon %lld."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඡායාරූප හෝ ගොනු විවෘත කරයි. කැමරාව භාවිත නොවේ."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ආරක්ෂිත මුළු වටිනාකම %@. ඉක්මනින් කල් ඉකුත් වන්නේ %lld."
           }
         }
       }
     },
-    "Enter manually": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter manually"
+    "Try again" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අතින් ඇතුළත් කරන්න"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නැවත උත්සාහ කරන්න"
           }
         }
       }
     },
-    "Skips reading a receipt": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skips reading a receipt"
+    "Try another filter or clear the search." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try another filter or clear the search."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පත කියවීම මඟ හරියි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වෙනත් පෙරහනක් උත්සාහ කරන්න, නැතහොත් සෙවීම හිස් කරන්න."
           }
         }
       }
     },
-    "Pick a photo or a PDF. Warranty Vault reads it on this device.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pick a photo or a PDF. Warranty Vault reads it on this device."
+    "Turn on reminders and Warranty Vault will notify you 30 days, 7 days, and 1 day before cover ends." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn on reminders and Warranty Vault will notify you 30 days, 7 days, and 1 day before cover ends."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඡායාරූපයක් හෝ PDF එකක් තෝරන්න. Warranty Vault එය මෙම උපාංගයේ කියවයි."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මතක් කිරීම් සක්‍රිය කළ විට, ආවරණය අවසන් වීමට දින 30ක්, 7ක් සහ 1ක් ට පෙර Warranty Vault දන්වයි."
           }
         }
       }
     },
-    "Could not import": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Could not import"
+    "Upcoming expiries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upcoming expiries"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ආයාත කළ නොහැකි විය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඉදිරි කල් ඉකුත් වීම්"
           }
         }
       }
     },
-    "Reading receipt…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reading receipt…"
+    "Vault" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vault"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට්පත කියවමින්…"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරක්ෂිතාගාරය"
           }
         }
       }
     },
-    "Opening the form…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opening the form…"
+    "Vault unavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vault unavailable"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පෝරමය විවෘත කරමින්…"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරක්ෂිතාගාරය ලබා ගත නොහැක"
           }
         }
       }
     },
-    "Opening the form": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opening the form"
+    "Vehicle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vehicle"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පෝරමය විවෘත කරමින්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වාහනය"
           }
         }
       }
     },
-    "Receipt preview": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Receipt preview"
+    "Version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට් පෙරදසුන"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුවාදය"
           }
         }
       }
     },
-    "Receipt photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Receipt photo"
+    "View" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "රිසිට් ඡායාරූපය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බලන්න"
           }
         }
       }
     },
-    "Double tap to zoom. Pinch to zoom in or out.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Double tap to zoom. Pinch to zoom in or out."
+    "Warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "විශාලනයට දෙවරක් තට්ටු කරන්න. විශාලනයට හෝ කුඩා කිරීමට පින්ච් කරන්න."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම"
           }
         }
       }
     },
-    "Changes how warranties are arranged": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Changes how warranties are arranged"
+    "Warranty details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty details"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වගකීම් සකසා ඇති ආකාරය වෙනස් කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් විස්තර"
           }
         }
       }
     },
-    "Shows warranties in this group": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shows warranties in this group"
+    "Warranty length" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty length"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම කණ්ඩායමේ වගකීම් පෙන්වයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් කාලය"
           }
         }
       }
     },
-    "Opens this warranty": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens this warranty"
+    "Warranty length cannot be negative." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty length cannot be negative."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මෙම වගකීම විවෘත කරයි"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් කාලය සෘණ විය නොහැක."
           }
         }
       }
     },
-    "Total value protected": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total value protected"
+    "Warranty reminders" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty reminders"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ආරක්ෂිත මුළු වටිනාකම"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම් මතක් කිරීම්"
           }
         }
       }
     },
-    "Items by category": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Items by category"
+    "Warranty saved." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty saved."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "වර්ගය අනුව අයිතම"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම සුරැකුවා."
           }
         }
       }
     },
-    "Spending by month": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spending by month"
+    "Warranty unavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty unavailable"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "මාසය අනුව වියදම"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම ලබා ගත නොහැක"
           }
         }
       }
     },
-    "Upcoming expiries": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Upcoming expiries"
+    "Warranty updated." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty updated."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ඉදිරි කල් ඉකුත් වීම්"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම යාවත්කාලීන කළා."
           }
         }
       }
     },
-    "No warranties are still in date.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No warranties are still in date."
+    "Warranty Vault" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "තවමත් වලංගු වගකීම් නැත."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault"
           }
         }
       }
     },
-    "Total value protected %@. Expiring soon %lld.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total value protected %@. Expiring soon %lld."
+    "Warranty Vault could not open saved receipts." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault could not open saved receipts."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ආරක්ෂිත මුළු වටිනාකම %@. ඉක්මනින් කල් ඉකුත් වන්නේ %lld."
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault හට සුරැකි රිසිට්පත් විවෘත කළ නොහැකි විය."
           }
         }
       }
     },
-    "%@, %lld items": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@, %lld items"
+    "Warranty Vault could not open saved receipts. Quit the app and open it again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault could not open saved receipts. Quit the app and open it again."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@, අයිතම %lld"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault හට සුරැකි රිසිට්පත් විවෘත කළ නොහැකි විය. යෙදුම වසා නැවත විවෘත කරන්න."
           }
         }
       }
     },
-    "Sample warranties could not be loaded": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sample warranties could not be loaded"
+    "Warranty Vault stores receipts and reminds you before a warranty ends. Reading a receipt happens on this device." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault stores receipts and reminds you before a warranty ends. Reading a receipt happens on this device."
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ආදර්ශ වගකීම් පූරණය කළ නොහැකි විය"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault රිසිට්පත් තබා ගනී, වගකීමක් අවසන් වීමට පෙර මතක් කරයි. රිසිට්පත කියවීම මෙම උපාංගයේ සිදු වේ."
           }
         }
       }
     },
-    "Custom warranty months": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Custom warranty months"
+    "Warranty Vault.csv" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault.csv"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "අභිරුචි වගකීම් මාස"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty Vault.csv"
           }
         }
       }
     },
-    "Page %lld of %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Page %lld of %lld"
+    "Warranty: %lld months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warranty: %lld months"
           }
         },
-        "si": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "පිටුව %lld / %lld"
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වගකීම: මාස %lld"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

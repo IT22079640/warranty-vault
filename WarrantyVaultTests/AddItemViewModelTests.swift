@@ -135,6 +135,67 @@ struct AddItemViewModelTests {
         #expect(updated?.warrantyMonths == 18)
         #expect(model.isEditing)
     }
+
+    /// Typing in a highlighted field clears the amber review state.
+    @Test func editingAFieldClearsTheReviewFlag() {
+        let model = AddItemViewModel(
+            recognizer: FixedReceiptRecognizer(lines: []),
+            suggester: CategorySuggester(keywords: [:], embedding: nil),
+            minimumReadDuration: .zero
+        )
+        model.storeConfidence = .low
+        #expect(model.storeNeedsReview)
+        model.setStore("Abans")
+        #expect(model.store == "Abans")
+        #expect(model.storeNeedsReview == false)
+    }
+
+    /// A failed read still opens the form and explains that the details must be typed.
+    @Test func failedReadOpensTheFormWithANotice() async {
+        let model = AddItemViewModel(
+            recognizer: FailingReceiptRecognizer(),
+            suggester: CategorySuggester(keywords: [:], embedding: nil),
+            minimumReadDuration: .zero
+        )
+        model.receiptImage = UIImage()
+        await model.readReceipt()
+
+        #expect(model.readNotice == "The receipt could not be read. Enter the details yourself.")
+        #expect(model.requestedStep == .form)
+        #expect(model.isReading == false)
+    }
+
+    /// A photo that cannot be loaded does not open the scanning screen.
+    @Test func missingPhotoSetsAnImportError() async {
+        let model = AddItemViewModel(
+            recognizer: FixedReceiptRecognizer(lines: []),
+            suggester: CategorySuggester(keywords: [:], embedding: nil),
+            minimumReadDuration: .zero
+        )
+        await model.importPhoto(EmptyPhotoImport())
+
+        #expect(model.importError == "That photo could not be opened.")
+        #expect(model.requestedStep == nil)
+        #expect(model.isImporting == false)
+    }
+}
+
+/// Recognizer that fails so the form can be checked without a receipt.
+private struct FailingReceiptRecognizer: TextRecognizing {
+
+    /// Always fails to read the image.
+    func recognizeText(in image: UIImage) async throws -> [RecognizedLine] {
+        throw TextRecognitionError.unreadableImage
+    }
+}
+
+/// Photo pick that has no bytes.
+private struct EmptyPhotoImport: PhotosImport {
+
+    /// Returns no image data.
+    func loadData() async throws -> Data? {
+        nil
+    }
 }
 
 /// Recognizer double that returns prepared lines and ignores the image.

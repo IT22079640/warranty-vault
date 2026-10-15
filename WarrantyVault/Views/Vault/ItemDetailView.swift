@@ -17,6 +17,7 @@ struct ItemDetailView: View {
     @Environment(\.warrantyRepository) private var repository
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var item: WarrantyItem?
+    @State private var receiptImage: UIImage?
     @State private var loadFailed = false
 
     var body: some View {
@@ -142,8 +143,8 @@ struct ItemDetailView: View {
     /// Zoomable receipt, or a short note when no photo was saved.
     @ViewBuilder
     private func receipt(for item: WarrantyItem) -> some View {
-        if let data = item.receiptImageData, let image = UIImage(data: data) {
-            ZoomableReceiptImage(image: image)
+        if let receiptImage {
+            ZoomableReceiptImage(image: receiptImage)
                 .cardStyle()
         } else {
             Text("No receipt photo")
@@ -190,14 +191,22 @@ struct ItemDetailView: View {
     /// Reads the warranty again so an edit shows up after the form closes.
     private func load() {
         guard let repository else {
+            item = nil
+            receiptImage = nil
             loadFailed = true
             return
         }
         do {
             item = try repository.item(id: itemID)
             loadFailed = item == nil
+            if let data = item?.receiptImageData {
+                receiptImage = UIImage(data: data)
+            } else {
+                receiptImage = nil
+            }
         } catch {
             item = nil
+            receiptImage = nil
             loadFailed = true
         }
     }

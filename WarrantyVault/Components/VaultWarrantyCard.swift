@@ -105,7 +105,8 @@ struct VaultWarrantyCard: View {
     /// Receipt thumbnail, or the category symbol when no photo is stored.
     private var thumbnail: some View {
         Group {
-            if let data = item.receiptImageData, let image = UIImage(data: data) {
+            if let data = item.receiptImageData,
+               let image = ReceiptThumbnailCache.thumbnail(id: item.id, data: data) {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFill()

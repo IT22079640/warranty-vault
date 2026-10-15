@@ -64,35 +64,40 @@ struct InsightsSummary: Equatable {
         on date: Date = .now,
         calendar: Calendar = .current
     ) -> InsightsSummary {
-        let counts = ItemCategory.allCases.compactMap { category -> CategoryCount? in
-            let count = items.filter { $0.category == category }.count
-            guard count > 0 else { return nil }
-            return CategoryCount(category: category, count: count)
-        }
-        let upcoming = items.compactMap { item -> UpcomingExpiry? in
+        var counts: [ItemCategory: Int] = [:]
+        var upcoming: [UpcomingExpiry] = []
+        var protected = 0.0
+        var expiringSoon = 0
+        for item in items {
+            counts[item.category, default: 0] += 1
             let status = item.status(on: date, calendar: calendar)
-            guard status != .expired else { return nil }
-            return UpcomingExpiry(
-                id: item.id,
-                name: item.name,
-                expiry: item.expiryDate(using: calendar),
-                daysRemaining: WarrantySummary.daysRemaining(for: item, on: date, calendar: calendar),
-                status: status
+            if status == .expiringSoon {
+                expiringSoon += 1
+            }
+            guard status != .expired else { continue }
+            protected += item.amount
+            upcoming.append(
+                UpcomingExpiry(
+                    id: item.id,
+                    name: item.name,
+                    expiry: item.expiryDate(using: calendar),
+                    daysRemaining: WarrantySummary.daysRemaining(for: item, on: date, calendar: calendar),
+                    status: status
+                )
             )
         }
-        .sorted { lhs, rhs in
+        let categoryCounts = ItemCategory.allCases.compactMap { category -> CategoryCount? in
+            guard let count = counts[category], count > 0 else { return nil }
+            return CategoryCount(category: category, count: count)
+        }
+        upcoming.sort { lhs, rhs in
             if lhs.expiry == rhs.expiry {
                 return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
             }
             return lhs.expiry < rhs.expiry
         }
-        let protected = items.reduce(0.0) { partial, item in
-            guard item.status(on: date, calendar: calendar) != .expired else { return partial }
-            return partial + item.amount
-        }
-        let expiringSoon = items.filter { $0.status(on: date, calendar: calendar) == .expiringSoon }.count
         return InsightsSummary(
-            categoryCounts: counts,
+            categoryCounts: categoryCounts,
             monthlySpend: monthlyTotals(items: items, calendar: calendar),
             upcoming: upcoming,
             protectedValue: protected,

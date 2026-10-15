@@ -56,6 +56,33 @@ struct WarrantyReminderPlanTests {
         ])
         #expect(WarrantyReminderPlan.identifiers(for: item.id).count == 3)
     }
+
+    /// A warranty that has already ended has no future reminder, but the old identifiers still exist to cancel.
+    @Test func expiredCoverSchedulesNothing() {
+        let item = WarrantyReminderFixtures.item(
+            name: "Kettle",
+            purchase: WarrantyReminderFixtures.date(year: 2024, month: 1, day: 1),
+            months: 6
+        )
+        let now = WarrantyReminderFixtures.date(year: 2026, month: 6, day: 1)
+        let reminders = WarrantyReminderPlan.reminders(for: item, now: now, calendar: calendar)
+
+        #expect(reminders.isEmpty)
+        #expect(WarrantyReminderPlan.identifiers(for: item.id).count == 3)
+    }
+
+    /// A blank product name still produces a readable notification.
+    @Test func blankNameUsesTheFallback() {
+        let item = WarrantyReminderFixtures.item(
+            name: "   ",
+            purchase: WarrantyReminderFixtures.date(year: 2026, month: 1, day: 1),
+            months: 12
+        )
+        let now = WarrantyReminderFixtures.date(year: 2026, month: 6, day: 1)
+        let reminders = WarrantyReminderPlan.reminders(for: item, now: now, calendar: calendar)
+
+        #expect(reminders.first?.body == "A saved warranty expires in 30 days.")
+    }
 }
 
 @MainActor
@@ -119,6 +146,28 @@ struct WarrantyReminderFlowTests {
         ))
         #expect(scheduler.scheduledBatches.isEmpty)
         #expect(scheduler.cancelCalls.isEmpty)
+    }
+
+    /// Saving a warranty that has already ended clears its identifiers and does not schedule a new one.
+    @Test func saveOfExpiredWarrantyCancelsWithoutAFutureReminder() async throws {
+        let repository = try WarrantyRepository(container: ModelContainerFactory.makePreviewContainer())
+        let preferences = try WarrantyReminderFixtures.preferences(enabled: true)
+        let scheduler = MockReminderScheduler()
+        let model = WarrantyReminderFixtures.formModel()
+        model.productName = "Old kettle"
+        model.amountText = "40"
+        model.purchaseDate = WarrantyReminderFixtures.date(year: 2020, month: 1, day: 1)
+        model.warrantyLength = .six
+
+        #expect(await model.save(
+            using: repository,
+            reminders: scheduler,
+            preferences: preferences,
+            now: WarrantyReminderFixtures.date(year: 2026, month: 6, day: 1),
+            calendar: WarrantyReminderFixtures.calendar
+        ))
+        #expect(scheduler.cancelCalls.count == 1)
+        #expect(scheduler.scheduledBatches == [[]])
     }
 
     /// Archive and delete remove that warranty's three reminder identifiers.

@@ -30,7 +30,8 @@ enum ReceiptDocumentImage {
         guard bounds.width > 0, bounds.height > 0 else {
             return nil
         }
-        let scale: CGFloat = 2
+        let longest = max(bounds.width, bounds.height)
+        let scale = min(2, ReceiptImagePrep.maxPixelLength / longest)
         let size = CGSize(width: bounds.width * scale, height: bounds.height * scale)
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1

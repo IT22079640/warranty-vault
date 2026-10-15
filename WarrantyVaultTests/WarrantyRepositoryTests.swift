@@ -38,6 +38,7 @@ struct WarrantyRepositoryTests {
         #expect(loaded?.receiptImageData == Data([1, 2, 3]))
         #expect(loaded?.category == .appliance)
         #expect(try repository.items().count == 1)
+        #expect(try repository.items().first?.receiptImageData == Data([1, 2, 3]))
     }
 
     /// Blank names and negative values are rejected and nothing is saved.
