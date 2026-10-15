@@ -52,10 +52,10 @@ struct ReceiptScanView: View {
                             scanLine
                         }
                     }
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.control))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Theme.Colors.deepBlue.opacity(0.35), lineWidth: 1)
+                        RoundedRectangle(cornerRadius: Theme.Radius.control)
+                            .stroke(Theme.Colors.deepBlue.opacity(0.35), lineWidth: Theme.Stroke.hairline)
                     )
                     .accessibilityLabel("Receipt preview")
                     .accessibilityIdentifier("add.receiptPreview")

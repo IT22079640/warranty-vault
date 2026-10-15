@@ -42,7 +42,13 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
+            "value" : "%1$@, %2$@"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$@, %2$@"
           }
         }
@@ -69,14 +75,34 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
+            "value" : "%1$@. %2$@"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$@. %2$@"
           }
         }
       }
     },
     "%lld days before" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days before"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දින %lldකට පෙර"
+          }
+        }
+      }
     },
     "%lld days left" : {
       "extractionState" : "manual",
@@ -127,6 +153,111 @@
             "value" : "මාස %lld"
           }
         }
+      }
+    },
+    "Archives this warranty and cancels its reminders" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Archives this warranty and cancels its reminders" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම වගකීම සංරක්ෂණය කර එහි මතක් කිරීම් අවලංගු කරයි" } }
+      }
+    },
+    "Chooses a photo or a PDF from Files" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Chooses a photo or a PDF from Files" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "ගොනු වලින් ඡායාරූපයක් හෝ PDF එකක් තෝරයි" } }
+      }
+    },
+    "Chooses a receipt photo. The camera is not used." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Chooses a receipt photo. The camera is not used." } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "රිසිට්පතේ ඡායාරූපයක් තෝරයි. කැමරාව භාවිත නොවේ." } }
+      }
+    },
+    "Closes the import choices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Closes the import choices" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "ආයාත කිරීමේ තේරීම් වසයි" } }
+      }
+    },
+    "Deletes every warranty on this device" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deletes every warranty on this device" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම උපාංගයේ සියලු වගකීම් මකයි" } }
+      }
+    },
+    "Deletes this warranty and its reminders" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Deletes this warranty and its reminders" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම වගකීම සහ එහි මතක් කිරීම් මකයි" } }
+      }
+    },
+    "Dismisses this message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dismisses this message" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම පණිවිඩය වසයි" } }
+      }
+    },
+    "How many months the warranty lasts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "How many months the warranty lasts" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "වගකීම පවතින මාස ගණන" } }
+      }
+    },
+    "Keeps the saved warranties" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Keeps the saved warranties" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "සුරකින ලද වගකීම් තබා ගනී" } }
+      }
+    },
+    "Name of the product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Name of the product" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "භාණ්ඩයේ නම" } }
+      }
+    },
+    "Optional note about this warranty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Optional note about this warranty" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම වගකීම ගැන විකල්ප සටහනක්" } }
+      }
+    },
+    "Price paid for this product" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Price paid for this product" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම භාණ්ඩයට ගෙවූ මිල" } }
+      }
+    },
+    "Selects this option" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Selects this option" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම විකල්පය තෝරයි" } }
+      }
+    },
+    "Sets this date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sets this date" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "මෙම දිනය සකසයි" } }
+      }
+    },
+    "Shop or seller" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shop or seller" } },
+        "si" : { "stringUnit" : { "state" : "translated", "value" : "වෙළඳසැල හෝ විකුණුම්කරු" } }
       }
     },
     "1 day before" : {
@@ -1439,7 +1570,21 @@
       }
     },
     "Items" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Items"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අයිතම"
+          }
+        }
+      }
     },
     "Items by category" : {
       "extractionState" : "manual",
@@ -1578,7 +1723,21 @@
       }
     },
     "Month" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Month"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාසය"
+          }
+        }
+      }
     },
     "Months" : {
       "extractionState" : "manual",
@@ -2805,7 +2964,21 @@
       }
     },
     "Spent" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spent"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වියදම"
+          }
+        }
+      }
     },
     "Status: %@" : {
       "extractionState" : "manual",

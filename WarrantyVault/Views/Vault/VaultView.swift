@@ -50,6 +50,7 @@ struct VaultView: View {
                     model.actionError = nil
                 }
                 .accessibilityLabel(String(localized: "OK"))
+                .accessibilityHint(String(localized: "Dismisses this message"))
                 .accessibilityIdentifier("vault.error.ok")
             } message: {
                 Text(model.actionError ?? "")
@@ -237,6 +238,7 @@ struct VaultView: View {
         } label: {
             Label("View", systemImage: "eye")
         }
+        .accessibilityHint(String(localized: "Opens this warranty"))
         .accessibilityIdentifier("vault.menu.view")
 
         Button {
@@ -244,6 +246,7 @@ struct VaultView: View {
         } label: {
             Label("Edit", systemImage: "square.and.pencil")
         }
+        .accessibilityHint(String(localized: "Opens the form to change this warranty"))
         .accessibilityIdentifier("vault.menu.edit")
 
         Button {
@@ -251,6 +254,7 @@ struct VaultView: View {
         } label: {
             Label("Archive", systemImage: "archivebox")
         }
+        .accessibilityHint(String(localized: "Archives this warranty and cancels its reminders"))
         .accessibilityIdentifier("vault.menu.archive")
 
         Button(role: .destructive) {
@@ -258,6 +262,7 @@ struct VaultView: View {
         } label: {
             Label("Delete", systemImage: "trash")
         }
+        .accessibilityHint(String(localized: "Deletes this warranty and its reminders"))
         .accessibilityIdentifier("vault.menu.delete")
     }
 
@@ -269,6 +274,7 @@ struct VaultView: View {
             Label("Archive", systemImage: "archivebox")
         }
         .tint(Theme.Colors.amber)
+        .accessibilityHint(String(localized: "Archives this warranty and cancels its reminders"))
         .accessibilityIdentifier("vault.archive.\(item.id.uuidString)")
     }
 
@@ -279,6 +285,7 @@ struct VaultView: View {
         } label: {
             Label("Delete", systemImage: "trash")
         }
+        .accessibilityHint(String(localized: "Deletes this warranty and its reminders"))
         .accessibilityIdentifier("vault.delete.\(item.id.uuidString)")
     }
 

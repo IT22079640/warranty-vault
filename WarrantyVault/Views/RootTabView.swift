@@ -55,6 +55,7 @@ struct RootTabView: View {
 private struct SampleVaultPreview: View {
     private let container: ModelContainer?
 
+    /// Loads the in-memory sample store, or leaves it nil when that fails.
     init() {
         container = try? WarrantySampleData.makePreviewContainer()
     }

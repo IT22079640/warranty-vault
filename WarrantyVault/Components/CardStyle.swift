@@ -17,10 +17,10 @@ struct CardStyle: ViewModifier {
         content
             .padding(Theme.Spacing.medium)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.background, in: RoundedRectangle(cornerRadius: 16))
+            .background(.background, in: RoundedRectangle(cornerRadius: Theme.Radius.card))
             .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .strokeBorder(Theme.Colors.deepBlue.opacity(0.18), lineWidth: 1)
+                RoundedRectangle(cornerRadius: Theme.Radius.card)
+                    .strokeBorder(Theme.Colors.deepBlue.opacity(0.18), lineWidth: Theme.Stroke.hairline)
             }
     }
 }

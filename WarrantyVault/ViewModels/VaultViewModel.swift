@@ -82,12 +82,19 @@ enum VaultFilter: String, CaseIterable, Identifiable {
 @MainActor
 @Observable
 final class VaultViewModel {
+    /// Text in the vault search field.
     var searchText = ""
+    /// Chip that limits the list by warranty status.
     var filter: VaultFilter = .all
+    /// List or grid layout.
     var layout: VaultLayout = .list
+    /// Warranties currently shown.
     private(set) var items: [WarrantyItem] = []
+    /// True while the first load is in progress.
     private(set) var isLoading = true
+    /// Message when the vault cannot be read.
     var loadError: String?
+    /// Message when archive or delete fails.
     var actionError: String?
 
     /// Query for the current search box and chip. Archived rows stay hidden.

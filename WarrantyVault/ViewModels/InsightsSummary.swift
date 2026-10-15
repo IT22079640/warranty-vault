@@ -13,7 +13,9 @@ import Foundation
 struct InsightsSummary: Equatable {
     /// How many warranties share a category.
     struct CategoryCount: Equatable, Identifiable {
+        /// Product group being counted.
         var category: ItemCategory
+        /// Warranties in this group.
         var count: Int
 
         /// Stable chart identifier.
@@ -22,7 +24,9 @@ struct InsightsSummary: Equatable {
 
     /// Money spent on purchases that fall in one calendar month.
     struct MonthlySpend: Equatable, Identifiable {
+        /// First moment of the month these purchases belong to.
         var monthStart: Date
+        /// Sum of purchase amounts in that month.
         var total: Double
 
         /// Stable chart identifier.
@@ -31,18 +35,29 @@ struct InsightsSummary: Equatable {
 
     /// A warranty that has not expired yet.
     struct UpcomingExpiry: Equatable, Identifiable {
+        /// Warranty identifier.
         var id: UUID
+        /// Product name.
         var name: String
+        /// Day cover ends.
         var expiry: Date
+        /// Whole days until expiry. Zero means it ends today.
         var daysRemaining: Int
+        /// Active or expiring soon. Expired rows are left out.
         var status: WarrantyStatus
     }
 
+    /// Warranties grouped by category.
     var categoryCounts: [CategoryCount]
+    /// Purchase totals for each month that has a purchase, including empty months in between.
     var monthlySpend: [MonthlySpend]
+    /// Warranties that still have cover, soonest first.
     var upcoming: [UpcomingExpiry]
+    /// Sum of purchase amounts for warranties that have not expired.
     var protectedValue: Double
+    /// Warranties inside the 30-day window.
     var expiringSoonCount: Int
+    /// Unarchived warranties included in this summary.
     var itemCount: Int
 
     /// True when the vault has no active, unarchived warranties to chart.

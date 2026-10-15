@@ -4,11 +4,14 @@
 //
 //  Created by Ama Hitiarachchi  on 2026-10-12.
 //
+//  App entry point, onboarding gate, and UI-test launch arguments.
+//
 
 import SwiftUI
 import SwiftData
 import UserNotifications
 
+/// Creates the store, reminder scheduler, and the first screen.
 @main
 struct WarrantyVaultApp: App {
     @State private var router = AppRouter()
@@ -19,10 +22,16 @@ struct WarrantyVaultApp: App {
     private let reminderScheduler = UserNotificationReminderScheduler()
     private let notificationDelegate = ReminderNotificationDelegate()
 
+    /// Opens the store and applies UI-test launch arguments before the first frame.
     init() {
         if ProcessInfo.processInfo.arguments.contains("-resetOnboarding") {
             UserDefaults.standard.set(false, forKey: OnboardingStorage.finishedKey)
         }
+        #if DEBUG
+        if SampleReceiptImage.isRequested {
+            UserDefaults.standard.removeObject(forKey: AppearanceChoice.storageKey)
+        }
+        #endif
         let result = Result { try ModelContainerFactory.makeContainer() }
         modelContainerResult = result
         if case .success(let container) = result {
@@ -33,9 +42,25 @@ struct WarrantyVaultApp: App {
 
     var body: some Scene {
         WindowGroup {
-            root
-                .preferredColorScheme(appearance.colorScheme)
+            themedRoot
         }
+    }
+
+    /// Applies the Settings appearance. A system choice normally follows the device.
+    ///
+    /// With `-useSampleReceipt`, a system choice follows `-AppleInterfaceStyle` so the
+    /// screenshot tour can force light or dark. Release builds always apply the stored choice.
+    @ViewBuilder
+    private var themedRoot: some View {
+        #if DEBUG
+        if SampleReceiptImage.isRequested {
+            root.preferredColorScheme(appearance.colorScheme ?? SampleReceiptImage.interfaceStyle)
+        } else {
+            root.preferredColorScheme(appearance.colorScheme)
+        }
+        #else
+        root.preferredColorScheme(appearance.colorScheme)
+        #endif
     }
 
     /// Introduction on first launch, otherwise the tab shell or a storage error.
@@ -79,8 +104,17 @@ struct WarrantyVaultApp: App {
     }
 
     /// Appearance chosen in Settings.
+    ///
+    /// `-useSampleReceipt` starts from the system setting so `-AppleInterfaceStyle` can drive the tour.
     private var appearance: AppearanceChoice {
-        AppearanceChoice(rawValue: appearanceRaw) ?? .system
+        #if DEBUG
+        if SampleReceiptImage.isRequested {
+            _ = appearanceRaw
+            let stored = UserDefaults.standard.string(forKey: AppearanceChoice.storageKey)
+            return AppearanceChoice(rawValue: stored ?? "") ?? .system
+        }
+        #endif
+        return AppearanceChoice(rawValue: appearanceRaw) ?? .system
     }
 }
 
@@ -98,13 +132,19 @@ private enum LaunchState {
         guard arguments.contains("-seedVault") else { return }
         let calendar = Calendar.current
         let expiredPurchase = calendar.date(byAdding: .year, value: -3, to: .now) ?? .now
+        #if DEBUG
+        let sampleReceipt = SampleReceiptImage.isRequested ? SampleReceiptImage.pngData() : nil
+        #else
+        let sampleReceipt: Data? = nil
+        #endif
         try? repository.create(
             name: "Active Lamp",
             store: "Abans",
             purchaseDate: .now,
             amount: 80,
             warrantyMonths: 12,
-            category: .furniture
+            category: .furniture,
+            receiptImageData: sampleReceipt
         )
         try? repository.create(
             name: "Expired Fan",
@@ -112,7 +152,8 @@ private enum LaunchState {
             purchaseDate: expiredPurchase,
             amount: 25,
             warrantyMonths: 6,
-            category: .appliance
+            category: .appliance,
+            receiptImageData: sampleReceipt
         )
     }
 }

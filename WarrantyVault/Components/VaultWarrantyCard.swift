@@ -123,7 +123,7 @@ struct VaultWarrantyCard: View {
             }
         }
         .frame(width: drawnThumbnail, height: drawnThumbnail)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.control))
         .accessibilityHidden(true)
     }
 

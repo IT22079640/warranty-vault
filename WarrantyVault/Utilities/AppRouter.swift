@@ -146,10 +146,15 @@ enum AppTab: Hashable, CaseIterable {
 /// Owns the selected tab and a navigation path for each tab.
 @Observable
 final class AppRouter {
+    /// Tab currently on screen.
     var selectedTab: AppTab = .vault
+    /// Stack for the Vault tab.
     var vaultPath = NavigationPath()
+    /// Stack for the Add tab.
     var addPath = NavigationPath()
+    /// Stack for the Insights tab.
     var insightsPath = NavigationPath()
+    /// Stack for the Settings tab.
     var settingsPath = NavigationPath()
 
     /// Shows `tab` and pushes `route` onto that tab's stack.

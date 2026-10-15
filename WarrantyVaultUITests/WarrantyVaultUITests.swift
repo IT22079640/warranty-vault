@@ -4,9 +4,12 @@
 //
 //  Created by Ama Hitiarachchi  on 2026-10-12.
 //
+//  UI tests for onboarding, manual entry, filtering, and delete.
+//
 
 import XCTest
 
+/// Drives the app with the launch arguments documented in the README.
 final class WarrantyVaultUITests: XCTestCase {
 
     /// Stops the test at the first failure.

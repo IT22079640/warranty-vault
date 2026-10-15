@@ -47,9 +47,11 @@ struct SettingsView: View {
                     }
                 }
                 .accessibilityLabel(String(localized: "Clear all data"))
+                .accessibilityHint(String(localized: "Deletes every warranty on this device"))
                 .accessibilityIdentifier("settings.confirmClear")
                 Button(String(localized: "Cancel"), role: .cancel) {}
                     .accessibilityLabel(String(localized: "Cancel"))
+                    .accessibilityHint(String(localized: "Keeps the saved warranties"))
                     .accessibilityIdentifier("settings.cancelClear")
             } message: {
                 Text("This removes every receipt and warranty from this device. This cannot be undone.")

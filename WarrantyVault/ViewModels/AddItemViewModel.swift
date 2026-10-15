@@ -53,20 +53,32 @@ final class AddItemViewModel {
     /// Next screen the Add tab should open. The view clears this after navigating.
     var requestedStep: AddStep?
 
+    /// Product name typed or read from the receipt.
     var productName = ""
+    /// Shop or seller.
     var store = ""
+    /// Day the product was purchased.
     var purchaseDate = Date.now
+    /// Price as typed. The Rs. prefix is shown beside the field, not in this text.
     var amountText = ""
+    /// Product group chosen by the user or suggested from the receipt.
     var category: ItemCategory = .other
+    /// Selected cover length.
     var warrantyLength: WarrantyLengthOption = .twelve
+    /// Months typed when `warrantyLength` is custom.
     var customMonths = ""
+    /// Optional note stored with the warranty.
     var notes = ""
 
     /// Confidence from the parser. Nil after the user edits the field or on manual entry.
     var storeConfidence: ParseConfidence?
+    /// Confidence of the parsed purchase date.
     var dateConfidence: ParseConfidence?
+    /// Confidence of the parsed amount.
     var amountConfidence: ParseConfidence?
+    /// Confidence of the suggested category.
     var categoryConfidence: ParseConfidence?
+    /// Field messages shown when a save is not ready.
     var validation = AddItemValidation()
 
     /// Set while an existing warranty is being changed. Nil for a new item.
@@ -106,6 +118,20 @@ final class AddItemViewModel {
         savedMessage = nil
         requestedStep = .form
     }
+
+    #if DEBUG
+    /// Downscales the bundled sample receipt and opens the scanning screen.
+    func importBundledSample() async {
+        isImporting = true
+        importError = nil
+        defer { isImporting = false }
+        guard let data = SampleReceiptImage.pngData() else {
+            importError = String(localized: "That photo could not be opened.")
+            return
+        }
+        await beginScan(withFileData: data, emptyMessage: String(localized: "That photo could not be opened."))
+    }
+    #endif
 
     /// Loads a Photos picker item, downscales it, and opens the scanning screen.
     func importPhoto(_ item: PhotosImport) async {

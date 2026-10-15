@@ -12,13 +12,21 @@ import SwiftData
 
 /// Values for one preview warranty before it is inserted.
 struct WarrantySeed: Equatable {
+    /// Product name.
     var name: String
+    /// Shop or seller.
     var store: String
+    /// Day the product was purchased.
     var purchaseDate: Date
+    /// Price paid.
     var amount: Decimal
+    /// Cover length in months.
     var warrantyMonths: Int
+    /// Product group.
     var category: ItemCategory
+    /// Optional note.
     var notes: String
+    /// True when the preview row should be archived.
     var isArchived: Bool
 }
 

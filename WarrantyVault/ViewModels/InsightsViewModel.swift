@@ -14,8 +14,11 @@ import Observation
 @MainActor
 @Observable
 final class InsightsViewModel {
+    /// Charts for the warranties that are not archived.
     private(set) var summary: InsightsSummary = .empty
+    /// True until the first load finishes.
     private(set) var isLoading = true
+    /// Message when the summary cannot be built.
     var loadError: String?
 
     /// Rebuilds the summary from unarchived warranties.

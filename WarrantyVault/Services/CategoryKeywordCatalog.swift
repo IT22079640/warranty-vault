@@ -19,6 +19,7 @@ enum CategoryCatalogError: Error, Equatable {
 
 /// Keyword lists used to suggest a product category from receipt text.
 enum CategoryKeywordCatalog {
+    /// Anchor so `Bundle(for:)` finds the app target that holds the JSON file.
     private final class Token {}
 
     /// Bundle that contains `CategoryKeywords.json`.

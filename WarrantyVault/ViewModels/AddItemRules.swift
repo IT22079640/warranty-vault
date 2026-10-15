@@ -55,8 +55,11 @@ enum WarrantyLengthOption: String, CaseIterable, Identifiable {
 
 /// Messages for fields that are not ready to save. Nil means that field is fine.
 struct AddItemValidation: Equatable {
+    /// Shown when the product name is blank.
     var productName: String?
+    /// Shown when the amount is blank or not a number.
     var amount: String?
+    /// Shown when a custom warranty length is missing or invalid.
     var warrantyLength: String?
 
     /// True when at least one field needs a correction.

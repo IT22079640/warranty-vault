@@ -216,22 +216,26 @@ struct InsightsCharts: View {
     /// Spoken category counts.
     private var categoryLabel: String {
         let parts = summary.categoryCounts.map { "\($0.category.title), \($0.count)" }
-        return "Items by category. \(parts.joined(separator: ". "))."
+        let heading = String(localized: "Items by category")
+        return "\(heading). \(parts.joined(separator: ". "))."
     }
 
     /// Spoken monthly totals.
     private var spendingLabel: String {
         let parts = summary.monthlySpend.map { spendLabel(for: $0) }
-        return "Spending by month. \(parts.joined(separator: ". "))."
+        let heading = String(localized: "Spending by month")
+        return "\(heading). \(parts.joined(separator: ". "))."
     }
 
     /// Spoken upcoming expiries.
     private var timelineLabel: String {
+        let heading = String(localized: "Upcoming expiries")
         if summary.upcoming.isEmpty {
-            return "Upcoming expiries. No warranties are still in date."
+            let empty = String(localized: "No warranties are still in date.")
+            return "\(heading). \(empty)"
         }
         let parts = summary.upcoming.map { "\($0.name), \(WarrantySummary.daysLabel($0.daysRemaining))" }
-        return "Upcoming expiries. \(parts.joined(separator: ". "))."
+        return "\(heading). \(parts.joined(separator: ". "))."
     }
 
     /// One headline figure inside the summary card.

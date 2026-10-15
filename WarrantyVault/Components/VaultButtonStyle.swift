@@ -33,7 +33,7 @@ private struct StyledLabel: View {
             .foregroundStyle(isEnabled ? Theme.Colors.buttonInk : Color.secondary)
             .background(
                 Theme.Colors.buttonFill.opacity(fillOpacity),
-                in: RoundedRectangle(cornerRadius: 12)
+                in: RoundedRectangle(cornerRadius: Theme.Radius.control)
             )
     }
 

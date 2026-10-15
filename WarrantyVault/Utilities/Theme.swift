@@ -48,6 +48,20 @@ enum Theme {
         static let caption2 = Font.caption2
     }
 
+    /// Corner radii shared by cards, buttons, and receipt images.
+    enum Radius {
+        /// Filled buttons, thumbnails, and receipt previews.
+        static let control: CGFloat = 12
+        /// Summary cards.
+        static let card: CGFloat = 16
+    }
+
+    /// Shared border thickness.
+    enum Stroke {
+        /// One-point border used on cards and the receipt preview.
+        static let hairline: CGFloat = 1
+    }
+
     /// Layout spacing in points. These constants are insets and gaps, not font sizes.
     enum Spacing {
         static let extraSmall: CGFloat = 4

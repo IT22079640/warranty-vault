@@ -4,19 +4,25 @@
 //
 //  Created by Ama Hitiarachchi  on 2026-10-12.
 //
+//  Screenshot captured the first time the app launches in a UI test.
+//
 
 import XCTest
 
+/// Records a launch screenshot. It does not drive the warranty flows.
 final class WarrantyVaultUITestsLaunchTests: XCTestCase {
 
+    /// Runs once for each appearance the test plan enables.
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
 
+    /// Stops the test at the first failure.
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
 
+    /// Launches the app and keeps a screenshot of the first screen.
     @MainActor
     func testLaunch() throws {
         let app = XCUIApplication()

@@ -14,9 +14,13 @@ import Observation
 @MainActor
 @Observable
 final class SettingsViewModel {
+    /// Matches the Settings toggle.
     private(set) var remindersEnabled = false
+    /// Current notification permission.
     private(set) var authorization: ReminderAuthorization = .notDetermined
+    /// Short status under the reminder toggle.
     private(set) var statusMessage: String?
+    /// True while permission or scheduling is in progress.
     private(set) var isUpdating = false
 
     /// Sentence shown when the system will not deliver reminders.

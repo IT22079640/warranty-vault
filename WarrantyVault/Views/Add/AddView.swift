@@ -14,7 +14,11 @@ import UniformTypeIdentifiers
 /// Root of the Add tab.
 struct AddView: View {
     @Environment(AppRouter.self) private var router
+    #if DEBUG
+    @State private var model = AddItemViewModel(minimumReadDuration: SampleReceiptImage.scanHold)
+    #else
     @State private var model = AddItemViewModel()
+    #endif
     @State private var showSources = false
     @State private var showPhotos = false
     @State private var showFiles = false
@@ -66,6 +70,9 @@ struct AddView: View {
                         .accessibilityIdentifier("add.importProgress")
                 }
                 Button("Import receipt") {
+                    if openBundledSampleIfRequested() {
+                        return
+                    }
                     showSources = true
                 }
                 .buttonStyle(VaultButtonStyle())
@@ -92,14 +99,17 @@ struct AddView: View {
                 showPhotos = true
             }
             .accessibilityLabel(String(localized: "Photo Library"))
+            .accessibilityHint(String(localized: "Chooses a receipt photo. The camera is not used."))
             .accessibilityIdentifier("add.photoLibrary")
             Button("Choose File") {
                 showFiles = true
             }
             .accessibilityLabel(String(localized: "Choose File"))
+            .accessibilityHint(String(localized: "Chooses a photo or a PDF from Files"))
             .accessibilityIdentifier("add.chooseFile")
             Button("Cancel", role: .cancel) {}
                 .accessibilityLabel(String(localized: "Cancel"))
+                .accessibilityHint(String(localized: "Closes the import choices"))
                 .accessibilityIdentifier("add.importCancel")
         } message: {
             Text("Pick a photo or a PDF. Warranty Vault reads it on this device.")
@@ -128,10 +138,26 @@ struct AddView: View {
                 model.importError = nil
             }
             .accessibilityLabel(String(localized: "OK"))
+            .accessibilityHint(String(localized: "Dismisses this message"))
             .accessibilityIdentifier("add.importErrorOK")
         } message: {
             Text(model.importError ?? "")
         }
+    }
+
+    /// Starts OCR on the bundled sample when `-useSampleReceipt` is set. Release builds never take this path.
+    private func openBundledSampleIfRequested() -> Bool {
+        #if DEBUG
+        guard SampleReceiptImage.isRequested else {
+            return false
+        }
+        Task {
+            await model.importBundledSample()
+        }
+        return true
+        #else
+        return false
+        #endif
     }
 
     /// Presents the import alert only while an error string is set.

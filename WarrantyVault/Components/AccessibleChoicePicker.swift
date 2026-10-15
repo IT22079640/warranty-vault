@@ -37,6 +37,7 @@ struct AccessibleChoicePicker<Value: Hashable>: View {
         }
         .font(Theme.Fonts.body)
         .accessibilityLabel(title)
+        .accessibilityHint(String(localized: "Selects this option"))
         .accessibilityIdentifier(accessibilityIdentifier)
     }
 
@@ -78,6 +79,7 @@ struct AccessibleChoicePicker<Value: Hashable>: View {
         }
         .buttonStyle(.plain)
         .accessibilityLabel(optionTitle(option))
+        .accessibilityHint(String(localized: "Selects this option"))
         .accessibilityAddTraits(isSelected ? .isSelected : [])
         .accessibilityIdentifier("\(accessibilityIdentifier).\(optionIdentity(option))")
     }
@@ -113,6 +115,7 @@ struct AccessibleDatePicker: View {
             DatePicker(title, selection: $selection, displayedComponents: .date)
                 .font(Theme.Fonts.body)
                 .accessibilityLabel(title)
+                .accessibilityHint(String(localized: "Sets this date"))
                 .accessibilityIdentifier(accessibilityIdentifier)
         }
     }
@@ -132,6 +135,7 @@ struct AccessibleDatePicker: View {
                 .labelsHidden()
                 .datePickerStyle(.graphical)
                 .accessibilityLabel(title)
+                .accessibilityHint(String(localized: "Sets this date"))
                 .accessibilityIdentifier(accessibilityIdentifier)
         }
     }

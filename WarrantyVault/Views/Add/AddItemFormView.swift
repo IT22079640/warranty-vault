@@ -75,6 +75,7 @@ struct AddItemFormView: View {
                     .font(Theme.Fonts.body)
                     .focused($focusedField, equals: .name)
                     .accessibilityLabel("Product name")
+                    .accessibilityHint(String(localized: "Name of the product"))
                     .accessibilityIdentifier("add.productName")
             }
             ReviewableField(
@@ -104,6 +105,7 @@ struct AddItemFormView: View {
                     .font(Theme.Fonts.body)
                     .focused($focusedField, equals: .store)
                     .accessibilityLabel("Store")
+                    .accessibilityHint(String(localized: "Shop or seller"))
                     .accessibilityIdentifier("add.store")
             }
             ReviewableField(
@@ -131,6 +133,7 @@ struct AddItemFormView: View {
                         .keyboardType(.decimalPad)
                         .focused($focusedField, equals: .amount)
                         .accessibilityLabel(String(localized: "Amount in rupees"))
+                        .accessibilityHint(String(localized: "Price paid for this product"))
                         .accessibilityIdentifier("add.amount")
                 }
             }
@@ -159,6 +162,7 @@ struct AddItemFormView: View {
                         .keyboardType(.numberPad)
                         .focused($focusedField, equals: .months)
                         .accessibilityLabel("Custom warranty months")
+                        .accessibilityHint(String(localized: "How many months the warranty lasts"))
                         .accessibilityIdentifier("add.customMonths")
                 }
             } else if let warrantyLength = model.validation.warrantyLength {
@@ -171,6 +175,7 @@ struct AddItemFormView: View {
                 .lineLimit(3...)
                 .focused($focusedField, equals: .notes)
                 .accessibilityLabel("Notes")
+                .accessibilityHint(String(localized: "Optional note about this warranty"))
                 .accessibilityIdentifier("add.notes")
         }
     }

@@ -116,8 +116,11 @@ struct OnboardingView: View {
 
 /// Copy and symbol for one introduction page.
 struct OnboardingPageContent: Equatable {
+    /// SF Symbol shown above the title.
     var symbol: String
+    /// Page heading.
     var title: String
+    /// Sentence under the heading.
     var message: String
 }
 
