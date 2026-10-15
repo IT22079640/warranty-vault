@@ -101,7 +101,7 @@ enum WarrantyReminderPlan {
             }
             return PlannedReminder(
                 identifier: identifier(itemID: item.id, daysBefore: daysBefore),
-                title: "Warranty Vault",
+                title: String(localized: "Warranty Vault"),
                 body: message(name: item.name, daysBefore: daysBefore),
                 fireDate: fireDate
             )
@@ -125,11 +125,11 @@ enum WarrantyReminderPlan {
     /// Notification sentence for a product and a lead day.
     private static func message(name: String, daysBefore: Int) -> String {
         let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        let product = trimmed.isEmpty ? "A saved warranty" : trimmed
+        let product = trimmed.isEmpty ? String(localized: "A saved warranty") : trimmed
         if daysBefore == 1 {
-            return "\(product) expires tomorrow."
+            return LocalizedFormat.string("%@ expires tomorrow.", product)
         }
-        return "\(product) expires in \(daysBefore) days."
+        return LocalizedFormat.string("%@ expires in %lld days.", product, Int64(daysBefore))
     }
 }
 

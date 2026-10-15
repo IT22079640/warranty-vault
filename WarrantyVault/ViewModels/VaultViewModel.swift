@@ -32,9 +32,9 @@ enum VaultLayout: String, CaseIterable, Identifiable {
     var toggleLabel: String {
         switch self {
         case .list:
-            "Show as grid"
+            String(localized: "Show as grid")
         case .grid:
-            "Show as list"
+            String(localized: "Show as list")
         }
     }
 }
@@ -53,7 +53,7 @@ enum VaultFilter: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .all:
-            "All"
+            String(localized: "All")
         case .active:
             WarrantyStatus.active.title
         case .expiringSoon:
@@ -86,6 +86,8 @@ final class VaultViewModel {
     var filter: VaultFilter = .all
     var layout: VaultLayout = .list
     private(set) var items: [WarrantyItem] = []
+    private(set) var isLoading = true
+    var loadError: String?
     var actionError: String?
 
     /// Query for the current search box and chip. Archived rows stay hidden.
@@ -109,16 +111,19 @@ final class VaultViewModel {
 
     /// Replaces `items` with the current query.
     func reload(using repository: WarrantyRepository?) {
+        isLoading = true
+        defer { isLoading = false }
         guard let repository else {
             items = []
-            actionError = "Warranty Vault could not open saved receipts."
+            loadError = String(localized: "Warranty Vault could not open saved receipts.")
             return
         }
         do {
             items = try repository.items(matching: query())
+            loadError = nil
         } catch {
             items = []
-            actionError = "Saved warranties could not be loaded."
+            loadError = String(localized: "Saved warranties could not be loaded.")
         }
     }
 
@@ -129,7 +134,7 @@ final class VaultViewModel {
         reminders: (any WarrantyReminderScheduling)? = nil
     ) async {
         guard let repository else {
-            actionError = "Warranty Vault could not open saved receipts."
+            actionError = String(localized: "Warranty Vault could not open saved receipts.")
             return
         }
         do {
@@ -137,7 +142,7 @@ final class VaultViewModel {
             await reminders?.cancel(identifiers: WarrantyReminderPlan.identifiers(for: item.id))
             reload(using: repository)
         } catch {
-            actionError = "That warranty could not be archived."
+            actionError = String(localized: "That warranty could not be archived.")
         }
     }
 
@@ -148,7 +153,7 @@ final class VaultViewModel {
         reminders: (any WarrantyReminderScheduling)? = nil
     ) async {
         guard let repository else {
-            actionError = "Warranty Vault could not open saved receipts."
+            actionError = String(localized: "Warranty Vault could not open saved receipts.")
             return
         }
         do {
@@ -157,7 +162,7 @@ final class VaultViewModel {
             await reminders?.cancel(identifiers: identifiers)
             reload(using: repository)
         } catch {
-            actionError = "That warranty could not be deleted."
+            actionError = String(localized: "That warranty could not be deleted.")
         }
     }
 

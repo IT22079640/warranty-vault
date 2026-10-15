@@ -21,8 +21,8 @@ struct EditWarrantyView: View {
         Group {
             if loadFailed {
                 PlaceholderScreen(
-                    title: "Warranty unavailable",
-                    message: "This warranty is no longer in the vault.",
+                    title: String(localized: "Warranty unavailable"),
+                    message: String(localized: "This warranty is no longer in the vault."),
                     systemImage: "questionmark.folder",
                     symbolColor: Theme.Colors.amber,
                     accessibilityIdentifier: "screen.editWarranty.missing"

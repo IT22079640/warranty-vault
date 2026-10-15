@@ -44,15 +44,18 @@ enum WarrantySummary {
     static func daysLabel(_ days: Int) -> String {
         if days < 0 {
             let overdue = -days
-            return overdue == 1 ? "1 day overdue" : "\(overdue) days overdue"
+            if overdue == 1 {
+                return String(localized: "1 day overdue")
+            }
+            return LocalizedFormat.string("%lld days overdue", Int64(overdue))
         }
         if days == 0 {
-            return "Ends today"
+            return String(localized: "Ends today")
         }
         if days == 1 {
-            return "1 day left"
+            return String(localized: "1 day left")
         }
-        return "\(days) days left"
+        return LocalizedFormat.string("%lld days left", Int64(days))
     }
 
     /// Plain-text summary suitable for the system share sheet.
@@ -66,16 +69,16 @@ enum WarrantySummary {
         let amount = AddItemRules.amountText(from: Decimal(item.amount))
         let status = item.status(on: date, calendar: calendar)
         let days = daysRemaining(for: item, on: date, calendar: calendar)
-        return """
-        \(item.name)
-        Store: \(item.store)
-        Purchased: \(purchased)
-        Amount: \(amount)
-        Category: \(item.category.title)
-        Warranty: \(item.warrantyMonths) months
-        Expires: \(expires)
-        Status: \(status.title)
-        \(daysLabel(days))
-        """
+        return [
+            item.name,
+            LocalizedFormat.string("Store: %@", item.store),
+            LocalizedFormat.string("Purchased: %@", purchased),
+            LocalizedFormat.string("Amount: %@", amount),
+            LocalizedFormat.string("Category: %@", item.category.title),
+            LocalizedFormat.string("Warranty: %lld months", Int64(item.warrantyMonths)),
+            LocalizedFormat.string("Expires: %@", expires),
+            LocalizedFormat.string("Status: %@", status.title),
+            daysLabel(days)
+        ].joined(separator: "\n")
     }
 }

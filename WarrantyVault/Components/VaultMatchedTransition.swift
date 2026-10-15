@@ -27,11 +27,14 @@ private struct VaultMatchedTransition: ViewModifier {
     let id: UUID
     let isSource: Bool
     @Environment(\.vaultGeometryNamespace) private var namespace
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     /// Matches this view to the other view that uses the same warranty id.
+    ///
+    /// Accessibility sizes skip the match so the detail header can grow with the text.
     @ViewBuilder
     func body(content: Content) -> some View {
-        if let namespace {
+        if let namespace, !dynamicTypeSize.isAccessibilitySize {
             content.matchedGeometryEffect(id: id, in: namespace, isSource: isSource)
         } else {
             content

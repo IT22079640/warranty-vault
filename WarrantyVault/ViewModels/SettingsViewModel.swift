@@ -20,7 +20,7 @@ final class SettingsViewModel {
     private(set) var isUpdating = false
 
     /// Sentence shown when the system will not deliver reminders.
-    static let deniedMessage = "Notifications are turned off for Warranty Vault. Enable them in Settings to get reminders."
+    static let deniedMessage = String(localized: "Notifications are turned off for Warranty Vault. Enable them in Settings to get reminders.")
 
     /// Matches the toggle to the saved preference and the current system permission.
     func refresh(
@@ -65,7 +65,7 @@ final class SettingsViewModel {
         guard let repository else {
             preferences.isEnabled = false
             remindersEnabled = false
-            statusMessage = "Warranty Vault could not open saved receipts."
+            statusMessage = String(localized: "Warranty Vault could not open saved receipts.")
             return
         }
 
@@ -90,8 +90,47 @@ final class SettingsViewModel {
         } catch {
             preferences.isEnabled = false
             remindersEnabled = false
-            statusMessage = "Reminders could not be scheduled."
+            statusMessage = String(localized: "Reminders could not be scheduled.")
             await scheduler.cancelAll()
+        }
+    }
+
+    /// CSV text for every warranty, or nil when there is nothing to export or the store cannot be read.
+    func exportCSV(
+        using repository: WarrantyRepository?,
+        on date: Date = .now,
+        calendar: Calendar = .current
+    ) -> String? {
+        guard let repository,
+              let items = try? repository.items(
+                matching: WarrantyQuery(archiveScope: .all, referenceDate: date)
+              ),
+              !items.isEmpty else {
+            return nil
+        }
+        return WarrantyCSV.make(items: items, on: date, calendar: calendar)
+    }
+
+    /// Deletes every warranty and cancels reminders. Returns false when the store could not be cleared.
+    func clearAll(
+        using repository: WarrantyRepository?,
+        scheduler: any WarrantyReminderScheduling,
+        preferences: ReminderPreferences
+    ) async -> Bool {
+        guard let repository else {
+            statusMessage = String(localized: "Warranty Vault could not open saved receipts.")
+            return false
+        }
+        do {
+            try repository.deleteAll()
+            preferences.isEnabled = false
+            remindersEnabled = false
+            await scheduler.cancelAll()
+            statusMessage = String(localized: "All warranties were removed.")
+            return true
+        } catch {
+            statusMessage = String(localized: "Saved warranties could not be cleared.")
+            return false
         }
     }
 }

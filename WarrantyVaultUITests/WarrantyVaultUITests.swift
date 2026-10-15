@@ -28,6 +28,7 @@ final class WarrantyVaultUITests: XCTestCase {
     @MainActor
     func testMainTabsExist() throws {
         let app = XCUIApplication()
+        app.launchArguments.append("-skipOnboarding")
         app.launch()
 
         let tabBar = app.tabBars.firstMatch

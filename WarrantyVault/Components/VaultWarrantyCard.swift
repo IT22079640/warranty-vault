@@ -13,12 +13,20 @@ import SwiftUI
 struct VaultWarrantyCard: View {
     let item: WarrantyItem
     var referenceDate: Date = .now
+    @ScaledMetric(relativeTo: .body) private var thumbnailSide: CGFloat = 64
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
-        ViewThatFits(in: .horizontal) {
-            wideLayout
-                .frame(minWidth: 280, alignment: .leading)
-            compactLayout
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                stackedLayout
+            } else {
+                ViewThatFits(in: .horizontal) {
+                    wideLayout
+                        .frame(minWidth: 280, alignment: .leading)
+                    compactLayout
+                }
+            }
         }
         .cardStyle()
         .vaultMatchedTransition(id: item.id, isSource: true)
@@ -35,6 +43,23 @@ struct VaultWarrantyCard: View {
         }
     }
 
+    /// Name under the thumbnail so a large title is not hyphenated beside the icon.
+    private var stackedLayout: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.small) {
+            thumbnail
+            Text(item.name)
+                .font(Theme.Fonts.headline)
+                .foregroundStyle(Theme.Colors.deepBlue)
+                .fixedSize(horizontal: false, vertical: true)
+            statusLine
+            Text(metaLine)
+                .font(Theme.Fonts.caption)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
     /// Stacked layout for a narrow phone column.
     private var compactLayout: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.small) {
@@ -43,13 +68,13 @@ struct VaultWarrantyCard: View {
                 Text(item.name)
                     .font(Theme.Fonts.headline)
                     .foregroundStyle(Theme.Colors.deepBlue)
-                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             statusLine
             Text(metaLine)
                 .font(Theme.Fonts.caption)
                 .foregroundStyle(.secondary)
-                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 
@@ -59,11 +84,11 @@ struct VaultWarrantyCard: View {
             Text(item.name)
                 .font(Theme.Fonts.headline)
                 .foregroundStyle(Theme.Colors.deepBlue)
-                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
             Text(item.store.isEmpty ? item.category.title : item.store)
                 .font(Theme.Fonts.subheadline)
                 .foregroundStyle(.secondary)
-                .lineLimit(1)
+                .fixedSize(horizontal: false, vertical: true)
             statusLine
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -74,7 +99,7 @@ struct VaultWarrantyCard: View {
         Label(WarrantySummary.daysLabel(days), systemImage: status.symbolName)
             .font(Theme.Fonts.caption)
             .foregroundStyle(status.color)
-            .lineLimit(1)
+            .fixedSize(horizontal: false, vertical: true)
     }
 
     /// Receipt thumbnail, or the category symbol when no photo is stored.
@@ -92,9 +117,14 @@ struct VaultWarrantyCard: View {
                     .background(item.category.color.opacity(0.12))
             }
         }
-        .frame(width: Theme.Spacing.extraLarge * 2, height: Theme.Spacing.extraLarge * 2)
+        .frame(width: drawnThumbnail, height: drawnThumbnail)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .accessibilityHidden(true)
+    }
+
+    /// Limits the icon so the name and shop stay on screen at the largest text sizes.
+    private var drawnThumbnail: CGFloat {
+        dynamicTypeSize.isAccessibilitySize ? min(thumbnailSide, 88) : thumbnailSide
     }
 
     /// Shop and price on one line for the stacked card.

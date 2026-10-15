@@ -49,6 +49,7 @@ struct VaultView: View {
                 Button("OK", role: .cancel) {
                     model.actionError = nil
                 }
+                .accessibilityLabel(String(localized: "OK"))
                 .accessibilityIdentifier("vault.error.ok")
             } message: {
                 Text(model.actionError ?? "")
@@ -74,7 +75,23 @@ struct VaultView: View {
     /// List, adaptive grid, or an empty message.
     @ViewBuilder
     private var content: some View {
-        if model.items.isEmpty {
+        if model.isLoading && model.items.isEmpty && model.loadError == nil {
+            LoadingScreen(
+                message: String(localized: "Loading warranties…"),
+                accessibilityIdentifier: "screen.vault.loading"
+            )
+        } else if let loadError = model.loadError, model.items.isEmpty {
+            PlaceholderScreen(
+                title: String(localized: "Vault unavailable"),
+                message: loadError,
+                systemImage: "exclamationmark.triangle",
+                symbolColor: Theme.Colors.amberInk,
+                accessibilityIdentifier: "screen.vault.error",
+                actionTitle: String(localized: "Try again"),
+                actionIdentifier: "vault.retry",
+                action: { model.reload(using: repository) }
+            )
+        } else if model.items.isEmpty {
             emptyState
         } else if model.layout == .list {
             warrantyList
@@ -127,16 +144,16 @@ struct VaultView: View {
         Group {
             if model.showsFirstUseEmptyState {
                 PlaceholderScreen(
-                    title: "Nothing saved yet",
-                    message: "Receipts and warranty cards you import will be listed here.",
+                    title: String(localized: "Nothing saved yet"),
+                    message: String(localized: "Receipts and warranty cards you import will be listed here."),
                     systemImage: AppTab.vault.systemImage,
                     symbolColor: Theme.Colors.deepBlue,
                     accessibilityIdentifier: "screen.vault.empty"
                 )
             } else {
                 PlaceholderScreen(
-                    title: "No warranties match",
-                    message: "Try another filter or clear the search.",
+                    title: String(localized: "No warranties match"),
+                    message: String(localized: "Try another filter or clear the search."),
                     systemImage: "line.3.horizontal.decrease.circle",
                     symbolColor: Theme.Colors.amber,
                     accessibilityIdentifier: "screen.vault.noResults"
@@ -179,6 +196,8 @@ struct VaultView: View {
         } label: {
             Text(filter.title)
                 .font(Theme.Fonts.subheadline)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .buttonStyle(.bordered)
         .tint(isSelected ? Theme.Colors.deepBlue : .secondary)
@@ -186,6 +205,7 @@ struct VaultView: View {
         .accessibilityHint("Shows warranties in this group")
         .accessibilityIdentifier("vault.filter.\(filter.rawValue)")
         .accessibilityAddTraits(isSelected ? [.isSelected] : [])
+        .fixedSize(horizontal: true, vertical: true)
     }
 
     /// Opens the detail screen with the shared card animation.

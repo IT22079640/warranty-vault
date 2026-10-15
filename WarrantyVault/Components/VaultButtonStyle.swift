@@ -26,12 +26,13 @@ private struct StyledLabel: View {
     var body: some View {
         configuration.label
             .font(Theme.Fonts.headline)
+            .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity)
             .padding(.vertical, Theme.Spacing.small)
             .padding(.horizontal, Theme.Spacing.medium)
-            .foregroundStyle(Theme.Colors.deepBlue)
+            .foregroundStyle(isEnabled ? Theme.Colors.buttonInk : Color.secondary)
             .background(
-                Theme.Colors.amber.opacity(fillOpacity),
+                Theme.Colors.buttonFill.opacity(fillOpacity),
                 in: RoundedRectangle(cornerRadius: 12)
             )
     }
@@ -39,8 +40,8 @@ private struct StyledLabel: View {
     /// Dims the fill while pressed or disabled.
     private var fillOpacity: Double {
         if !isEnabled {
-            return 0.15
+            return 0.35
         }
-        return configuration.isPressed ? 0.4 : 0.28
+        return configuration.isPressed ? 0.75 : 1
     }
 }

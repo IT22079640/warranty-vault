@@ -13,10 +13,10 @@ import SwiftUI
 struct StorageUnavailableView: View {
     var body: some View {
         PlaceholderScreen(
-            title: "Storage unavailable",
-            message: "Warranty Vault could not open saved receipts. Quit the app and open it again.",
+            title: String(localized: "Storage unavailable"),
+            message: String(localized: "Warranty Vault could not open saved receipts. Quit the app and open it again."),
             systemImage: "externaldrive.badge.exclamationmark",
-            symbolColor: Theme.Colors.amber,
+            symbolColor: Theme.Colors.amberInk,
             accessibilityIdentifier: "screen.storageUnavailable"
         )
     }

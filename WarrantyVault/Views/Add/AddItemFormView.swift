@@ -25,7 +25,7 @@ struct AddItemFormView: View {
                 Section {
                     Text(readNotice)
                         .font(Theme.Fonts.callout)
-                        .foregroundStyle(Theme.Colors.amber)
+                        .foregroundStyle(Theme.Colors.amberInk)
                         .accessibilityIdentifier("add.readNotice")
                 }
             }
@@ -52,8 +52,8 @@ struct AddItemFormView: View {
                 Button("Done") {
                     focusedField = nil
                 }
-                .accessibilityLabel("Done")
-                .accessibilityHint("Hides the keyboard")
+                .accessibilityLabel(String(localized: "Done"))
+                .accessibilityHint(String(localized: "Hides the keyboard"))
                 .accessibilityIdentifier("add.keyboardDone")
             }
         }
@@ -78,14 +78,14 @@ struct AddItemFormView: View {
                 needsReview: model.categoryNeedsReview,
                 accessibilityIdentifier: "add.category"
             ) {
-                Picker("Category", selection: categoryBinding) {
-                    ForEach(ItemCategory.allCases) { category in
-                        Label(category.title, systemImage: category.symbolName).tag(category)
-                    }
-                }
-                .font(Theme.Fonts.body)
-                .accessibilityLabel("Category")
-                .accessibilityIdentifier("add.category")
+                AccessibleChoicePicker(
+                    title: String(localized: "Category"),
+                    selection: categoryBinding,
+                    options: ItemCategory.allCases,
+                    optionTitle: { $0.title },
+                    optionSymbol: { $0.symbolName },
+                    accessibilityIdentifier: "add.category"
+                )
             }
         }
     }
@@ -107,10 +107,11 @@ struct AddItemFormView: View {
                 needsReview: model.dateNeedsReview,
                 accessibilityIdentifier: "add.purchaseDate"
             ) {
-                DatePicker("Purchase date", selection: dateBinding, displayedComponents: .date)
-                    .font(Theme.Fonts.body)
-                    .accessibilityLabel("Purchase date")
-                    .accessibilityIdentifier("add.purchaseDate")
+                AccessibleDatePicker(
+                    title: String(localized: "Purchase date"),
+                    selection: dateBinding,
+                    accessibilityIdentifier: "add.purchaseDate"
+                )
             }
             ReviewableField(
                 needsReview: model.amountNeedsReview,
@@ -131,14 +132,13 @@ struct AddItemFormView: View {
     private func coverSection(_ model: AddItemViewModel) -> some View {
         @Bindable var model = model
         return Section("Warranty") {
-            Picker("Warranty length", selection: $model.warrantyLength) {
-                ForEach(WarrantyLengthOption.allCases) { option in
-                    Text(option.title).tag(option)
-                }
-            }
-            .font(Theme.Fonts.body)
-            .accessibilityLabel("Warranty length")
-            .accessibilityIdentifier("add.warrantyLength")
+            AccessibleChoicePicker(
+                title: String(localized: "Warranty length"),
+                selection: $model.warrantyLength,
+                options: WarrantyLengthOption.allCases,
+                optionTitle: { $0.title },
+                accessibilityIdentifier: "add.warrantyLength"
+            )
             if model.warrantyLength == .custom {
                 ReviewableField(
                     needsReview: false,
@@ -159,7 +159,7 @@ struct AddItemFormView: View {
             }
             TextField("Notes", text: $model.notes, axis: .vertical)
                 .font(Theme.Fonts.body)
-                .lineLimit(3...6)
+                .lineLimit(3...)
                 .focused($focusedField, equals: .notes)
                 .accessibilityLabel("Notes")
                 .accessibilityIdentifier("add.notes")

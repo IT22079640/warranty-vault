@@ -19,10 +19,26 @@ struct InsightsView: View {
         @Bindable var router = router
         TabNavigationStack(title: AppTab.insights.title, path: $router.insightsPath) {
             Group {
-                if model.summary.isEmpty {
+                if model.isLoading && model.summary.isEmpty && model.loadError == nil {
+                    LoadingScreen(
+                        message: String(localized: "Loading insights…"),
+                        accessibilityIdentifier: "screen.insights.loading"
+                    )
+                } else if let loadError = model.loadError {
                     PlaceholderScreen(
-                        title: "No insights yet",
-                        message: "Save a warranty and charts for category, spending, and upcoming expiries will appear here.",
+                        title: String(localized: "Insights unavailable"),
+                        message: loadError,
+                        systemImage: "exclamationmark.triangle",
+                        symbolColor: Theme.Colors.amberInk,
+                        accessibilityIdentifier: "screen.insights.error",
+                        actionTitle: String(localized: "Try again"),
+                        actionIdentifier: "insights.retry",
+                        action: { model.reload(using: repository) }
+                    )
+                } else if model.summary.isEmpty {
+                    PlaceholderScreen(
+                        title: String(localized: "No insights yet"),
+                        message: String(localized: "Save a warranty and charts for category, spending, and upcoming expiries will appear here."),
                         systemImage: AppTab.insights.systemImage,
                         symbolColor: Theme.Colors.deepBlue,
                         accessibilityIdentifier: "screen.insights.empty"
@@ -39,26 +55,6 @@ struct InsightsView: View {
                     model.reload(using: repository)
                 }
             }
-            .alert("Insights", isPresented: errorIsPresented) {
-                Button("OK", role: .cancel) {
-                    model.loadError = nil
-                }
-                .accessibilityIdentifier("insights.error.ok")
-            } message: {
-                Text(model.loadError ?? "")
-            }
         }
-    }
-
-    /// True while a load failure should be shown.
-    private var errorIsPresented: Binding<Bool> {
-        Binding(
-            get: { model.loadError != nil },
-            set: { isPresented in
-                if !isPresented {
-                    model.loadError = nil
-                }
-            }
-        )
     }
 }

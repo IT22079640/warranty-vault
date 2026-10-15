@@ -28,11 +28,11 @@ enum WarrantyStatus: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .active:
-            "Active"
+            String(localized: "Active")
         case .expiringSoon:
-            "Expiring soon"
+            String(localized: "Expiring soon")
         case .expired:
-            "Expired"
+            String(localized: "Expired")
         }
     }
 
@@ -54,7 +54,7 @@ enum WarrantyStatus: String, CaseIterable, Identifiable {
         case .active:
             .green
         case .expiringSoon:
-            Theme.Colors.amber
+            Theme.Colors.amberInk
         case .expired:
             .red
         }

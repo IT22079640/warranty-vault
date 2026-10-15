@@ -112,12 +112,12 @@ final class AddItemViewModel {
         defer { isImporting = false }
         do {
             guard let data = try await item.loadData(), let image = UIImage(data: data) else {
-                importError = "That photo could not be opened."
+                importError = String(localized: "That photo could not be opened.")
                 return
             }
             beginScan(with: image)
         } catch {
-            importError = "That photo could not be opened."
+            importError = String(localized: "That photo could not be opened.")
         }
     }
 
@@ -128,10 +128,10 @@ final class AddItemViewModel {
         defer { isImporting = false }
         switch result {
         case .failure:
-            importError = "That file could not be opened."
+            importError = String(localized: "That file could not be opened.")
         case .success(let urls):
             guard let url = urls.first else {
-                importError = "Choose a photo or a PDF."
+                importError = String(localized: "Choose a photo or a PDF.")
                 return
             }
             await importFile(at: url)
@@ -161,7 +161,7 @@ final class AddItemViewModel {
             guard token == scanID, !Task.isCancelled else {
                 return
             }
-            readNotice = "The receipt could not be read. Enter the details yourself."
+            readNotice = String(localized: "The receipt could not be read. Enter the details yourself.")
         }
         let elapsed = started.duration(to: .now)
         if elapsed < minimumReadDuration {
@@ -259,7 +259,7 @@ final class AddItemViewModel {
             return false
         }
         guard let repository else {
-            saveError = "Warranty Vault could not open saved receipts."
+            saveError = String(localized: "Warranty Vault could not open saved receipts.")
             SaveHaptic.notifyFailure()
             return false
         }
@@ -273,7 +273,7 @@ final class AddItemViewModel {
         do {
             if let editingID {
                 guard let existing = try repository.item(id: editingID) else {
-                    saveError = "This warranty is no longer in the vault."
+                    saveError = String(localized: "This warranty is no longer in the vault.")
                     SaveHaptic.notifyFailure()
                     return false
                 }
@@ -296,7 +296,7 @@ final class AddItemViewModel {
                     calendar: calendar
                 )
                 SaveHaptic.notifySuccess()
-                savedMessage = "Warranty updated."
+                savedMessage = String(localized: "Warranty updated.")
                 return true
             }
             let created = try repository.create(
@@ -320,14 +320,14 @@ final class AddItemViewModel {
             clearForm()
             receiptImage = nil
             receiptJPEG = nil
-            savedMessage = "Warranty saved."
+            savedMessage = String(localized: "Warranty saved.")
             return true
         } catch let error as WarrantyRepositoryError {
             saveError = error.message
             SaveHaptic.notifyFailure()
             return false
         } catch {
-            saveError = "The warranty could not be saved."
+            saveError = String(localized: "The warranty could not be saved.")
             SaveHaptic.notifyFailure()
             return false
         }
@@ -353,7 +353,7 @@ final class AddItemViewModel {
     /// Downscales `image` and moves to the scanning screen.
     private func beginScan(with image: UIImage) {
         guard let prepared = ReceiptImagePrep.downscaledJPEG(from: image) else {
-            importError = "That image could not be prepared."
+            importError = String(localized: "That image could not be prepared.")
             return
         }
         clearForm()
@@ -377,12 +377,12 @@ final class AddItemViewModel {
                 try Data(contentsOf: url)
             }.value
             guard let image = ReceiptDocumentImage.image(from: data) else {
-                importError = "Choose a photo or a PDF."
+                importError = String(localized: "Choose a photo or a PDF.")
                 return
             }
             beginScan(with: image)
         } catch {
-            importError = "That file could not be read."
+            importError = String(localized: "That file could not be read.")
         }
     }
 

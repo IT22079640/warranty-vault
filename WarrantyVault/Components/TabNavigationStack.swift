@@ -14,8 +14,9 @@ struct TabNavigationStack<Content: View>: View {
     private let title: String
     @Binding private var path: NavigationPath
     private let content: Content
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    /// Creates a stack with a large title and placeholder destinations for `Route`.
+    /// Creates a stack with a title and the shared route destinations.
     init(title: String, path: Binding<NavigationPath>, @ViewBuilder content: () -> Content) {
         self.title = title
         self._path = path
@@ -26,10 +27,15 @@ struct TabNavigationStack<Content: View>: View {
         NavigationStack(path: $path) {
             content
                 .navigationTitle(title)
-                .navigationBarTitleDisplayMode(.large)
+                .navigationBarTitleDisplayMode(titleDisplayMode)
                 .navigationDestination(for: Route.self) { route in
                     AppRouteView(route: route)
                 }
         }
+    }
+
+    /// Large title at normal sizes, inline when text is an accessibility size.
+    private var titleDisplayMode: NavigationBarItem.TitleDisplayMode {
+        dynamicTypeSize.isAccessibilitySize ? .inline : .large
     }
 }

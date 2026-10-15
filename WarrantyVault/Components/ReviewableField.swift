@@ -36,7 +36,7 @@ struct ReviewableField<Content: View>: View {
             if needsReview {
                 Text("Check this. It was read from the receipt.")
                     .font(Theme.Fonts.caption)
-                    .foregroundStyle(Theme.Colors.amber)
+                    .foregroundStyle(Theme.Colors.amberInk)
                     .accessibilityIdentifier("\(accessibilityIdentifier).review")
             }
             if let errorMessage {

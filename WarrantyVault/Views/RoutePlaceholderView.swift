@@ -16,7 +16,7 @@ struct RoutePlaceholderView: View {
     var body: some View {
         PlaceholderScreen(
             title: route.title,
-            message: "Details for this \(route.title.lowercased()) will appear here.",
+            message: String(localized: "Details for this screen will appear here."),
             systemImage: route.systemImage,
             symbolColor: Theme.Colors.deepBlue,
             accessibilityIdentifier: route.accessibilityIdentifier

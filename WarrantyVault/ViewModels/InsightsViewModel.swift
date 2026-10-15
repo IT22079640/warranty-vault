@@ -15,6 +15,7 @@ import Observation
 @Observable
 final class InsightsViewModel {
     private(set) var summary: InsightsSummary = .empty
+    private(set) var isLoading = true
     var loadError: String?
 
     /// Rebuilds the summary from unarchived warranties.
@@ -23,9 +24,11 @@ final class InsightsViewModel {
         on date: Date = .now,
         calendar: Calendar = .current
     ) {
+        isLoading = true
+        defer { isLoading = false }
         guard let repository else {
             summary = .empty
-            loadError = "Warranty Vault could not open saved receipts."
+            loadError = String(localized: "Warranty Vault could not open saved receipts.")
             return
         }
         do {
@@ -36,7 +39,7 @@ final class InsightsViewModel {
             loadError = nil
         } catch {
             summary = .empty
-            loadError = "Insights could not be loaded."
+            loadError = String(localized: "Insights could not be loaded.")
         }
     }
 }

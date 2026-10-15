@@ -16,6 +16,8 @@ struct ExpiryRing: View {
     let status: WarrantyStatus
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @ScaledMetric(relativeTo: .title2) private var ringDiameter: CGFloat = 128
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var drawnProgress: Double = 0
 
     var body: some View {
@@ -38,13 +40,13 @@ struct ExpiryRing: View {
                 Text(centerCaption)
                     .font(Theme.Fonts.caption)
                     .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.7)
+                    .lineLimit(2)
             }
             .padding(Theme.Spacing.medium)
         }
-        .frame(
-            width: Theme.Spacing.extraLarge * 4,
-            height: Theme.Spacing.extraLarge * 4
-        )
+        .frame(width: drawnDiameter, height: drawnDiameter)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(WarrantySummary.daysLabel(daysRemaining))
         .accessibilityIdentifier("detail.expiryRing")
@@ -52,6 +54,11 @@ struct ExpiryRing: View {
         .onChange(of: progress) { _, newValue in
             drawnProgress = clamped(newValue)
         }
+    }
+
+    /// Keeps the ring from crowding out the title when Dynamic Type is very large.
+    private var drawnDiameter: CGFloat {
+        dynamicTypeSize.isAccessibilitySize ? min(ringDiameter, 220) : ringDiameter
     }
 
     /// Number shown inside the ring.
@@ -62,12 +69,12 @@ struct ExpiryRing: View {
     /// Word under the number, such as "days" or "overdue".
     private var centerCaption: String {
         if daysRemaining < 0 {
-            return "overdue"
+            return String(localized: "overdue")
         }
         if daysRemaining == 1 {
-            return "day"
+            return String(localized: "day")
         }
-        return "days"
+        return String(localized: "days")
     }
 
     /// Draws the arc, skipping the motion when Reduce Motion is on.

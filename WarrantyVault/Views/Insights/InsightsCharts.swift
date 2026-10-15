@@ -13,6 +13,7 @@ import SwiftUI
 /// Category, spending, and expiry charts plus the protected-value card.
 struct InsightsCharts: View {
     let summary: InsightsSummary
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         ScrollView {
@@ -29,17 +30,21 @@ struct InsightsCharts: View {
 
     /// Total value still covered, and how many warranties are close to ending.
     private var summaryCard: some View {
-        HStack(alignment: .top, spacing: Theme.Spacing.medium) {
-            metric(
-                title: "Total value protected",
-                value: AddItemRules.amountText(from: Decimal(summary.protectedValue)),
-                identifier: "insights.protectedValue"
-            )
-            metric(
-                title: "Expiring soon",
-                value: "\(summary.expiringSoonCount)",
-                identifier: "insights.expiringSoonCount"
-            )
+        ViewThatFits(in: .horizontal) {
+            summaryMetrics
+                .frame(minWidth: 360, alignment: .leading)
+            VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
+                metric(
+                    title: String(localized: "Total value protected"),
+                    value: AddItemRules.amountText(from: Decimal(summary.protectedValue)),
+                    identifier: "insights.protectedValue"
+                )
+                metric(
+                    title: String(localized: "Expiring soon"),
+                    value: "\(summary.expiringSoonCount)",
+                    identifier: "insights.expiringSoonCount"
+                )
+            }
         }
         .cardStyle()
         .accessibilityElement(children: .combine)
@@ -47,30 +52,39 @@ struct InsightsCharts: View {
         .accessibilityIdentifier("insights.summary")
     }
 
+    /// The two headline numbers side by side.
+    private var summaryMetrics: some View {
+        HStack(alignment: .top, spacing: Theme.Spacing.medium) {
+            metric(
+                title: String(localized: "Total value protected"),
+                value: AddItemRules.amountText(from: Decimal(summary.protectedValue)),
+                identifier: "insights.protectedValue"
+            )
+            metric(
+                title: String(localized: "Expiring soon"),
+                value: "\(summary.expiringSoonCount)",
+                identifier: "insights.expiringSoonCount"
+            )
+        }
+    }
+
     /// How many saved warranties sit in each category.
     private var categoryChart: some View {
-        chartSection(title: "Items by category", identifier: "insights.categories") {
-            Chart(summary.categoryCounts) { entry in
-                BarMark(
-                    x: .value("Category", entry.category.title),
-                    y: .value("Items", entry.count)
-                )
-                .foregroundStyle(entry.category.color)
-                .accessibilityLabel("\(entry.category.title), \(entry.count) items")
-            }
-            .frame(height: chartHeight)
-            .chartYAxis {
-                AxisMarks { _ in
-                    AxisGridLine()
-                    AxisValueLabel()
-                        .font(Theme.Fonts.caption)
+        chartSection(title: String(localized: "Items by category"), identifier: "insights.categories") {
+            if prefersText {
+                textRows(summary.categoryCounts.map { "\($0.category.title): \($0.count)" })
+            } else {
+                Chart(summary.categoryCounts) { entry in
+                    BarMark(
+                        x: .value("Category", entry.category.title),
+                        y: .value("Items", entry.count)
+                    )
+                    .foregroundStyle(entry.category.color)
+                    .accessibilityLabel(LocalizedFormat.string("%@, %lld items", entry.category.title, Int64(entry.count)))
                 }
-            }
-            .chartXAxis {
-                AxisMarks { _ in
-                    AxisValueLabel()
-                        .font(Theme.Fonts.caption)
-                }
+                .frame(height: chartHeight)
+                .chartYAxis { axisMarks }
+                .chartXAxis { axisMarks }
             }
         }
         .accessibilityLabel(categoryLabel)
@@ -78,27 +92,26 @@ struct InsightsCharts: View {
 
     /// Purchase totals grouped by month.
     private var spendingChart: some View {
-        chartSection(title: "Spending by month", identifier: "insights.spending") {
-            Chart(summary.monthlySpend) { entry in
-                BarMark(
-                    x: .value("Month", entry.monthStart, unit: .month),
-                    y: .value("Spent", entry.total)
-                )
-                .foregroundStyle(Theme.Colors.deepBlue)
-                .accessibilityLabel(spendLabel(for: entry))
-            }
-            .frame(height: chartHeight)
-            .chartYAxis {
-                AxisMarks { _ in
-                    AxisGridLine()
-                    AxisValueLabel()
-                        .font(Theme.Fonts.caption)
+        chartSection(title: String(localized: "Spending by month"), identifier: "insights.spending") {
+            if prefersText {
+                textRows(summary.monthlySpend.map { spendLabel(for: $0) })
+            } else {
+                Chart(summary.monthlySpend) { entry in
+                    BarMark(
+                        x: .value("Month", entry.monthStart, unit: .month),
+                        y: .value("Spent", entry.total)
+                    )
+                    .foregroundStyle(Theme.Colors.deepBlue)
+                    .accessibilityLabel(spendLabel(for: entry))
                 }
-            }
-            .chartXAxis {
-                AxisMarks(values: .stride(by: .month)) { _ in
-                    AxisValueLabel(format: .dateTime.month(.abbreviated).year())
-                        .font(Theme.Fonts.caption)
+                .frame(height: chartHeight)
+                .chartYAxis { axisMarks }
+                .chartXAxis {
+                    AxisMarks(values: .stride(by: .month)) { _ in
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.month(.abbreviated).year())
+                            .font(Theme.Fonts.caption)
+                    }
                 }
             }
         }
@@ -107,13 +120,16 @@ struct InsightsCharts: View {
 
     /// Each warranty that still has cover, placed on its expiry date.
     private var timelineChart: some View {
-        chartSection(title: "Upcoming expiries", identifier: "insights.timeline") {
+        chartSection(title: String(localized: "Upcoming expiries"), identifier: "insights.timeline") {
             if summary.upcoming.isEmpty {
-                Text("No warranties are still in date.")
+                Text(String(localized: "No warranties are still in date."))
                     .font(Theme.Fonts.body)
                     .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .accessibilityIdentifier("insights.timeline.empty")
+            } else if prefersText {
+                textRows(summary.upcoming.map { "\($0.name), \(WarrantySummary.daysLabel($0.daysRemaining))" })
             } else {
                 Chart(summary.upcoming) { entry in
                     PointMark(
@@ -132,15 +148,36 @@ struct InsightsCharts: View {
                             .font(Theme.Fonts.caption)
                     }
                 }
-                .chartYAxis {
-                    AxisMarks { _ in
-                        AxisValueLabel()
-                            .font(Theme.Fonts.caption)
-                    }
-                }
+                .chartYAxis { axisMarks }
             }
         }
         .accessibilityLabel(timelineLabel)
+    }
+
+    /// True when charts should be replaced by wrapping text.
+    private var prefersText: Bool {
+        dynamicTypeSize.isAccessibilitySize
+    }
+
+    /// Shared axis styling that uses a scaling text style.
+    private var axisMarks: some AxisContent {
+        AxisMarks { _ in
+            AxisGridLine()
+            AxisValueLabel()
+                .font(Theme.Fonts.caption)
+        }
+    }
+
+    /// Wrapping rows used at the largest Dynamic Type sizes.
+    private func textRows(_ lines: [String]) -> some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.small) {
+            ForEach(Array(lines.enumerated()), id: \.offset) { _, line in
+                Text(line)
+                    .font(Theme.Fonts.body)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
     }
 
     /// Height of the category and spending charts.
@@ -156,7 +193,11 @@ struct InsightsCharts: View {
     /// Spoken summary of the two headline numbers.
     private var summaryLabel: String {
         let amount = AddItemRules.amountText(from: Decimal(summary.protectedValue))
-        return "Total value protected \(amount). Expiring soon \(summary.expiringSoonCount)."
+        return LocalizedFormat.string(
+            "Total value protected %@. Expiring soon %lld.",
+            amount,
+            Int64(summary.expiringSoonCount)
+        )
     }
 
     /// Spoken category counts.
@@ -189,8 +230,7 @@ struct InsightsCharts: View {
             Text(value)
                 .font(Theme.Fonts.title2)
                 .foregroundStyle(Theme.Colors.deepBlue)
-                .minimumScaleFactor(0.6)
-                .lineLimit(1)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityIdentifier(identifier)

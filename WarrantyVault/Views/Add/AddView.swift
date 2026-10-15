@@ -19,6 +19,7 @@ struct AddView: View {
     @State private var showPhotos = false
     @State private var showFiles = false
     @State private var photoItem: PhotosPickerItem?
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         @Bindable var router = router
@@ -42,54 +43,64 @@ struct AddView: View {
         }
     }
 
-    /// Import and manual-entry actions.
+    /// Import and manual-entry actions. The stack scrolls when Dynamic Type is large.
     private var entry: some View {
-        VStack(spacing: Theme.Spacing.large) {
-            if let savedMessage = model.savedMessage {
-                Text(savedMessage)
-                    .font(Theme.Fonts.callout)
-                    .foregroundStyle(Theme.Colors.deepBlue)
-                    .accessibilityIdentifier("add.savedMessage")
-            }
-            Text("Add a warranty from a receipt, or type the details yourself.")
-                .font(Theme.Fonts.body)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-            if model.isImporting {
-                ProgressView("Opening receipt…")
+        ScrollView {
+            VStack(spacing: dynamicTypeSize.isAccessibilitySize ? Theme.Spacing.medium : Theme.Spacing.large) {
+                if let savedMessage = model.savedMessage {
+                    Text(savedMessage)
+                        .font(Theme.Fonts.callout)
+                        .foregroundStyle(Theme.Colors.deepBlue)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityIdentifier("add.savedMessage")
+                }
+                Text("Add a warranty from a receipt, or type the details yourself.")
                     .font(Theme.Fonts.body)
-                    .accessibilityIdentifier("add.importProgress")
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                if model.isImporting {
+                    ProgressView("Opening receipt…")
+                        .font(Theme.Fonts.body)
+                        .accessibilityIdentifier("add.importProgress")
+                }
+                Button("Import receipt") {
+                    showSources = true
+                }
+                .buttonStyle(VaultButtonStyle())
+                .disabled(model.isImporting)
+                .accessibilityLabel("Import receipt")
+                .accessibilityHint("Opens Photos or Files. The camera is not used.")
+                .accessibilityIdentifier("add.importReceipt")
+                Button("Enter manually") {
+                    model.startManualEntry()
+                }
+                .buttonStyle(.bordered)
+                .tint(Theme.Colors.deepBlue)
+                .disabled(model.isImporting)
+                .accessibilityLabel("Enter manually")
+                .accessibilityHint("Skips reading a receipt")
+                .accessibilityIdentifier("add.enterManually")
             }
-            Button("Import receipt") {
-                showSources = true
-            }
-            .buttonStyle(VaultButtonStyle())
-            .disabled(model.isImporting)
-            .accessibilityLabel("Import receipt")
-            .accessibilityHint("Opens Photos or Files. The camera is not used.")
-            .accessibilityIdentifier("add.importReceipt")
-            Button("Enter manually") {
-                model.startManualEntry()
-            }
-            .buttonStyle(.bordered)
-            .tint(Theme.Colors.deepBlue)
-            .disabled(model.isImporting)
-            .accessibilityLabel("Enter manually")
-            .accessibilityHint("Skips reading a receipt")
-            .accessibilityIdentifier("add.enterManually")
+            .screenPadding()
+            .padding(.bottom, Theme.Spacing.extraLarge)
+            .frame(maxWidth: .infinity)
         }
-        .screenPadding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .confirmationDialog("Import a receipt", isPresented: $showSources, titleVisibility: .visible) {
             Button("Photo Library") {
                 showPhotos = true
             }
+            .accessibilityLabel(String(localized: "Photo Library"))
             .accessibilityIdentifier("add.photoLibrary")
             Button("Choose File") {
                 showFiles = true
             }
+            .accessibilityLabel(String(localized: "Choose File"))
             .accessibilityIdentifier("add.chooseFile")
             Button("Cancel", role: .cancel) {}
+                .accessibilityLabel(String(localized: "Cancel"))
+                .accessibilityIdentifier("add.importCancel")
         } message: {
             Text("Pick a photo or a PDF. Warranty Vault reads it on this device.")
         }
@@ -116,6 +127,7 @@ struct AddView: View {
             Button("OK", role: .cancel) {
                 model.importError = nil
             }
+            .accessibilityLabel(String(localized: "OK"))
             .accessibilityIdentifier("add.importErrorOK")
         } message: {
             Text(model.importError ?? "")

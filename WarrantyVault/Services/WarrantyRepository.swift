@@ -89,11 +89,11 @@ enum WarrantyRepositoryError: Error, Equatable {
     var message: String {
         switch self {
         case .emptyName:
-            "Enter a product name."
+            String(localized: "Enter a product name.")
         case .negativeAmount:
-            "Amount cannot be negative."
+            String(localized: "Amount cannot be negative.")
         case .negativeWarrantyLength:
-            "Warranty length cannot be negative."
+            String(localized: "Warranty length cannot be negative.")
         }
     }
 }
@@ -196,6 +196,15 @@ final class WarrantyRepository {
     /// Removes a warranty and saves.
     func delete(_ item: WarrantyItem) throws {
         context.delete(item)
+        try context.save()
+    }
+
+    /// Removes every warranty, archived or not, and saves.
+    func deleteAll() throws {
+        let items = try context.fetch(FetchDescriptor<WarrantyItem>())
+        for item in items {
+            context.delete(item)
+        }
         try context.save()
     }
 

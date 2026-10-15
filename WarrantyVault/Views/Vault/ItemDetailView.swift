@@ -15,6 +15,7 @@ struct ItemDetailView: View {
 
     @Environment(AppRouter.self) private var router
     @Environment(\.warrantyRepository) private var repository
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var item: WarrantyItem?
     @State private var loadFailed = false
 
@@ -24,8 +25,8 @@ struct ItemDetailView: View {
                 detail(for: item)
             } else if loadFailed {
                 PlaceholderScreen(
-                    title: "Warranty unavailable",
-                    message: "This warranty is no longer in the vault.",
+                    title: String(localized: "Warranty unavailable"),
+                    message: String(localized: "This warranty is no longer in the vault."),
                     systemImage: "questionmark.folder",
                     symbolColor: Theme.Colors.amber,
                     accessibilityIdentifier: "screen.warranty.missing"
@@ -79,28 +80,63 @@ struct ItemDetailView: View {
     }
 
     /// Ring and title that continue the vault card animation.
+    @ViewBuilder
     private func header(for item: WarrantyItem) -> some View {
         let status = item.status
         let days = WarrantySummary.daysRemaining(for: item)
-        return HStack(alignment: .center, spacing: Theme.Spacing.medium) {
-            ExpiryRing(
-                daysRemaining: days,
-                progress: WarrantySummary.coverProgress(for: item),
-                status: status
-            )
-            VStack(alignment: .leading, spacing: Theme.Spacing.extraSmall) {
-                Text(item.name)
-                    .font(Theme.Fonts.title2)
-                    .foregroundStyle(Theme.Colors.deepBlue)
-                Text(status.title)
-                    .font(Theme.Fonts.headline)
-                    .foregroundStyle(status.color)
-                Text(WarrantySummary.daysLabel(days))
-                    .font(Theme.Fonts.subheadline)
-                    .foregroundStyle(.secondary)
+        if dynamicTypeSize.isAccessibilitySize {
+            stackedHeader(for: item, status: status, days: days)
+        } else {
+            ViewThatFits(in: .horizontal) {
+                wideHeader(for: item, status: status, days: days)
+                    .frame(minWidth: 320, alignment: .leading)
+                stackedHeader(for: item, status: status, days: days)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    /// Ring beside the title when the row is wide enough.
+    private func wideHeader(for item: WarrantyItem, status: WarrantyStatus, days: Int) -> some View {
+        HStack(alignment: .center, spacing: Theme.Spacing.medium) {
+            expiryRing(for: item, status: status, days: days)
+            headerText(for: item, status: status, days: days)
+        }
+    }
+
+    /// Ring above the title when large text needs the full width.
+    private func stackedHeader(for item: WarrantyItem, status: WarrantyStatus, days: Int) -> some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
+            expiryRing(for: item, status: status, days: days)
+            headerText(for: item, status: status, days: days)
+        }
+    }
+
+    /// Days-remaining ring for the detail header.
+    private func expiryRing(for item: WarrantyItem, status: WarrantyStatus, days: Int) -> some View {
+        ExpiryRing(
+            daysRemaining: days,
+            progress: WarrantySummary.coverProgress(for: item),
+            status: status
+        )
+    }
+
+    /// Name, status, and day count beside or under the ring.
+    private func headerText(for item: WarrantyItem, status: WarrantyStatus, days: Int) -> some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.extraSmall) {
+            Text(item.name)
+                .font(Theme.Fonts.title2)
+                .foregroundStyle(Theme.Colors.deepBlue)
+                .fixedSize(horizontal: false, vertical: true)
+            Text(status.title)
+                .font(Theme.Fonts.headline)
+                .foregroundStyle(status.color)
+                .fixedSize(horizontal: false, vertical: true)
+            Text(WarrantySummary.daysLabel(days))
+                .font(Theme.Fonts.subheadline)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     /// Zoomable receipt, or a short note when no photo was saved.
@@ -113,6 +149,7 @@ struct ItemDetailView: View {
             Text("No receipt photo")
                 .font(Theme.Fonts.body)
                 .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .cardStyle()
                 .accessibilityIdentifier("detail.receiptMissing")
@@ -122,14 +159,14 @@ struct ItemDetailView: View {
     /// Stored fields that are not already in the header.
     private func facts(for item: WarrantyItem) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
-            fact("Store", value: item.store.isEmpty ? "Not recorded" : item.store)
-            fact("Category", value: item.category.title)
-            fact("Purchased", value: item.purchaseDate.formatted(date: .abbreviated, time: .omitted))
-            fact("Amount", value: AddItemRules.amountText(from: Decimal(item.amount)))
-            fact("Warranty", value: "\(item.warrantyMonths) months")
-            fact("Expires", value: item.expiryDate.formatted(date: .abbreviated, time: .omitted))
+            fact(String(localized: "Store"), value: item.store.isEmpty ? String(localized: "Not recorded") : item.store)
+            fact(String(localized: "Category"), value: item.category.title)
+            fact(String(localized: "Purchased"), value: item.purchaseDate.formatted(date: .abbreviated, time: .omitted))
+            fact(String(localized: "Amount"), value: AddItemRules.amountText(from: Decimal(item.amount)))
+            fact(String(localized: "Warranty"), value: LocalizedFormat.string("%lld months", Int64(item.warrantyMonths)))
+            fact(String(localized: "Expires"), value: item.expiryDate.formatted(date: .abbreviated, time: .omitted))
             if !item.notes.isEmpty {
-                fact("Notes", value: item.notes)
+                fact(String(localized: "Notes"), value: item.notes)
             }
         }
         .cardStyle()

@@ -24,15 +24,15 @@ enum WarrantyLengthOption: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .six:
-            "6 months"
+            String(localized: "6 months")
         case .twelve:
-            "12 months"
+            String(localized: "12 months")
         case .twentyFour:
-            "24 months"
+            String(localized: "24 months")
         case .thirtySix:
-            "36 months"
+            String(localized: "36 months")
         case .custom:
-            "Custom"
+            String(localized: "Custom")
         }
     }
 
@@ -101,16 +101,16 @@ enum AddItemRules {
     ) -> AddItemValidation {
         var result = AddItemValidation()
         if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            result.productName = "Enter a product name."
+            result.productName = String(localized: "Enter a product name.")
         }
         if amountText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            result.amount = "Enter the amount paid."
+            result.amount = String(localized: "Enter the amount paid.")
         } else if let amount = amount(from: amountText) {
             if amount < 0 {
-                result.amount = "Amount cannot be negative."
+                result.amount = String(localized: "Amount cannot be negative.")
             }
         } else {
-            result.amount = "Enter an amount such as 1500.00."
+            result.amount = String(localized: "Enter an amount such as 1500.00.")
         }
         result.warrantyLength = warrantyMessage(length: length, customMonths: customMonths)
         return result
@@ -123,16 +123,16 @@ enum AddItemRules {
         }
         let trimmed = customMonths.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
-            return "Enter how many months the warranty lasts."
+            return String(localized: "Enter how many months the warranty lasts.")
         }
         guard let months = Int(trimmed) else {
-            return "Enter the warranty length in whole months."
+            return String(localized: "Enter the warranty length in whole months.")
         }
         if months < 0 {
-            return "Warranty length cannot be negative."
+            return String(localized: "Warranty length cannot be negative.")
         }
         if months > 600 {
-            return "Enter a warranty length up to 600 months."
+            return String(localized: "Enter a warranty length up to 600 months.")
         }
         return nil
     }

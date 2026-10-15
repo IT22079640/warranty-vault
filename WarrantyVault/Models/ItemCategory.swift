@@ -25,17 +25,17 @@ enum ItemCategory: String, CaseIterable, Codable, Identifiable {
     var title: String {
         switch self {
         case .phone:
-            "Phone"
+            String(localized: "Phone")
         case .laptop:
-            "Laptop"
+            String(localized: "Laptop")
         case .appliance:
-            "Appliance"
+            String(localized: "Appliance")
         case .furniture:
-            "Furniture"
+            String(localized: "Furniture")
         case .vehicle:
-            "Vehicle"
+            String(localized: "Vehicle")
         case .other:
-            "Other"
+            String(localized: "Other")
         }
     }
 

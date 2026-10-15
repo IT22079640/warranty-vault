@@ -26,15 +26,15 @@ enum Route: Hashable {
     var title: String {
         switch self {
         case .receipt:
-            "Receipt"
+            String(localized: "Receipt")
         case .warranty:
-            "Warranty"
+            String(localized: "Warranty")
         case .addReview:
-            "Reading receipt"
+            String(localized: "Reading receipt")
         case .addForm:
-            "Warranty details"
+            String(localized: "Warranty details")
         case .editWarranty:
-            "Edit warranty"
+            String(localized: "Edit warranty")
         }
     }
 
@@ -82,13 +82,13 @@ enum AppTab: Hashable, CaseIterable {
     var title: String {
         switch self {
         case .vault:
-            "Vault"
+            String(localized: "Vault")
         case .add:
-            "Add"
+            String(localized: "Add")
         case .insights:
-            "Insights"
+            String(localized: "Insights")
         case .settings:
-            "Settings"
+            String(localized: "Settings")
         }
     }
 
@@ -110,13 +110,13 @@ enum AppTab: Hashable, CaseIterable {
     var accessibilityHint: String {
         switch self {
         case .vault:
-            "Shows saved receipts and warranty cards"
+            String(localized: "Shows saved receipts and warranty cards")
         case .add:
-            "Imports a receipt from Photos or Files"
+            String(localized: "Imports a receipt from Photos or Files")
         case .insights:
-            "Shows warranty expiry summaries"
+            String(localized: "Shows warranty expiry summaries")
         case .settings:
-            "Opens reminder and app preferences"
+            String(localized: "Opens reminder and app preferences")
         }
     }
 

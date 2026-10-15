@@ -22,6 +22,15 @@ enum Theme {
 
         /// Secondary brand color: amber, lifted slightly in dark mode so it stays readable.
         static let amber = Color("Amber")
+
+        /// Amber dark enough for small text on white, and light enough on a dark background.
+        static let amberInk = Color("AmberInk")
+
+        /// Dark navy used on amber buttons in both light and dark mode.
+        static let buttonInk = Color("ButtonInk")
+
+        /// Light amber fill behind button text so the navy label stays readable.
+        static let buttonFill = Color("ButtonFill")
     }
 
     /// System text styles. Point sizes are intentionally not set here.
