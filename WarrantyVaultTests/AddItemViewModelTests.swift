@@ -77,7 +77,7 @@ struct AddItemViewModelTests {
     }
 
     /// Save writes one warranty and rejects a blank name before touching the store.
-    @Test func saveUsesTheRepository() throws {
+    @Test func saveUsesTheRepository() async throws {
         let repository = try WarrantyRepository(container: ModelContainerFactory.makePreviewContainer())
         let model = AddItemViewModel(
             recognizer: FixedReceiptRecognizer(lines: []),
@@ -90,7 +90,7 @@ struct AddItemViewModelTests {
         model.warrantyLength = .twelve
         model.category = .appliance
 
-        #expect(model.save(using: repository))
+        #expect(await model.save(using: repository))
         let saved = try repository.items()
         #expect(saved.count == 1)
         #expect(saved.first?.name == "Kettle")
@@ -99,13 +99,13 @@ struct AddItemViewModelTests {
 
         model.productName = " "
         model.amountText = "10"
-        #expect(model.save(using: repository) == false)
+        #expect(await model.save(using: repository) == false)
         #expect(model.validation.productName == "Enter a product name.")
         #expect(try repository.items().count == 1)
     }
 
     /// Loading a saved warranty and saving again updates that record.
-    @Test func saveUpdatesAnExistingWarranty() throws {
+    @Test func saveUpdatesAnExistingWarranty() async throws {
         let repository = try WarrantyRepository(container: ModelContainerFactory.makePreviewContainer())
         let created = try repository.create(
             name: "Kettle",
@@ -127,7 +127,7 @@ struct AddItemViewModelTests {
         model.customMonths = "18"
 
         #expect(model.isEditing)
-        #expect(model.save(using: repository))
+        #expect(await model.save(using: repository))
         #expect(model.savedMessage == "Warranty updated.")
         #expect(try repository.items().count == 1)
         let updated = try repository.item(id: created.id)

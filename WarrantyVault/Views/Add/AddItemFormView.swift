@@ -14,6 +14,8 @@ struct AddItemFormView: View {
     @Environment(AddItemViewModel.self) private var model
     @Environment(AppRouter.self) private var router
     @Environment(\.warrantyRepository) private var repository
+    @Environment(\.warrantyReminderScheduler) private var reminders
+    @Environment(\.reminderPreferences) private var preferences
     @FocusState private var focusedField: Field?
 
     var body: some View {
@@ -182,18 +184,24 @@ struct AddItemFormView: View {
         .accessibilityIdentifier("add.save")
     }
 
-    /// Validates, saves, and plays haptic feedback.
+    /// Validates, saves, schedules reminders, and plays haptic feedback.
     private func save() {
         focusedField = nil
-        let saved = model.save(using: repository)
-        guard saved else {
-            return
-        }
-        withAnimation(.easeInOut(duration: 0.35)) {
-            if model.isEditing {
-                router.pop(for: .vault)
-            } else {
-                router.popToRoot(for: .add)
+        Task {
+            let saved = await model.save(
+                using: repository,
+                reminders: reminders,
+                preferences: preferences
+            )
+            guard saved else {
+                return
+            }
+            withAnimation(.easeInOut(duration: 0.35)) {
+                if model.isEditing {
+                    router.pop(for: .vault)
+                } else {
+                    router.popToRoot(for: .add)
+                }
             }
         }
     }

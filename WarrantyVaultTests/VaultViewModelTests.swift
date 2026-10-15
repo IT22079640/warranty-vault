@@ -33,7 +33,7 @@ struct VaultViewModelTests {
     }
 
     /// Archive hides a warranty from the vault, and delete removes it.
-    @Test func archiveAndDeleteChangeTheList() throws {
+    @Test func archiveAndDeleteChangeTheList() async throws {
         let repository = try WarrantyRepository(container: ModelContainerFactory.makePreviewContainer())
         let created = try repository.create(
             name: "Kettle",
@@ -48,7 +48,7 @@ struct VaultViewModelTests {
         #expect(model.items.count == 1)
         #expect(model.showsFirstUseEmptyState == false)
 
-        model.archive(created, using: repository)
+        await model.archive(created, using: repository)
         #expect(model.items.isEmpty)
         #expect(model.showsFirstUseEmptyState)
         #expect(try repository.items(matching: WarrantyQuery(archiveScope: .archived)).count == 1)
@@ -68,7 +68,7 @@ struct VaultViewModelTests {
             category: .furniture
         )
         model.reload(using: repository)
-        model.delete(second, using: repository)
+        await model.delete(second, using: repository)
         #expect(model.items.isEmpty)
         #expect(try repository.item(id: second.id) == nil)
     }

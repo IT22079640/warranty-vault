@@ -122,28 +122,39 @@ final class VaultViewModel {
         }
     }
 
-    /// Hides `item` from the vault and refreshes the list.
-    func archive(_ item: WarrantyItem, using repository: WarrantyRepository?) {
+    /// Hides `item` from the vault, cancels its reminders, and refreshes the list.
+    func archive(
+        _ item: WarrantyItem,
+        using repository: WarrantyRepository?,
+        reminders: (any WarrantyReminderScheduling)? = nil
+    ) async {
         guard let repository else {
             actionError = "Warranty Vault could not open saved receipts."
             return
         }
         do {
             try repository.setArchived(item, isArchived: true)
+            await reminders?.cancel(identifiers: WarrantyReminderPlan.identifiers(for: item.id))
             reload(using: repository)
         } catch {
             actionError = "That warranty could not be archived."
         }
     }
 
-    /// Removes `item` from the store and refreshes the list.
-    func delete(_ item: WarrantyItem, using repository: WarrantyRepository?) {
+    /// Removes `item` from the store, cancels its reminders, and refreshes the list.
+    func delete(
+        _ item: WarrantyItem,
+        using repository: WarrantyRepository?,
+        reminders: (any WarrantyReminderScheduling)? = nil
+    ) async {
         guard let repository else {
             actionError = "Warranty Vault could not open saved receipts."
             return
         }
         do {
+            let identifiers = WarrantyReminderPlan.identifiers(for: item.id)
             try repository.delete(item)
+            await reminders?.cancel(identifiers: identifiers)
             reload(using: repository)
         } catch {
             actionError = "That warranty could not be deleted."

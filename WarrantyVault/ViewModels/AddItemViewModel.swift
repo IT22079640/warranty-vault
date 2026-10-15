@@ -238,8 +238,14 @@ final class AddItemViewModel {
         }
     }
 
-    /// Checks the form, then saves through `repository`. Returns false when something needs fixing.
-    func save(using repository: WarrantyRepository?) -> Bool {
+    /// Checks the form, saves through `repository`, and replaces reminders when they are enabled.
+    func save(
+        using repository: WarrantyRepository?,
+        reminders: (any WarrantyReminderScheduling)? = nil,
+        preferences: ReminderPreferences = ReminderPreferences(),
+        now: Date = .now,
+        calendar: Calendar = .current
+    ) async -> Bool {
         savedMessage = nil
         saveError = nil
         validation = AddItemRules.validation(
@@ -282,11 +288,18 @@ final class AddItemViewModel {
                     notes: notes,
                     receiptImageData: receiptJPEG
                 )
+                await syncReminders(
+                    for: existing,
+                    reminders: reminders,
+                    preferences: preferences,
+                    now: now,
+                    calendar: calendar
+                )
                 SaveHaptic.notifySuccess()
                 savedMessage = "Warranty updated."
                 return true
             }
-            _ = try repository.create(
+            let created = try repository.create(
                 name: productName,
                 store: store,
                 purchaseDate: purchaseDate,
@@ -295,6 +308,13 @@ final class AddItemViewModel {
                 category: category,
                 notes: notes,
                 receiptImageData: receiptJPEG
+            )
+            await syncReminders(
+                for: created,
+                reminders: reminders,
+                preferences: preferences,
+                now: now,
+                calendar: calendar
             )
             SaveHaptic.notifySuccess()
             clearForm()
@@ -311,6 +331,23 @@ final class AddItemViewModel {
             SaveHaptic.notifyFailure()
             return false
         }
+    }
+
+    /// Replaces this warranty's reminders when the Settings toggle is on.
+    private func syncReminders(
+        for item: WarrantyItem,
+        reminders: (any WarrantyReminderScheduling)?,
+        preferences: ReminderPreferences,
+        now: Date,
+        calendar: Calendar
+    ) async {
+        guard let reminders, preferences.isEnabled else {
+            return
+        }
+        await reminders.cancel(identifiers: WarrantyReminderPlan.identifiers(for: item.id))
+        await reminders.schedule(
+            WarrantyReminderPlan.reminders(for: item, now: now, calendar: calendar)
+        )
     }
 
     /// Downscales `image` and moves to the scanning screen.

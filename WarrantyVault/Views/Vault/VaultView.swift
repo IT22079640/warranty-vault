@@ -13,6 +13,7 @@ import SwiftUI
 struct VaultView: View {
     @Environment(AppRouter.self) private var router
     @Environment(\.warrantyRepository) private var repository
+    @Environment(\.warrantyReminderScheduler) private var reminders
     @Namespace private var vaultCards
     @State private var model = VaultViewModel()
 
@@ -198,10 +199,10 @@ struct VaultView: View {
         .accessibilityHint("Opens this warranty")
         .accessibilityIdentifier("vault.open.\(item.id.uuidString)")
         .accessibilityAction(named: Text("Archive")) {
-            model.archive(item, using: repository)
+            archive(item)
         }
         .accessibilityAction(named: Text("Delete")) {
-            model.delete(item, using: repository)
+            delete(item)
         }
         .contextMenu {
             menu(for: item)
@@ -226,14 +227,14 @@ struct VaultView: View {
         .accessibilityIdentifier("vault.menu.edit")
 
         Button {
-            model.archive(item, using: repository)
+            archive(item)
         } label: {
             Label("Archive", systemImage: "archivebox")
         }
         .accessibilityIdentifier("vault.menu.archive")
 
         Button(role: .destructive) {
-            model.delete(item, using: repository)
+            delete(item)
         } label: {
             Label("Delete", systemImage: "trash")
         }
@@ -243,7 +244,7 @@ struct VaultView: View {
     /// Swipe action that archives the row.
     private func archiveButton(for item: WarrantyItem) -> some View {
         Button {
-            model.archive(item, using: repository)
+            archive(item)
         } label: {
             Label("Archive", systemImage: "archivebox")
         }
@@ -254,7 +255,7 @@ struct VaultView: View {
     /// Swipe action that deletes the row.
     private func deleteButton(for item: WarrantyItem) -> some View {
         Button(role: .destructive) {
-            model.delete(item, using: repository)
+            delete(item)
         } label: {
             Label("Delete", systemImage: "trash")
         }
@@ -265,6 +266,20 @@ struct VaultView: View {
     private func open(_ item: WarrantyItem) {
         withAnimation(.easeInOut(duration: 0.35)) {
             router.push(.warranty(id: item.id), on: .vault)
+        }
+    }
+
+    /// Archives the warranty and cancels its reminders.
+    private func archive(_ item: WarrantyItem) {
+        Task {
+            await model.archive(item, using: repository, reminders: reminders)
+        }
+    }
+
+    /// Deletes the warranty and cancels its reminders.
+    private func delete(_ item: WarrantyItem) {
+        Task {
+            await model.delete(item, using: repository, reminders: reminders)
         }
     }
 }
